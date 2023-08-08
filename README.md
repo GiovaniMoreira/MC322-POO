@@ -1,4 +1,4 @@
-# mc322_2s2023
+# MC322_2s2023
 Matéria de programação orientada a objetos
 
 
