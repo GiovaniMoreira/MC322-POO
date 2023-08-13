@@ -7,4 +7,12 @@ public class Biblioteca {
         this.data = 0; //
         this.estoque = new ArrayList<Livros>();
     }
+
+    public int getData() {
+        return data;
+    }
+
+    public void setData(int data) {
+        this.data = data;
+    }
 }

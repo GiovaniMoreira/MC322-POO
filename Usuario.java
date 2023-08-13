@@ -9,8 +9,31 @@ public class Usuario {
     public Usuario(int ra, String nome){
         this.ra = ra;
         this.nome = nome;
-        ArrayList<Emprestimo> myList = new ArrayList<Emprestimo>();
-        this.emprestimos =  myList;
+        this.emprestimos =  new ArrayList<Emprestimo>();;
 
+    }
+
+    public int getRa() {
+        return ra;
+    }
+
+    public void setRa(int ra) {
+        this.ra = ra;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public ArrayList<Emprestimo> getEmprestimos() {
+        return emprestimos;
+    }
+
+    public void setEmprestimos(ArrayList<Emprestimo> emprestimos) {
+        this.emprestimos = emprestimos;
     }
 }
