@@ -5,32 +5,14 @@ import adm.Emprestimo;
 
 import java.util.ArrayList;
 
-public class Usuario {
-    private int ra;
-    private String nome;
+import java.util.ArrayList;
+
+public class Usuario extends Pessoa {
     private ArrayList<Emprestimo> emprestimos;
 
-    public Usuario(int ra, String nome){
-        this.ra = ra;
-        this.nome = nome;
-        this.emprestimos =  new ArrayList<Emprestimo>();;
-
-    }
-
-    public int getRa() {
-        return ra;
-    }
-
-    public void setRa(int ra) {
-        this.ra = ra;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
+    public Usuario(String nome, int ra) {
+        super(nome, ra);
+        this.emprestimos = new ArrayList<Emprestimo>();
     }
 
     public ArrayList<Emprestimo> getEmprestimos() {
@@ -40,4 +22,4 @@ public class Usuario {
     public void setEmprestimos(ArrayList<Emprestimo> emprestimos) {
         this.emprestimos = emprestimos;
     }
-}
+
