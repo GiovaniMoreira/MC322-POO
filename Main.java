@@ -9,6 +9,9 @@ public class Main {
         Usuario al1 = new Usuario("Joao", 174494);
         Livros liv1 = new Livros(1, "Duna", "F Herbert", true, 10, 1, "Aleph", "Portugues", "Ficção", "Físico");
         al1.emprestar(liv1);
+        System.out.println(al1.getEmprestimos().get(0).getDataDevolucao());
+        al1.renovar(al1.getEmprestimos().get(0));
+        System.out.println(al1.getEmprestimos().get(0).getDataDevolucao());
     }
 
 }

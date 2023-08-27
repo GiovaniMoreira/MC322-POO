@@ -4,8 +4,8 @@ import java.util.ArrayList;
 public class Emprestimo {
     protected int dataEmprestimo;
     protected int dataDevolucao;
-    protected Item item;
-    protected Usuario usuario;
+    protected final Item item;
+    protected final Usuario usuario;
 
     public Emprestimo(Item item, Usuario usuario){
         this.dataEmprestimo = Biblioteca.getData();
@@ -34,5 +34,11 @@ public class Emprestimo {
         this.dataDevolucao = dataDevolucao;
     }
 
+    public Usuario getUsuario(){
+        return usuario;
+    }
 
+    public Item getItem(){
+        return item;
+    }
 }

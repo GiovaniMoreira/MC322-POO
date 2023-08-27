@@ -1,8 +1,8 @@
 package adm;
 
-public class renovacao {
+public class Renovacao {
     protected Emprestimo emprestimo;
-    public renovacao(Emprestimo emprestimo){
+    public Renovacao(Emprestimo emprestimo){
         this.emprestimo = emprestimo;
         emprestimo.setDataDevolucao(emprestimo.getDataDevolucao()+7);
     }

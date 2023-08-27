@@ -1,6 +1,8 @@
 package membro;
 
 import adm.Emprestimo;
+import adm.*;
+import Item.*;
 
 import java.util.ArrayList;
 
@@ -21,5 +23,11 @@ public class Usuario extends Pessoa {
     }
     public int getNivel(){return nivel;}
 
-    public void emprestar(Item )
+    public void emprestar(Item item){
+        emprestimos.add(new Emprestimo(item, this));
+    }
+
+    public void renovar(Emprestimo emprestimo){
+        new Renovacao(emprestimo);
+    }
 }
