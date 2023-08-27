@@ -1,4 +1,4 @@
-package.class membro;
+package membro;
 
 public class EstudanteGraduacao extends Usuario {
     public EstudanteGraduacao(String nome, int ra) {
