@@ -4,9 +4,10 @@ import java.util.ArrayList;
 public class Emprestimo {
     protected int dataEmprestimo;
     protected int dataDevolucao;
-    protected final Item item;
+    protected final Item item; //Para cada Emprestimo são associados um item e um usuário, porem o mesmo usuario pode ter varios emprestimos
     protected final Usuario usuario;
 
+    //Construtor
     public Emprestimo(Item item, Usuario usuario) {
         this.dataEmprestimo = Biblioteca.getData();
         if (usuario.getNivel() == 3) {
@@ -20,6 +21,7 @@ public class Emprestimo {
         this.usuario = usuario;
     }
 
+    //Getters e Setters
     public int getDataEmprestimo() {
         return dataEmprestimo;
     }
@@ -43,4 +45,22 @@ public class Emprestimo {
     public Item getItem(){
         return item;
     }
+
+    //Funções
+    public void renovar(){
+        new Renovacao(this);
+    }
+
+    public void devolver(Biblioteca biblioteca){
+        int data = biblioteca.getData();
+        if (data > this.dataDevolucao){
+            int multa = this.usuario.getMulta();
+            this.usuario.setMulta(multa + (data-dataDevolucao)*3);
+            biblioteca.setMultas(biblioteca.getMultas()+1);
+        }
+        biblioteca.getEmprestimos().remove(0);
+        usuario.getEmprestimos().remove(0);
+        item.guardar(biblioteca);
+    }
+
 }

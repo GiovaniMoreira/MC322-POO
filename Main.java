@@ -2,6 +2,7 @@ import Item.Livros;
 import adm.*;
 import adm.*;
 import membro.EstudantePosGraduacao;
+import membro.Professor;
 import membro.Usuario;
 
 public class Main {
@@ -9,14 +10,13 @@ public class Main {
         Biblioteca biblioteca = new Biblioteca();
         EstudantePosGraduacao al1 = new EstudantePosGraduacao("Joao", 174494);
         Livros liv1 = new Livros(1, "Duna", "F Herbert", true, 10, 1, "Aleph", "Portugues", "Ficção", "Físico");
+        Professor prof1 = new Professor("Carlos", 2);
         liv1.guardar(biblioteca);
-        biblioteca.emprestar(liv1,al1);
-        System.out.println(al1.getEmprestimos().get(0).getDataDevolucao());
-        biblioteca.renovar(al1.getEmprestimos().get(0));
-        System.out.println(al1.getEmprestimos().get(0).getDataDevolucao());
         Relatorio relatorio = new Relatorio(biblioteca);
         relatorio.gerarRelatorio();
-        biblioteca.devolver(biblioteca.getEmprestimos().get(0));
+        biblioteca.emprestar(liv1,prof1);
+        relatorio.gerarRelatorio();
+        biblioteca.getEmprestimos().get(0).devolver(biblioteca);
         relatorio.gerarRelatorio();
     }
 
