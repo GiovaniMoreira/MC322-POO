@@ -1,23 +1,16 @@
 package Item;
 
 
-public class Livros {
-    private int ISBM;
-    private int tombo;
-    private String titulo;
-    private String autor;
-    private int edicao;
-    private String editora;
-    private String formato;
+public class Livros extends Item {
+    protected int ISBM;
+    protected int edicao;
+    protected String editora;
 
-    public Livros(int isbm, int tombo, String titulo, String autor, int edicao, String editora, String formato) {
-        ISBM = isbm;
-        this.tombo = tombo;
-        this.titulo = titulo;
-        this.autor = autor;
+    public Livros(int tombo, String titulo, String autor, boolean disponibilidade, int isbm, int edicao, String editora, String idioma, String genero, String formato) {
+        super(tombo, titulo, autor, disponibilidade, idioma, genero, formato);
+        this.ISBM = isbm;
         this.edicao = edicao;
         this.editora = editora;
-        this.formato = formato;
     }
 
     public int getISBM() {
@@ -26,30 +19,6 @@ public class Livros {
 
     public void setISBM(int ISBM) {
         this.ISBM = ISBM;
-    }
-
-    public int getTombo() {
-        return tombo;
-    }
-
-    public void setTombo(int tombo) {
-        this.tombo = tombo;
-    }
-
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
-
-    public String getAutor() {
-        return autor;
-    }
-
-    public void setAutor(String autor) {
-        this.autor = autor;
     }
 
     public int getEdicao() {
@@ -66,11 +35,5 @@ public class Livros {
 
     public void setEditora(String editora) {
         this.editora = editora;
-    }
-    public void setformato(String formato) {
-        this.formato = formato;
-    }
-    public String getformato() {
-        return formato;
     }
 }
