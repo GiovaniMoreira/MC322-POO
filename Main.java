@@ -1,13 +1,15 @@
 import Item.Livros;
 import adm.Biblioteca;
 import adm.Emprestimo;
+import membro.EstudantePosGraduacao;
 import membro.Usuario;
 
 public class Main {
     public static void main(String[] args) {
-        Biblioteca estoque = new Biblioteca();
-        Usuario al1 = new Usuario("Joao", 174494);
+        Biblioteca biblioteca = new Biblioteca();
+        EstudantePosGraduacao al1 = new EstudantePosGraduacao("Joao", 174494);
         Livros liv1 = new Livros(1, "Duna", "F Herbert", true, 10, 1, "Aleph", "Portugues", "Ficção", "Físico");
+        liv1.guardar(biblioteca);
         al1.emprestar(liv1);
         System.out.println(al1.getEmprestimos().get(0).getDataDevolucao());
         al1.renovar(al1.getEmprestimos().get(0));

@@ -19,4 +19,8 @@ public class Biblioteca {
     public void setData(int data) {
         this.data = data;
     }
+
+    public ArrayList<Item> getEstoque(){
+        return estoque;
+    }
 }

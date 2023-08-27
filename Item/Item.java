@@ -1,5 +1,7 @@
 package Item;
 
+import adm.Biblioteca;
+
 public abstract class Item {
     protected int tombo;
     protected String titulo;
@@ -59,4 +61,10 @@ public abstract class Item {
     public void setFormato(String formato) {
         this.formato = formato;
     }
+
+    //metodos
+    public void guardar(Biblioteca biblioteca){
+        biblioteca.getEstoque().add(this);
+    }
 }
+
