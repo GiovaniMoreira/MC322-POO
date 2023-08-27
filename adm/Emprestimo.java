@@ -7,11 +7,13 @@ public class Emprestimo {
     protected final Item item;
     protected final Usuario usuario;
 
-    public Emprestimo(Item item, Usuario usuario){
+    public Emprestimo(Item item, Usuario usuario) {
         this.dataEmprestimo = Biblioteca.getData();
-        if (usuario.getNivel()==2){
-            this.dataDevolucao = dataEmprestimo +14;
-        } else {
+        if (usuario.getNivel() == 3) {
+            this.dataDevolucao = dataEmprestimo +21;
+        } else if (usuario.getNivel() ==2) {
+            this.dataDevolucao = dataDevolucao +14;
+        }else {
             this.dataDevolucao = dataEmprestimo +7;
         }
         this.item = item;

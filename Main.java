@@ -10,7 +10,7 @@ public class Main {
         EstudantePosGraduacao al1 = new EstudantePosGraduacao("Joao", 174494);
         Livros liv1 = new Livros(1, "Duna", "F Herbert", true, 10, 1, "Aleph", "Portugues", "Ficção", "Físico");
         liv1.guardar(biblioteca);
-        al1.emprestar(liv1);
+        biblioteca.emprestar(liv1,al1);
         System.out.println(al1.getEmprestimos().get(0).getDataDevolucao());
         al1.renovar(al1.getEmprestimos().get(0));
         System.out.println(al1.getEmprestimos().get(0).getDataDevolucao());
