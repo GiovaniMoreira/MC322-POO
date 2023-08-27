@@ -1,9 +1,6 @@
 package membro;
-import java.util.Collections;
 
 import adm.Emprestimo;
-
-import java.util.ArrayList;
 
 import java.util.ArrayList;
 
@@ -22,4 +19,4 @@ public class Usuario extends Pessoa {
     public void setEmprestimos(ArrayList<Emprestimo> emprestimos) {
         this.emprestimos = emprestimos;
     }
-
+}
