@@ -8,7 +8,8 @@ import java.util.ArrayList;
 
 public class Usuario extends Pessoa {
     private ArrayList<Emprestimo> emprestimos;
-    private int nivel;
+    private int multa = 0;
+    int nivel;
     public Usuario(String nome, int ra) {
         super(nome, ra);
         this.emprestimos = new ArrayList<Emprestimo>();
@@ -27,4 +28,12 @@ public class Usuario extends Pessoa {
         emprestimos.add(new Emprestimo(item, this));
     }
 
+
+    public int getMulta() {
+        return multa;
+    }
+
+    public void setMulta(int multa) {
+        this.multa = multa;
+    }
 }

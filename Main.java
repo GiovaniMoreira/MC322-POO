@@ -1,6 +1,6 @@
 import Item.Livros;
-import adm.Biblioteca;
-import adm.Emprestimo;
+import adm.*;
+import adm.*;
 import membro.EstudantePosGraduacao;
 import membro.Usuario;
 
@@ -12,8 +12,12 @@ public class Main {
         liv1.guardar(biblioteca);
         biblioteca.emprestar(liv1,al1);
         System.out.println(al1.getEmprestimos().get(0).getDataDevolucao());
-        al1.renovar(al1.getEmprestimos().get(0));
+        biblioteca.renovar(al1.getEmprestimos().get(0));
         System.out.println(al1.getEmprestimos().get(0).getDataDevolucao());
+        Relatorio relatorio = new Relatorio(biblioteca);
+        relatorio.gerarRelatorio();
+        biblioteca.devolver(biblioteca.getEmprestimos().get(0));
+        relatorio.gerarRelatorio();
     }
 
 }
