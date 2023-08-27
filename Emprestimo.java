@@ -12,4 +12,36 @@ public class Emprestimo {
         this.livro = livro;
         this.usuario = usuario;
     }
+
+    public int getDataEmprestimo() {
+        return dataEmprestimo;
+    }
+
+    public void setDataEmprestimo(int dataEmprestimo) {
+        this.dataEmprestimo = dataEmprestimo;
+    }
+
+    public int getDataDevolucao() {
+        return dataDevolucao;
+    }
+
+    public void setDataDevolucao(int dataDevolucao) {
+        this.dataDevolucao = dataDevolucao;
+    }
+
+    public Livros getLivro() {
+        return livro;
+    }
+
+    public void setLivro(Livros livro) {
+        this.livro = livro;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
 }
