@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class Usuario extends Pessoa {
     private ArrayList<Emprestimo> emprestimos;
-    protected int nivel;
+    private int nivel;
     public Usuario(String nome, int ra) {
         super(nome, ra);
         this.emprestimos = new ArrayList<Emprestimo>();
@@ -23,6 +23,9 @@ public class Usuario extends Pessoa {
     }
     public int getNivel(){return nivel;}
 
+    public void emprestar(Item item){
+        emprestimos.add(new Emprestimo(item, this));
+    }
 
     public void renovar(Emprestimo emprestimo){
         new Renovacao(emprestimo);
