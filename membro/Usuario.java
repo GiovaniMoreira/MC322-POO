@@ -1,4 +1,8 @@
+package membro;
 import java.util.Collections;
+
+import adm.Emprestimo;
+
 import java.util.ArrayList;
 
 public class Usuario {

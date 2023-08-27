@@ -1,3 +1,8 @@
+import Item.Livros;
+import adm.Biblioteca;
+import adm.Emprestimo;
+import membro.Usuario;
+
 public class Main {
     public static void main(String[] args) {
         Biblioteca estoque =  new Biblioteca();

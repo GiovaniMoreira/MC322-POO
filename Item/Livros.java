@@ -1,3 +1,6 @@
+package Item;
+
+
 public class Livros {
     private int ISBM;
     private int tombo;
@@ -5,14 +8,16 @@ public class Livros {
     private String autor;
     private int edicao;
     private String editora;
+    private String formato;
 
-    public Livros(int isbm, int tombo, String titulo, String autor, int edicao, String editora) {
+    public Livros(int isbm, int tombo, String titulo, String autor, int edicao, String editora, String formato) {
         ISBM = isbm;
         this.tombo = tombo;
         this.titulo = titulo;
         this.autor = autor;
         this.edicao = edicao;
         this.editora = editora;
+        this.formato = formato;
     }
 
     public int getISBM() {
@@ -61,5 +66,11 @@ public class Livros {
 
     public void setEditora(String editora) {
         this.editora = editora;
+    }
+    public void setformato(String formato) {
+        this.formato = formato;
+    }
+    public String getformato() {
+        return formato;
     }
 }
