@@ -24,7 +24,4 @@ public class Usuario extends Pessoa {
     public int getNivel(){return nivel;}
 
 
-    public void renovar(Emprestimo emprestimo){
-        new Renovacao(emprestimo);
-    }
 }
