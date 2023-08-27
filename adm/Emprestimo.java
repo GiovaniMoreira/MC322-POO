@@ -1,19 +1,20 @@
-package adm;
+package adm;import Item.*;import membro.*;
 import java.util.ArrayList;
 
-import Item.Livros;
-import membro.Usuario;
-
 public class Emprestimo {
-    private int dataEmprestimo;
-    private int dataDevolucao;
-    private Livros livro;
-    private Usuario usuario;
+    protected int dataEmprestimo;
+    protected int dataDevolucao;
+    protected Item item;
+    protected Usuario usuario;
 
-    public Emprestimo(int data, Livros livro, Usuario usuario){
-        this.dataEmprestimo = data;
-        this.dataDevolucao = data+7;
-        this.livro = livro;
+    public Emprestimo(Item item, Usuario usuario){
+        this.dataEmprestimo = Biblioteca.getData();
+        if (usuario.getNivel()==2){
+            this.dataDevolucao = dataEmprestimo +14;
+        } else {
+            this.dataDevolucao = dataEmprestimo +7;
+        }
+        this.item = item;
         this.usuario = usuario;
     }
 
@@ -33,19 +34,5 @@ public class Emprestimo {
         this.dataDevolucao = dataDevolucao;
     }
 
-    public Livros getLivro() {
-        return livro;
-    }
 
-    public void setLivro(Livros livro) {
-        this.livro = livro;
-    }
-
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
-    }
 }

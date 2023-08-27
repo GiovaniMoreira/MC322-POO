@@ -20,4 +20,6 @@ public class Usuario extends Pessoa {
         this.emprestimos = emprestimos;
     }
     public int getNivel(){return nivel;}
+
+    public void emprestar(Item )
 }
