@@ -1,4 +1,4 @@
-package membro;
+package src.membro;
 
 // Definição da classe Pessoa
 public class Pessoa {

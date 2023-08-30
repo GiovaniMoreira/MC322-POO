@@ -1,7 +1,9 @@
-package adm;
+package src.adm;
 //pega os dados da biblioteca e junta tudo. n de emprestimos, livros e multas
-import Item.*;
-import adm.Emprestimo;
+import src.Item.*;
+import src.adm.Emprestimo;
+import src.Item.Item;
+
 import java.util.ArrayList;
 
 

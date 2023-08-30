@@ -1,4 +1,4 @@
-package membro;
+package src.membro;
 
 // Definição da classe EstudanteGraduacao que é uma subclasse de Usuario
 public class EstudanteGraduacao extends Usuario {

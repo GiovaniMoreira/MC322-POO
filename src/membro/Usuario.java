@@ -1,8 +1,7 @@
-package membro;
+package src.membro;
 
 // Importações de classes externas
 import adm.Emprestimo;
-import adm.*; // Importa classes do pacote adm
 import Item.*; // Importa classes do pacote Item
 
 import java.util.ArrayList;

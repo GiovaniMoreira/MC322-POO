@@ -1,4 +1,4 @@
-package membro;
+package src.membro;
 
 // Definição da classe Funcionario que é uma subclasse de Pessoa
 public class Funcionario extends Pessoa {
@@ -7,8 +7,8 @@ public class Funcionario extends Pessoa {
 
     // Construtor da classe Funcionario
     // Recebe o nome, RA e nível de acesso como parâmetros
-    public Funcionario(String nome, int ra, String nivelAcesso) {
-        super(nome, ra); // Chama o construtor da superclasse Pessoa para inicializar nome e ra
+    public Funcionario(String nome, int ra,int nTelefone, int CEP, String nivelAcesso) {
+        super(nome, ra,nTelefone,CEP); // Chama o construtor da superclasse Pessoa para inicializar nome e ra
         this.nivelAcesso = nivelAcesso; // Inicializa o nível de acesso do funcionário
     }
 

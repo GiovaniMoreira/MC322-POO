@@ -1,9 +1,7 @@
-package adm;
+package src.adm;
 import java.util.ArrayList;
-import Item.*;
-
-import Item.Livros;
-import membro.Usuario;
+import src.Item.*;
+import src.membro.Usuario;
 
 public class Biblioteca {
     private static int data; //Atributo que guarda a data atual, ainda precisamos estudar como implementar

@@ -1,4 +1,4 @@
-package adm;
+package src.adm;
 
 public class Devolucao {
     private Emprestimo emprestimo;
