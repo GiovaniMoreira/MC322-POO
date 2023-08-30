@@ -10,15 +10,19 @@ public abstract class Item {
     protected String genero;
     protected int anoPub; //em livros sera usado como fisico/digital, em midias para cd/dvd
     protected String sinopse;
+    protected int totalCopias;
+    protected int copiasDisponiveis;
 
-    public Item(int tombo, String titulo, String autor, String editora, String genero, int anoPub, String sinopse){
+    public Item(int tombo, String titulo, String autor, String editora, String genero, int anoPub, String sinopse, int totalCopias){
         this.tombo = tombo;
         this.titulo = titulo;
         this.autor = autor;
         this.editora = editora;
         this.genero = genero;
         this.anoPub = anoPub;
-        this.sinopse = sinopse;
+        this.totalCopias = totalCopias;
+        this.copiasDisponiveis = totalCopias;
+
     }
 
     //Getters e setters
@@ -72,6 +76,22 @@ public abstract class Item {
 
     public void setSinopse(String sinopse) {
         this.sinopse = sinopse;
+    }
+
+    public int getCopiasDisponiveis() {
+        return copiasDisponiveis;
+    }
+
+    public void setCopiasDisponiveis(int copiasDisponiveis) {
+        this.copiasDisponiveis = copiasDisponiveis;
+    }
+
+    public int getTotalCopias() {
+        return totalCopias;
+    }
+
+    public void setTotalCopias(int totalCopias) {
+        this.totalCopias = totalCopias;
     }
 
     //metodos
