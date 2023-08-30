@@ -6,22 +6,22 @@ public abstract class Item {
     protected int tombo;
     protected String titulo;
     protected String autor;
-    protected boolean disponibilidade;
-    protected String idioma;
+    protected String editora;
     protected String genero;
-    protected String formato; //em livros sera usado como fisico/digital, em midias para cd/dvd
+    protected int anoPub; //em livros sera usado como fisico/digital, em midias para cd/dvd
+    protected String sinopse;
 
-    public Item(int tombo, String titulo, String autor, boolean disponibilidade, String idioma, String genero, String formato) {
+    public Item(int tombo, String titulo, String autor, String editora, String genero, int anoPub, String sinopse){
         this.tombo = tombo;
         this.titulo = titulo;
         this.autor = autor;
-        this.disponibilidade = disponibilidade;
-        this.idioma = idioma;
+        this.editora = editora;
         this.genero = genero;
-        this.formato = formato;
+        this.anoPub = anoPub;
+        this.sinopse = sinopse;
     }
 
-
+    //Getters e setters
     public int getTombo() {
         return tombo;
     }
@@ -38,28 +38,40 @@ public abstract class Item {
         this.titulo = titulo;
     }
 
-    public String getAutor() {
-        return autor;
-    }
-
     public void setAutor(String autor) {
         this.autor = autor;
     }
 
-    public boolean isDisponibilidade() {
-        return disponibilidade;
+    public String getEditora() {
+        return editora;
     }
 
-    public void setDisponibilidade(boolean disponibilidade) {
-        this.disponibilidade = disponibilidade;
+    public void setEditora(String editora) {
+        this.editora = editora;
+    }
+    public String getGenero(){
+        return genero;
+    }
+    public void setGenero(String genero){
+        this.genero = genero;
+    }
+    public String getAutor() {
+        return autor;
     }
 
-    public String getFormato() {
-        return formato;
+    public int getAnoPub(){
+        return anoPub;
+    }
+    public void setAnoPub(int anoPub){
+        this.anoPub = anoPub;
     }
 
-    public void setFormato(String formato) {
-        this.formato = formato;
+    public String getSinopse() {
+        return sinopse;
+    }
+
+    public void setSinopse(String sinopse) {
+        this.sinopse = sinopse;
     }
 
     //metodos

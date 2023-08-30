@@ -1,39 +1,55 @@
 package src.Item;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 
 public class Livros extends Item {
-    protected int ISBM;
-    protected int edicao;
-    protected String editora;
+    private int ISBN;
+    private int edicao;
+    protected static ArrayList<Integer> totalEdicao;
+    protected static ArrayList<Integer> disponivelEdicao;
+    private String conservacao;
+    private String localizaçao;
 
-    public Livros(int tombo, String titulo, String autor, boolean disponibilidade, int isbm, int edicao, String editora, String idioma, String genero, String formato) {
-        super(tombo, titulo, autor, disponibilidade, idioma, genero, formato);
-        this.ISBM = isbm;
+    //Construtor
+    public Livros(int tombo, String titulo, String autor, String editora, String genero, int anoPub, String sinopse, int ISBN, int edicao, ArrayList<Integer> totalEdicao, String conservacao, String localizaçao) {
+        super(tombo,titulo,autor,editora,genero,anoPub,sinopse);
+        this.ISBN = ISBN;
         this.edicao = edicao;
-        this.editora = editora;
+        this.totalEdicao = totalEdicao;
+        this.disponivelEdicao = totalEdicao;
+        this.conservacao = conservacao;
+        this.localizaçao = localizaçao;
     }
-
-    public int getISBM() {
-        return ISBM;
+    public int getISBN() {
+        return ISBN;
     }
-
-    public void setISBM(int ISBM) {
-        this.ISBM = ISBM;
+    public void setISBN(int ISBN){
+        this.ISBN = ISBN;
     }
-
-    public int getEdicao() {
-        return edicao;
+    public String getConservacao() {
+        return conservacao;
     }
-
-    public void setEdicao(int edicao) {
-        this.edicao = edicao;
+    public void setConservacao(String conservacao) {
+        this.conservacao = conservacao;
     }
-
-    public String getEditora() {
-        return editora;
+    public String getLocalizaçao() {
+        return localizaçao;
     }
-
-    public void setEditora(String editora) {
-        this.editora = editora;
+    public void setLocalizaçao(String localizaçao) {
+        this.localizaçao = localizaçao;
+    }
+    public static ArrayList<Integer> getTotalEdicao() {
+        return totalEdicao;
+    }
+    public static void setTotalEdicao(ArrayList<Integer> totalEdicao) {
+        Livros.totalEdicao = totalEdicao;
+    }
+    public static ArrayList<Integer> getDisponivelEdicao() {
+        return disponivelEdicao;
+    }
+    public static void setDisponivelEdicao(ArrayList<Integer> disponivelEdicao) {
+        Livros.disponivelEdicao = disponivelEdicao;
     }
 }
