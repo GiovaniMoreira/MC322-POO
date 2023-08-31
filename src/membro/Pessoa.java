@@ -10,18 +10,22 @@ public class Pessoa {
     protected String nome;         // Nome da pessoa
     protected int ra;              // Registro Acadêmico
     protected int nTelefone;       // Número de telefone
-    protected int CEP;             // Código de Endereço Postal (CEP)
+    protected int CEP;// Código de Endereço Postal (CEP)
+    protected String endereco;
+    protected int dataRegistro;// Código de Endereço Postal (CEP)
     protected ArrayList<Emprestimo> emprestimos; // Lista de empréstimos do usuário
     protected int multa; // Valor da multa do usuário
     private static int limiteEmprestimos;
     private static int prazoEmprestimos;
     private static double valorMulta;
     // Construtor da classe Pessoa
-    public Pessoa(String nome, int ra, int nTelefone, int CEP ) {
+    public Pessoa(String nome, int ra, int nTelefone, String endereco, int dataRegistro ) {
         this.nome = nome;
         this.ra = ra;
         this.nTelefone = nTelefone;
         this.CEP = CEP;
+        this.endereco = endereco;
+        this.dataRegistro = dataRegistro;
     }
 
     public static double getValorMulta() {
@@ -90,5 +94,23 @@ public class Pessoa {
     // Define o CEP da pessoa
     public void setCEP(int CEP) {
         this.CEP = CEP;
+    }
+
+    public String getendereco() {
+        return endereco;
+    }
+
+    // Define o CEP da pessoa
+    public void setendereco(String endereco) {
+        this.endereco = endereco;
+    }
+
+    public int getdataRegistro() {
+        return dataRegistro;
+    }
+
+    // Define o CEP da pessoa
+    public void setdataRegistro(int dataRegistro) {
+        this.dataRegistro = dataRegistro;
     }
 }

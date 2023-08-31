@@ -6,7 +6,7 @@ public class Funcionario extends Pessoa {
     private static int prazoEmprestimos = 20;
     private static double valorMulta = 0.75;
 
-    public Funcionario(String nome, int ra, int nTelefone, int CEP) {
-        super(nome, ra, nTelefone, CEP);
+    public Funcionario(String nome, int ra, int nTelefone, String endereco, int dataRegistro ) {
+        super(nome, ra, nTelefone, endereco, dataRegistro);
     }
 }

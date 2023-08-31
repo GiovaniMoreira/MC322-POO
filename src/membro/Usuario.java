@@ -8,12 +8,11 @@ import java.util.ArrayList;
 
 // Definição da classe Usuario que é uma subclasse de Pessoa
 public abstract class Usuario extends Pessoa {
-    public Usuario(String nome, int ra, int nTelefone, int CEP) {
-        super(nome, ra, nTelefone, CEP);
+    public Usuario(String nome, int ra, int nTelefone, String endereco, int dataRegistro ) {
+        super(nome, ra, nTelefone, endereco, dataRegistro );
         this.emprestimos = new ArrayList<Emprestimo>();
     }
     // Construtor da classe Usuario
-
 
     // Métodos de acesso aos atributos da classe Usuario
 

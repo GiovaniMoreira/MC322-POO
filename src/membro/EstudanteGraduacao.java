@@ -6,8 +6,8 @@ public class EstudanteGraduacao extends Usuario {
     private static int prazoEmprestimos = 15;
     private static double valorMulta = 1;
 
-    public EstudanteGraduacao(String nome, int ra, int nTelefone, int CEP) {
-        super(nome, ra, nTelefone, CEP);
+    public EstudanteGraduacao (String nome, int ra, int nTelefone, String endereco, int dataRegistro ) {
+        super(nome, ra, nTelefone, endereco, dataRegistro);
     }
 
 }
