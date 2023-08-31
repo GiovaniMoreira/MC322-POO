@@ -12,22 +12,20 @@ public class Administradores extends Funcionario {
     public Administradores(String nome, int ra, int nTelefone, String endereco, int dataRegistro, Biblioteca biblioteca) {
         super(nome, ra, nTelefone, endereco, dataRegistro, biblioteca);
     }
-    public void cadastrarPessoa(Biblioteca biblioteca,String funcao, String nome, int ra, int nTelefone, String endereco, int dataRegistro) {
+    public void cadastrarPessoa(int funcao, String nome, int ra, int nTelefone, String endereco, int dataRegistro) {
         switch (funcao) {
-            case "Admnistrador":
+            case 1:
                 biblioteca.getFuncionarios().add(new Administradores(nome,ra,nTelefone,endereco,dataRegistro,biblioteca));
-            case "Atendente":
+            case 3:
                 biblioteca.getFuncionarios().add(new Gerentes(nome,ra,nTelefone,endereco,dataRegistro,biblioteca));
-            case "Graduacao":
+            case 6:
                 biblioteca.getUsuarios().add(new EstudanteGraduacao(nome,ra,nTelefone,endereco,dataRegistro)) ;
-            case "Pós":
+            case 5:
                 biblioteca.getUsuarios().add(new EstudantePosGraduacao(nome,ra,nTelefone,endereco,dataRegistro));
-            case "Professor":
+            case 4:
                 biblioteca.getUsuarios().add(new Professor(nome,ra,nTelefone,endereco,dataRegistro));
-            case "Gerente":
+            case 2:
                 biblioteca.getFuncionarios().add(new Gerentes(nome,ra,nTelefone,endereco,dataRegistro,biblioteca));
-            default:
-                throw new IllegalStateException("Unexpected value: " + funcao);
         }
     }
     public void cadastrarLivro( int tombo, String titulo, String autor, String editora, String genero, int anoPub, String sinopse, int totalCopias, int ISBN, int edicao, String localizaçao, String conservacao){

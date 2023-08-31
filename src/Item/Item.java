@@ -1,6 +1,7 @@
 package src.Item;
 
 import src.adm.Biblioteca;
+import src.membro.Pessoa;
 
 public abstract class Item {
     protected int tombo;
@@ -10,11 +11,9 @@ public abstract class Item {
     protected String genero;
     protected int anoPub; //em livros sera usado como fisico/digital, em midias para cd/dvd
     protected String sinopse;
-    protected int totalCopias;
-    protected int copiasDisponiveis;
     private int nEmprestimos;
     private int nReservas;
-    private boolean disponibilidade = true;
+    private Pessoa reserva = null;
     public Item(int tombo, String titulo, String autor, String editora, String genero, int anoPub, String sinopse){
         this.tombo = tombo;
         this.titulo = titulo;
@@ -22,9 +21,7 @@ public abstract class Item {
         this.editora = editora;
         this.genero = genero;
         this.anoPub = anoPub;
-        this.totalCopias = totalCopias;
-        this.copiasDisponiveis = totalCopias;
-
+        this.sinopse = sinopse;
     }
 
     //Getters e setters
@@ -80,22 +77,6 @@ public abstract class Item {
         this.sinopse = sinopse;
     }
 
-    public int getCopiasDisponiveis() {
-        return copiasDisponiveis;
-    }
-
-    public void setCopiasDisponiveis(int copiasDisponiveis) {
-        this.copiasDisponiveis = copiasDisponiveis;
-    }
-
-    public int getTotalCopias() {
-        return totalCopias;
-    }
-
-    public void setTotalCopias(int totalCopias) {
-        this.totalCopias = totalCopias;
-    }
-
     public int getnEmprestimos() {
         return nEmprestimos;
     }
@@ -111,16 +92,14 @@ public abstract class Item {
     public void setnReservas(int nReservas) {
         this.nReservas = nReservas;
     }
-
-    public void setDisponibilidade(boolean disponibilidade) {
-        this.disponibilidade = disponibilidade;
-    }
-
-    public boolean getDisponibilidade() {
-        return disponibilidade;
-    }
-
     //metodos
 
+    public Pessoa getReserva() {
+        return reserva;
+    }
+
+    public void setReserva(Pessoa reserva) {
+        this.reserva = reserva;
+    }
 }
 

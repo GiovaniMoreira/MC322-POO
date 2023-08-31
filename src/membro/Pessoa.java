@@ -1,6 +1,7 @@
 package src.membro;
 
 import src.adm.Emprestimo;
+import src.adm.Reserva;
 
 import java.util.ArrayList;
 
@@ -18,6 +19,7 @@ public class Pessoa {
     private static int limiteEmprestimos;
     private static int prazoEmprestimos;
     private static double valorMulta;
+    private ArrayList<Reserva> reserva;
     // Construtor da classe Pessoa
     public Pessoa(String nome, int ra, int nTelefone, String endereco, int dataRegistro ) {
         this.nome = nome;
@@ -26,6 +28,7 @@ public class Pessoa {
         this.CEP = CEP;
         this.endereco = endereco;
         this.dataRegistro = dataRegistro;
+        this.reserva = new ArrayList<Reserva>();
     }
 
     public static double getValorMulta() {
@@ -115,5 +118,13 @@ public class Pessoa {
     }
     public ArrayList<Emprestimo> getEmprestimos(){
         return emprestimos;
+    }
+
+    public ArrayList<Reserva> getReserva() {
+        return reserva;
+    }
+
+    public void setReserva(ArrayList<Reserva> reserva) {
+        this.reserva = reserva;
     }
 }

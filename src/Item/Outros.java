@@ -13,4 +13,5 @@ public class Outros extends Item{
         this.localizacao = localizacao;
         this.conservacao = conservacao;
     }
+
 }
