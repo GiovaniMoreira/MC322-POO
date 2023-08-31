@@ -9,9 +9,11 @@ public class Funcionario extends Pessoa {
     private static int limiteEmprestimos = 4;
     private static int prazoEmprestimos = 20;
     private static double valorMulta = 0.75;
+    protected static Biblioteca biblioteca;
 
-    public Funcionario(String nome, int ra, int nTelefone, String endereco, int dataRegistro ) {
+    public Funcionario(String nome, int ra, int nTelefone, String endereco, int dataRegistro, Biblioteca biblioteca ) {
         super(nome, ra, nTelefone, endereco, dataRegistro);
+        this.biblioteca = biblioteca;
     }
     private void emprestar(Pessoa pessoa, Item item, Biblioteca biblioteca){
         Emprestimo emprestimo = new Emprestimo(item, pessoa);
