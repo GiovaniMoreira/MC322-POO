@@ -10,11 +10,7 @@ public class Main {
         Lista lista = new Lista("Duna");
         Item item = new Livro(1,"Duna","F herbert","Aleph","ficcao",1990,"a",2,1,4,"puta que pariu","bom");
         lista.getLista().add(item);
-        item.setnEmprestimos(2);
-        item.setnReservas(4);
-        biblioteca.getListas().add(lista);
-        Relatorio relatorio = new Relatorio(biblioteca);
-        relatorio.gerarRelatóriItens(biblioteca);
+
     }
 
 }

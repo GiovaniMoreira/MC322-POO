@@ -32,7 +32,7 @@ public class Pessoa {
         return valorMulta;
     }
 
-    public static void setValorMulta(int valorMulta) {
+    public static void setValorMulta(double valorMulta) {
         Pessoa.valorMulta = valorMulta;
     }
 
@@ -112,5 +112,8 @@ public class Pessoa {
     // Define o CEP da pessoa
     public void setdataRegistro(int dataRegistro) {
         this.dataRegistro = dataRegistro;
+    }
+    public ArrayList<Emprestimo> getEmprestimos(){
+        return emprestimos;
     }
 }
