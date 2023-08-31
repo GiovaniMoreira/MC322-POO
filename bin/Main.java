@@ -7,16 +7,14 @@ import src.membro.*;
 public class Main {
     public static void main(String[] args) {
         Biblioteca biblioteca = new Biblioteca();
-        EstudantePosGraduacao al1 = new EstudantePosGraduacao("Joao", 174494);
-        Livros liv1 = new Livros(1, "Duna", "F Herbert", true, 10, 1, "Aleph", "Portugues", "Ficção", "Físico");
-        Professor prof1 = new Professor("Carlos", 2);
-        liv1.guardar(biblioteca);
+        Lista lista = new Lista("Duna");
+        Item item = new Livro(1,"Duna","F herbert","Aleph","ficcao",1990,"a",2,1,4,"puta que pariu","bom");
+        lista.getLista().add(item);
+        item.setnEmprestimos(2);
+        item.setnReservas(4);
+        biblioteca.getListas().add(lista);
         Relatorio relatorio = new Relatorio(biblioteca);
-        relatorio.gerarRelatorio();
-        biblioteca.emprestar(liv1,prof1);
-        relatorio.gerarRelatorio();
-        biblioteca.getEmprestimos().get(0).devolver(biblioteca);
-        relatorio.gerarRelatorio();
+        relatorio.gerarRelatóriItens(biblioteca);
     }
 
 }

@@ -96,9 +96,31 @@ public abstract class Item {
         this.totalCopias = totalCopias;
     }
 
-    //metodos
-    public void guardar(Biblioteca biblioteca){
-        biblioteca.getEstoque().add(this);
+    public int getnEmprestimos() {
+        return nEmprestimos;
     }
+
+    public void setnEmprestimos(int nEmprestimos) {
+        this.nEmprestimos = nEmprestimos;
+    }
+
+    public int getnReservas() {
+        return nReservas;
+    }
+
+    public void setnReservas(int nReservas) {
+        this.nReservas = nReservas;
+    }
+
+    public void setDisponibilidade(boolean disponibilidade) {
+        this.disponibilidade = disponibilidade;
+    }
+
+    public boolean getDisponibilidade() {
+        return disponibilidade;
+    }
+
+    //metodos
+
 }
 
