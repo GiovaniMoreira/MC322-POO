@@ -12,7 +12,8 @@ public abstract class Item {
     protected String sinopse;
     protected int totalCopias;
     protected int copiasDisponiveis;
-
+    private int nEmprestimos;
+    private int nReservas;
     public Item(int tombo, String titulo, String autor, String editora, String genero, int anoPub, String sinopse, int totalCopias){
         this.tombo = tombo;
         this.titulo = titulo;
