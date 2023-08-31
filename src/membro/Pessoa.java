@@ -13,7 +13,7 @@ public class Pessoa {
     protected int CEP;             // Código de Endereço Postal (CEP)
     protected ArrayList<Emprestimo> emprestimos; // Lista de empréstimos do usuário
     protected int multa; // Valor da multa do usuário
-    private static int nEmprestimos;
+    private static int limiteEmprestimos;
     private static int prazoEmprestimos;
     private static double valorMulta;
     // Construtor da classe Pessoa
@@ -40,12 +40,12 @@ public class Pessoa {
         Pessoa.prazoEmprestimos = prazoEmprestimos;
     }
 
-    public static int getnEmprestimos() {
-        return nEmprestimos;
+    public static int getLimiteEmprestimos() {
+        return limiteEmprestimos;
     }
 
-    public static void setnEmprestimos(int nEmprestimos) {
-        Pessoa.nEmprestimos = nEmprestimos;
+    public static void setLimiteEmprestimos(int limiteEmprestimos) {
+        Pessoa.limiteEmprestimos = limiteEmprestimos;
     }
 
     // Métodos de acesso aos atributos da classe Pessoa
