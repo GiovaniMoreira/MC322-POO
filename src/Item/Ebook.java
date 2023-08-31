@@ -6,7 +6,7 @@ public class Ebook extends Item{
     private String reqLeitura;
 
     //Construtor
-    public Ebook(int tombo, String titulo, String autor, String editora, String genero, int anoPub, String sinopse, int totalCopias, String formato,String link, String reqLeitura) {
+    public Ebook(int tombo, String titulo, String autor, String editora, String genero, int anoPub, String sinopse, String formato, String link, String reqLeitura) {
         super(tombo, titulo, autor, editora, genero, anoPub, sinopse);
         this.formato = formato;
         this.link = link;

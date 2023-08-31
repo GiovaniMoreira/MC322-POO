@@ -10,7 +10,7 @@ public class Main {
         Lista lista = new Lista("Duna");
         Item item = new Livro(1,"Duna","F herbert","Aleph","ficcao",1990,"a",2,1,4,"puta que pariu","bom");
         Administradores adm = new Administradores("gio",123,12345,"casa do caralho",1);
-        adm.castrarLivro(biblioteca ,1,"Duna","F herbert","Aleph","ficcao",1990,"a",2,1,4,"puta que pariu","bom");
+        adm.cadastrarLivro(biblioteca ,1,"Duna","F herbert","Aleph","ficcao",1990,"a",2,1,4,"puta que pariu","bom");
         System.out.println(biblioteca.getListas().get(0).getTitulo());
     }
 

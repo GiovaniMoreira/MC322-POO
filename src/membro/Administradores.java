@@ -1,5 +1,5 @@
 package src.membro;
-import src.Item.Livro;
+import src.Item.*;
 import src.adm.Biblioteca;
 import src.adm.Lista;
 
@@ -29,7 +29,7 @@ public class Administradores extends Funcionario {
                 throw new IllegalStateException("Unexpected value: " + funcao);
         }
     }
-    public void castrarLivro(Biblioteca biblioteca, int tombo, String titulo, String autor, String editora, String genero, int anoPub, String sinopse, int totalCopias, int ISBN, int edicao, String localizaçao, String conservacao){
+    public void cadastrarLivro(Biblioteca biblioteca, int tombo, String titulo, String autor, String editora, String genero, int anoPub, String sinopse, int totalCopias, int ISBN, int edicao, String localizaçao, String conservacao){
         Iterator<Lista> it = biblioteca.getListas().iterator();
         while (it.hasNext()){
             Lista i = it.next();
@@ -39,5 +39,49 @@ public class Administradores extends Funcionario {
         }
         biblioteca.getListas().add(new Lista(titulo));
         biblioteca.getListas().get(biblioteca.getListas().size()-1).getLista().add(new Livro(tombo,  titulo,  autor,  editora,  genero,  anoPub,  sinopse,  totalCopias,  ISBN,  edicao,  localizaçao,  conservacao));
+    }
+    public void cadastrarEbook(Biblioteca biblioteca,int tombo, String titulo, String autor, String editora, String genero, int anoPub, String sinopse, String formato,String link, String reqLeitura){
+        Iterator<Lista> it = biblioteca.getListas().iterator();
+        while (it.hasNext()){
+            Lista i = it.next();
+            if (i.getTitulo() == titulo){
+                i.getLista().add(new Ebook(tombo,  titulo,  autor,  editora,  genero,  anoPub,  sinopse,  formato,  link,  reqLeitura));
+            }
+        }
+        biblioteca.getListas().add(new Lista(titulo));
+        biblioteca.getListas().get(biblioteca.getListas().size()-1).getLista().add(new Ebook(tombo,  titulo,  autor,  editora,  genero,  anoPub,  sinopse,  formato,  link,  reqLeitura));
+    }
+    public void cadastrarCD(Biblioteca biblioteca, int tombo, String titulo, String autor, String editora, String genero, int anoPub, String sinopse, ArrayList<String> listaFaixas, int duracao, String conservacao){
+        Iterator<Lista> it = biblioteca.getListas().iterator();
+        while (it.hasNext()){
+            Lista i = it.next();
+            if (i.getTitulo() == titulo){
+                i.getLista().add(new CD(tombo,  titulo,  autor,  editora,  genero,  anoPub,  sinopse  ,  listaFaixas,  duracao,  conservacao));
+            }
+        }
+        biblioteca.getListas().add(new Lista(titulo));
+        biblioteca.getListas().get(biblioteca.getListas().size()-1).getLista().add(new CD(tombo,  titulo,  autor,  editora,  genero,  anoPub,  sinopse  ,  listaFaixas,  duracao,  conservacao));
+    }
+    public void cadastrarDVD(Biblioteca biblioteca,int tombo, String titulo, String autor, String editora, String genero, int anoPub, String sinopse, ArrayList<String> Elenco, int duracao, String conservacao){
+        Iterator<Lista> it = biblioteca.getListas().iterator();
+        while (it.hasNext()){
+            Lista i = it.next();
+            if (i.getTitulo() == titulo){
+                i.getLista().add(new DVD(tombo,  titulo,  autor,  editora,  genero,  anoPub,  sinopse,  Elenco,  duracao, conservacao));
+            }
+        }
+        biblioteca.getListas().add(new Lista(titulo));
+        biblioteca.getListas().get(biblioteca.getListas().size()-1).getLista().add(new DVD(tombo,  titulo,  autor,  editora,  genero,  anoPub,  sinopse,  Elenco,  duracao, conservacao));
+    }
+    public void cadastrarOutros(Biblioteca biblioteca,int tombo, String titulo, String autor, String editora, String genero, int anoPub, String sinopse, String tipoRecurso, String formato, String localizacao, String conservacao){
+        Iterator<Lista> it = biblioteca.getListas().iterator();
+        while (it.hasNext()){
+            Lista i = it.next();
+            if (i.getTitulo() == titulo){
+                i.getLista().add(new Outros(tombo,  titulo,  autor,  editora,  genero,  anoPub,  sinopse,  tipoRecurso,  formato,  localizacao,  conservacao));
+            }
+        }
+        biblioteca.getListas().add(new Lista(titulo));
+        biblioteca.getListas().get(biblioteca.getListas().size()-1).getLista().add(new Outros(tombo,  titulo,  autor,  editora,  genero,  anoPub,  sinopse,  tipoRecurso,  formato,  localizacao,  conservacao));
     }
 }

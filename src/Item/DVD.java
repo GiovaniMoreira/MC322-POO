@@ -7,7 +7,7 @@ public class DVD extends Item{
     private int duracao;
     private String conservacao;
 
-    public DVD(int tombo, String titulo, String autor, String editora, String genero, int anoPub, String sinopse, int totalCopias, ArrayList<String> Elenco, int duracao, String conservacao) {
+    public DVD(int tombo, String titulo, String autor, String editora, String genero, int anoPub, String sinopse, ArrayList<String> Elenco, int duracao, String conservacao) {
         super(tombo, titulo, autor, editora, genero, anoPub, sinopse);
         this.Elenco = Elenco;
         this.duracao = duracao;
