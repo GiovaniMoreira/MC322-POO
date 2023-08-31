@@ -2,11 +2,14 @@ package src.membro;
 
 // Definição da classe Professor que é uma subclasse de Usuario
 public class Professor extends Usuario {
-    
+    private static int limiteEmprestimos = 7;
+    private static int prazoEmprestimos = 30;
+    private static double valorMulta = 0.5;
+
+    public Professor(String nome, int ra, int nTelefone, int CEP) {
+        super(nome, ra, nTelefone, CEP);
+    }
     // Construtor da classe Professor
     // Recebe o nome e o RA do professor como parâmetros
-    public Professor(String nome, int ra) {
-        super(nome, ra); // Chama o construtor da superclasse Usuario para inicializar nome e ra
-        this.nivel = 3;  // Define o nível do professor como 3
-    }
+
 }

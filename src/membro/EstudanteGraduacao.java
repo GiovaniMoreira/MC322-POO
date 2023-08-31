@@ -2,10 +2,12 @@ package src.membro;
 
 // Definição da classe EstudanteGraduacao que é uma subclasse de Usuario
 public class EstudanteGraduacao extends Usuario {
-    // Construtor da classe EstudanteGraduacao
-    // Recebe o nome e o RA do estudante como parâmetros
-    public EstudanteGraduacao(String nome, int ra) {
-        super(nome, ra); // Chama o construtor da superclasse Usuario para inicializar nome e ra
-        this.nivel = 1; // Define o nível do estudante de graduação como 1
+    private static int limiteEmprestimos = 3;
+    private static int prazoEmprestimos = 15;
+    private static double valorMulta = 1;
+
+    public EstudanteGraduacao(String nome, int ra, int nTelefone, int CEP) {
+        super(nome, ra, nTelefone, CEP);
     }
+
 }

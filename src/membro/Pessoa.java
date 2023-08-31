@@ -1,5 +1,9 @@
 package src.membro;
 
+import src.adm.Emprestimo;
+
+import java.util.ArrayList;
+
 // Definição da classe Pessoa
 public class Pessoa {
     // Atributos protegidos da classe Pessoa
@@ -7,13 +11,41 @@ public class Pessoa {
     protected int ra;              // Registro Acadêmico
     protected int nTelefone;       // Número de telefone
     protected int CEP;             // Código de Endereço Postal (CEP)
-
+    protected ArrayList<Emprestimo> emprestimos; // Lista de empréstimos do usuário
+    protected int multa; // Valor da multa do usuário
+    private static int nEmprestimos;
+    private static int prazoEmprestimos;
+    private static double valorMulta;
     // Construtor da classe Pessoa
     public Pessoa(String nome, int ra, int nTelefone, int CEP ) {
         this.nome = nome;
         this.ra = ra;
         this.nTelefone = nTelefone;
         this.CEP = CEP;
+    }
+
+    public static double getValorMulta() {
+        return valorMulta;
+    }
+
+    public static void setValorMulta(int valorMulta) {
+        Pessoa.valorMulta = valorMulta;
+    }
+
+    public static int getPrazoEmprestimos() {
+        return prazoEmprestimos;
+    }
+
+    public static void setPrazoEmprestimos(int prazoEmprestimos) {
+        Pessoa.prazoEmprestimos = prazoEmprestimos;
+    }
+
+    public static int getnEmprestimos() {
+        return nEmprestimos;
+    }
+
+    public static void setnEmprestimos(int nEmprestimos) {
+        Pessoa.nEmprestimos = nEmprestimos;
     }
 
     // Métodos de acesso aos atributos da classe Pessoa
