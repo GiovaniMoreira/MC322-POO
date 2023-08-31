@@ -7,7 +7,7 @@ public class Outros extends Item{
     private String conservacao;
 
     public Outros(int tombo, String titulo, String autor, String editora, String genero, int anoPub, String sinopse, int totalCopias, String tipoRecurso, String formato, String localizacao, String conservacao) {
-        super(tombo, titulo, autor, editora, genero, anoPub, sinopse, totalCopias);
+        super(tombo, titulo, autor, editora, genero, anoPub, sinopse);
         this.tipoRecurso = tipoRecurso;
         this.formato = formato;
         this.localizacao = localizacao;
