@@ -15,7 +15,9 @@ public class Reserva {
     }
     public void reservar(){
         item.setReserva(pessoa);
+        item.setnReservas(item.getnReservas()+1);
         pessoa.getReserva().add(this);
+        System.out.println(item.getTitulo()+" reservado por "+pessoa.getNome());
     }
 
     public Pessoa getPessoa() {

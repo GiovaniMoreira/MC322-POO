@@ -16,12 +16,17 @@ public class Funcionario extends Pessoa {
         super(nome, ra, nTelefone, endereco, dataRegistro);
         this.biblioteca = biblioteca;
     }
-    private void emprestar(Pessoa pessoa, Item item){
-
-
-        Emprestimo emprestimo = new Emprestimo(item, pessoa);
-        pessoa.getEmprestimos().add(emprestimo);
-        biblioteca.getEmprestimos().add(emprestimo);
+    public void emprestar(Pessoa pessoa, Item item){
+        if (item.getReserva() == null || item.getReserva() == pessoa) {
+            Emprestimo emprestimo = new Emprestimo(item, pessoa);
+            pessoa.getEmprestimos().add(emprestimo);
+            biblioteca.getEmprestimos().add(emprestimo);
+            System.out.println(item.getTitulo()+" emprestado por "+pessoa.getNome());
+            item.setnEmprestimos(item.getnEmprestimos()+1);
+            return;
+        } else {
+            System.out.println("Item reservado");
+        }
     }
 
     public void reservar(Pessoa pessoa, Item item){

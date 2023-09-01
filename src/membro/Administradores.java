@@ -16,16 +16,22 @@ public class Administradores extends Funcionario {
         switch (funcao) {
             case 1:
                 biblioteca.getFuncionarios().add(new Administradores(nome,ra,nTelefone,endereco,dataRegistro,biblioteca));
-            case 3:
-                biblioteca.getFuncionarios().add(new Gerentes(nome,ra,nTelefone,endereco,dataRegistro,biblioteca));
-            case 6:
-                biblioteca.getUsuarios().add(new EstudanteGraduacao(nome,ra,nTelefone,endereco,dataRegistro)) ;
-            case 5:
-                biblioteca.getUsuarios().add(new EstudantePosGraduacao(nome,ra,nTelefone,endereco,dataRegistro));
-            case 4:
-                biblioteca.getUsuarios().add(new Professor(nome,ra,nTelefone,endereco,dataRegistro));
+                break;
             case 2:
                 biblioteca.getFuncionarios().add(new Gerentes(nome,ra,nTelefone,endereco,dataRegistro,biblioteca));
+                break;
+            case 3:
+                biblioteca.getFuncionarios().add(new Atendentes(nome,ra,nTelefone,endereco,dataRegistro,biblioteca));
+                break;
+            case 4:
+                biblioteca.getUsuarios().add(new EstudanteGraduacao(nome,ra,nTelefone,endereco,dataRegistro)) ;
+                break;
+            case 5:
+                biblioteca.getUsuarios().add(new EstudantePosGraduacao(nome,ra,nTelefone,endereco,dataRegistro));
+                break;
+            case 6:
+                biblioteca.getUsuarios().add(new Professor(nome,ra,nTelefone,endereco,dataRegistro));
+                break;
         }
     }
     public void cadastrarLivro( int tombo, String titulo, String autor, String editora, String genero, int anoPub, String sinopse, int totalCopias, int ISBN, int edicao, String localizaçao, String conservacao){

@@ -11,8 +11,8 @@ public abstract class Item {
     protected String genero;
     protected int anoPub; //em livros sera usado como fisico/digital, em midias para cd/dvd
     protected String sinopse;
-    private int nEmprestimos;
-    private int nReservas;
+    private int nEmprestimos = 0;
+    private int nReservas = 0;
     private Pessoa reserva = null;
     public Item(int tombo, String titulo, String autor, String editora, String genero, int anoPub, String sinopse){
         this.tombo = tombo;
