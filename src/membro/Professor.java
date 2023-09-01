@@ -8,8 +8,28 @@ public class Professor extends Usuario {
 
     public Professor(String nome, int ra, int nTelefone, String endereco, int dataRegistro ) {
         super(nome, ra, nTelefone, endereco, dataRegistro);
+        this.limiteEmprestimos = 7;
+        this.prazoEmprestimos = 30;
+        this.valorMulta = 0.5;
     }
-    // Construtor da classe Professor
-    // Recebe o nome e o RA do professor como parâmetros
+    public double getValorMulta() {
+        return Professor.valorMulta;
+    }
 
+    public void setValorMulta(double valorMulta) {
+        Professor.valorMulta = valorMulta;
+    }
+    public int getPrazoEmprestimos() {
+        return Professor.prazoEmprestimos;
+    }
+    public void setPrazoEmprestimos(int prazoEmprestimos) {
+        Professor.prazoEmprestimos = prazoEmprestimos;
+    }
+
+    public int getLimiteEmprestimos() {
+        return Professor.limiteEmprestimos;
+    }
+    public void setLimiteEmprestimos(int limiteEmprestimos) {
+        Professor.limiteEmprestimos = limiteEmprestimos;
+    }
 }

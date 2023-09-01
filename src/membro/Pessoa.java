@@ -6,7 +6,7 @@ import src.adm.Reserva;
 import java.util.ArrayList;
 
 // Definição da classe Pessoa
-public class Pessoa {
+public abstract class Pessoa {
     // Atributos protegidos da classe Pessoa
     protected String nome;         // Nome da pessoa
     protected int ra;              // Registro Acadêmico
@@ -28,32 +28,21 @@ public class Pessoa {
         this.CEP = CEP;
         this.endereco = endereco;
         this.dataRegistro = dataRegistro;
-        this.reserva = new ArrayList<Reserva>();
+        this.reserva = new ArrayList<Reserva>(0);
+        this.emprestimos = new ArrayList<Emprestimo>(0);
     }
 
-    public static double getValorMulta() {
-        return valorMulta;
-    }
+    public abstract double getValorMulta();
 
-    public static void setValorMulta(double valorMulta) {
-        Pessoa.valorMulta = valorMulta;
-    }
+    public abstract void setValorMulta(double valorMulta);
 
-    public static int getPrazoEmprestimos() {
-        return prazoEmprestimos;
-    }
+    public abstract int getPrazoEmprestimos();
 
-    public static void setPrazoEmprestimos(int prazoEmprestimos) {
-        Pessoa.prazoEmprestimos = prazoEmprestimos;
-    }
+    public abstract void setPrazoEmprestimos(int prazoEmprestimos) ;
 
-    public static int getLimiteEmprestimos() {
-        return limiteEmprestimos;
-    }
+    public abstract int getLimiteEmprestimos();
 
-    public static void setLimiteEmprestimos(int limiteEmprestimos) {
-        Pessoa.limiteEmprestimos = limiteEmprestimos;
-    }
+    public abstract void setLimiteEmprestimos(int limiteEmprestimos);
 
     // Métodos de acesso aos atributos da classe Pessoa
 
@@ -112,7 +101,6 @@ public class Pessoa {
         return dataRegistro;
     }
 
-    // Define o CEP da pessoa
     public void setdataRegistro(int dataRegistro) {
         this.dataRegistro = dataRegistro;
     }

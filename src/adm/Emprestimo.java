@@ -52,7 +52,13 @@ public class Emprestimo {
         while (listaIterator.hasNext()){
              Lista lista = listaIterator.next();
              if (lista.getTitulo() == item.getTitulo()){
-                 
+                 Iterator<Item> itemIterator = lista.getLista().iterator();
+                 while (itemIterator.hasNext()){
+                     Item item1 = itemIterator.next();
+                     if(item1.getTombo() == item.getTombo()){
+                         item.setDisponibilidade(false);
+                     }
+                 }
              }
         }
     }

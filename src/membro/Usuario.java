@@ -8,8 +8,8 @@ import java.util.ArrayList;
 
 // Definição da classe Usuario que é uma subclasse de Pessoa
 public abstract class Usuario extends Pessoa {
-    public Usuario(String nome, int ra, int nTelefone, String endereco, int dataRegistro ) {
-        super(nome, ra, nTelefone, endereco, dataRegistro );
+    public Usuario(String nome, int ra, int nTelefone, String endereco, int dataRegistro) {
+        super(nome, ra, nTelefone, endereco, dataRegistro);
         this.emprestimos = new ArrayList<Emprestimo>();
     }
     // Construtor da classe Usuario
@@ -24,13 +24,6 @@ public abstract class Usuario extends Pessoa {
     // Define a lista de empréstimos do usuário
     public void setEmprestimos(ArrayList<Emprestimo> emprestimos) {
         this.emprestimos = emprestimos;
+
     }
-
-    // Obtém o nível do usuário
-    // Método para realizar um empréstimo
-
-    public void emprestar(Item item) {
-        emprestimos.add(new Emprestimo(item, this)); // Adiciona um novo empréstimo à lista
-    }
-
 }

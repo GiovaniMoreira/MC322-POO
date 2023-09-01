@@ -34,16 +34,16 @@ public class Administradores extends Funcionario {
                 break;
         }
     }
-    public void cadastrarLivro( int tombo, String titulo, String autor, String editora, String genero, int anoPub, String sinopse, int totalCopias, int ISBN, int edicao, String localizaçao, String conservacao){
+    public void cadastrarLivro( int tombo, String titulo, String autor, String editora, String genero, int anoPub, String sinopse, int ISBN, int edicao, String localizaçao, String conservacao){
         Iterator<Lista> it = biblioteca.getListas().iterator();
         while (it.hasNext()){
             Lista i = it.next();
             if (i.getTitulo() == titulo){
-                i.getLista().add(new Livro(tombo,  titulo,  autor,  editora,  genero,  anoPub,  sinopse,  totalCopias,  ISBN,  edicao,  localizaçao,  conservacao));
+                i.getLista().add(new Livro(tombo,  titulo,  autor,  editora,  genero,  anoPub,  sinopse,  ISBN,  edicao,  localizaçao,  conservacao));
             }
         }
         biblioteca.getListas().add(new Lista(titulo));
-        biblioteca.getListas().get(biblioteca.getListas().size()-1).getLista().add(new Livro(tombo,  titulo,  autor,  editora,  genero,  anoPub,  sinopse,  totalCopias,  ISBN,  edicao,  localizaçao,  conservacao));
+        biblioteca.getListas().get(biblioteca.getListas().size()-1).getLista().add(new Livro(tombo,  titulo,  autor,  editora,  genero,  anoPub,  sinopse,  ISBN,  edicao,  localizaçao,  conservacao));
     }
     public void cadastrarEbook(int tombo, String titulo, String autor, String editora, String genero, int anoPub, String sinopse, String formato,String link, String reqLeitura){
         Iterator<Lista> it = biblioteca.getListas().iterator();

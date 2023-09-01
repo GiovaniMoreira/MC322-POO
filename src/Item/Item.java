@@ -14,6 +14,7 @@ public abstract class Item {
     private int nEmprestimos = 0;
     private int nReservas = 0;
     private Pessoa reserva = null;
+    private boolean disponibilidade;
     public Item(int tombo, String titulo, String autor, String editora, String genero, int anoPub, String sinopse){
         this.tombo = tombo;
         this.titulo = titulo;
@@ -22,6 +23,7 @@ public abstract class Item {
         this.genero = genero;
         this.anoPub = anoPub;
         this.sinopse = sinopse;
+        this.disponibilidade = true;
     }
 
     //Getters e setters
@@ -100,6 +102,14 @@ public abstract class Item {
 
     public void setReserva(Pessoa reserva) {
         this.reserva = reserva;
+    }
+
+    public void setDisponibilidade(boolean disponibilidade) {
+        this.disponibilidade = disponibilidade;
+    }
+
+    public boolean getDisponibilidade() {
+        return disponibilidade;
     }
 }
 
