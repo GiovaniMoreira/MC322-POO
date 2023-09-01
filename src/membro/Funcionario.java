@@ -18,11 +18,8 @@ public class Funcionario extends Pessoa {
     }
     public void emprestar(Pessoa pessoa, Item item){
         if (item.getReserva() == null || item.getReserva() == pessoa) {
-            Emprestimo emprestimo = new Emprestimo(item, pessoa);
-            pessoa.getEmprestimos().add(emprestimo);
-            biblioteca.getEmprestimos().add(emprestimo);
-            System.out.println(item.getTitulo()+" emprestado por "+pessoa.getNome());
-            item.setnEmprestimos(item.getnEmprestimos()+1);
+            Emprestimo emprestimo = new Emprestimo(item, pessoa, biblioteca);
+            emprestimo.empresta();
             return;
         } else {
             System.out.println("Item reservado");
