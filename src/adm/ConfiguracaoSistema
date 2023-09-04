@@ -1,0 +1,48 @@
+package src.adm;
+
+public class ConfiguracaoSistema {
+    private int prazoEmprestimo;
+    private double multaPorAtraso;
+    private int limiteEmprestimo;
+    private int numeroCopiasDisponiveis;
+
+    public ConfiguracaoSistema(int prazoEmprestimo, double multaPorAtraso, int limiteEmprestimo, int numeroCopiasDisponiveis) {
+        this.prazoEmprestimo = prazoEmprestimo;
+        this.multaPorAtraso = multaPorAtraso;
+        this.limiteEmprestimo = limiteEmprestimo;
+        this.numeroCopiasDisponiveis = numeroCopiasDisponiveis;
+    }
+
+    // Getters e Setters para as configurações do sistema
+    public int getPrazoEmprestimo() {
+        return prazoEmprestimo;
+    }
+
+    public void setPrazoEmprestimo(int prazoEmprestimo) {
+        this.prazoEmprestimo = prazoEmprestimo;
+    }
+
+    public double getMultaPorAtraso() {
+        return multaPorAtraso;
+    }
+
+    public void setMultaPorAtraso(double multaPorAtraso) {
+        this.multaPorAtraso = multaPorAtraso;
+    }
+
+    public int getLimiteEmprestimo() {
+        return limiteEmprestimo;
+    }
+
+    public void setLimiteEmprestimo(int limiteEmprestimo) {
+        this.limiteEmprestimo = limiteEmprestimo;
+    }
+
+    public int getNumeroCopiasDisponiveis() {
+        return numeroCopiasDisponiveis;
+    }
+
+    public void setNumeroCopiasDisponiveis(int numeroCopiasDisponiveis) {
+        this.numeroCopiasDisponiveis = numeroCopiasDisponiveis;
+    }
+}

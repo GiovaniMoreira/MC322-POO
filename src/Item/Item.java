@@ -1,8 +1,12 @@
 package src.Item;
 
 import src.adm.Biblioteca;
+import java.util.ArrayList;
+import java.util.List;
+import java.io.File;
 
 public abstract class Item {
+    protected String item;
     protected int tombo;
     protected String titulo;
     protected String autor;
@@ -15,7 +19,8 @@ public abstract class Item {
     private int nEmprestimos;
     private int nReservas;
     private boolean disponibilidade = true;
-    public Item(int tombo, String titulo, String autor, String editora, String genero, int anoPub, String sinopse, int totalCopias){
+    public Item(String item, int tombo, String titulo, String autor, String editora, String genero, int anoPub, String sinopse, int totalCopias){
+        this.item = item;
         this.tombo = tombo;
         this.titulo = titulo;
         this.autor = autor;
@@ -28,6 +33,14 @@ public abstract class Item {
     }
 
     //Getters e setters
+    public String getItem() {
+        return item;
+    }
+
+    public void setItem(String item) {
+        this.item = item;
+    }   
+
     public int getTombo() {
         return tombo;
     }
@@ -121,6 +134,47 @@ public abstract class Item {
     }
 
     //metodos
+    public void CadastrarItens(String item; int tombo, String titulo, String autor, String editora, String genero, int anoPub, String sinopse, int totalCopias, String url){
+        CriarArquivo(url);
+        try {
+            List<String> existentes = LinhasExistentes(url);
+            String linha = item ";" + tombo ";"+ titulo ";"+ autor ";"+ editora ";"+ genero ";"+ anoPub ";"+ sinopse ";"+ totalCopias";";
+            existentes.add(linha);
+            String todasLinhas = unicaLinha(existentes);
+            FileWriter arquivo = new FileWriter(url);
+            arquivo.write(todasLinhas);
+            arquivo.close();
+            
+        } catch (Exception error) {
+            System.out.println(x: "Erro ao criar Relatório " + url)
+        }
+    }  
+    public void String UnicaLinha(List<String> existentes){
+        String unicaLinha = "";
+        for (String linha : existentes){
+            unicaLinha += linha + " \n";
+        }
+        return unicaLinha;
+    }
+    public void CriarArquivo(String url){
+        try {
+            File arquivo = new File(url);
+            arquivo.createNewFile();
+        } catch (Exception error) {
+            System.out.println(x: "Erro ao criar Relatório ")
+        }
+    }
+    public List<String> LinhasExistentes(String url){
+        try {
+            Path path = Phats.get(url); 
+            result = File.readAllLines(path)
+        } catch (Exception e) {
+            System.out.println(x: "Erro ao criar Relatório ")
+        }
+        List<String> result = new ArrayList<String>();
+        return result;
+  
+    }
 
 }
 

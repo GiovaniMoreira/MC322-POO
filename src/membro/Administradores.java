@@ -21,4 +21,24 @@ public class Administradores extends Funcionario {
                 biblioteca.getUsuarios().add(new Professor(nome,ra,nTelefone,endereco,dataRegistro));
         }
     }
+    public void cadastrarItens(Biblioteca biblioteca) {
+        cadastrar.CadastrarItens(biblioteca, "livro", "300", "teste", "fulano de tal", "editora generica", "suspense", "2023", "nao sabemos de nada do que estamos fazendo aqui", "1");
+    }
+    public void processarEmprestimo(Biblioteca biblioteca, Item item, Pessoa pessoa) {
+        // Lógica para processar um empréstimo
+        Emprestimo emprestimo = new Emprestimo(item, pessoa, pessoa.getPerfil());
+        biblioteca.adicionarEmprestimo(emprestimo);
+        pessoa.adicionarEmprestimo(emprestimo);
+    }
+    
+    public void processarDevolucao(Biblioteca biblioteca, Emprestimo emprestimo) {
+        // Lógica para processar a devolução
+        emprestimo.devolver(biblioteca);
+    }
+    public void gerenciarReserva(Biblioteca biblioteca, Item item, Pessoa pessoa) {
+        // Lógica para gerenciar a reserva
+        biblioteca.adicionarReserva(item, pessoa);
+    }
+    
+    
 }
