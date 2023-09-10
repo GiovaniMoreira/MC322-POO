@@ -2,7 +2,16 @@ package biblioteca.models.itens;
 
 import java.util.Scanner;
 
-public class Equipamento {
+public class Equipamento implements Emprestavel {
+    private int tombo;
+    public int getTombo() {
+        return tombo;
+    }
+
+    public void setTombo(int tombo) {
+        this.tombo = tombo;
+    }
+
     private enum CategoriaEquipamento{
         INFORMATICA,AUDIOVISUAL,IMPRESSAO
     }
@@ -10,7 +19,8 @@ public class Equipamento {
     private Informatica informatica;
     private AudioVisual audiovisual;
     private Impressao impressao;
-    public Equipamento(CategoriaEquipamento categoria){
+    public Equipamento(CategoriaEquipamento categoria, int tombo){
+        this.tombo = tombo;
         Scanner scanner = new Scanner(System.in);
         switch(categoria){
             case INFORMATICA:
