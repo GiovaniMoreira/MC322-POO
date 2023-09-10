@@ -4,8 +4,19 @@ import java.util.Scanner;
 
 public class Equipamento implements Emprestavel {
     private int tombo;
+    private boolean disponibilidade;
     public int getTombo() {
         return tombo;
+    }
+
+    @Override
+    public boolean getDisponibilidade() {
+        return disponibilidade;
+    }
+
+    @Override
+    public void setDisponibilidade(boolean disponibilidade) {
+        this.disponibilidade = disponibilidade;
     }
 
     public void setTombo(int tombo) {

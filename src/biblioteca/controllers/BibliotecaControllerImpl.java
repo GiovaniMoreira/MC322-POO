@@ -20,7 +20,11 @@ public class BibliotecaControllerImpl implements BibliotecaController {
 
     @Override
     public boolean emprestarItem(Membro membro, Emprestavel item) {
+        if (item.getDisponibilidade() == true) {
+            membro.getEmprestimos().add(item);
+            item.setDisponibilidade(false);
 
+        }
         return false;
     }
 

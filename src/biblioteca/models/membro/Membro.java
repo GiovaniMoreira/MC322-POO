@@ -1,7 +1,6 @@
 package biblioteca.models.membro;
 
-import src.adm.Emprestimo;
-import src.adm.Reserva;
+import biblioteca.models.itens.Emprestavel;
 
 import java.util.ArrayList;
 
@@ -14,12 +13,12 @@ public abstract class Membro {
     protected int CEP;// Código de Endereço Postal (CEP)
     protected String endereco;
     protected int dataRegistro;// Código de Endereço Postal (CEP)
-    protected ArrayList<Emprestimo> emprestimos; // Lista de empréstimos do usuário
+    protected ArrayList<Emprestavel> emprestimos; // Lista de empréstimos do usuário
     protected int multa; // Valor da multa do usuário
     private static int limiteEmprestimos;
     private static int prazoEmprestimos;
     private static double valorMulta;
-    private ArrayList<Reserva> reserva;
+    private ArrayList<Emprestavel> reserva;
     // Construtor da classe Membro
     public Membro(String nome, int ra, int nTelefone, String endereco, int dataRegistro ) {
         this.nome = nome;
@@ -28,8 +27,8 @@ public abstract class Membro {
         this.CEP = CEP;
         this.endereco = endereco;
         this.dataRegistro = dataRegistro;
-        this.reserva = new ArrayList<Reserva>(0);
-        this.emprestimos = new ArrayList<Emprestimo>(0);
+        this.reserva = new ArrayList<Emprestavel>(0);
+        this.emprestimos = new ArrayList<Emprestavel>(0);
     }
 
     public abstract double getValorMulta();
@@ -104,15 +103,15 @@ public abstract class Membro {
     public void setdataRegistro(int dataRegistro) {
         this.dataRegistro = dataRegistro;
     }
-    public ArrayList<Emprestimo> getEmprestimos(){
+    public ArrayList<Emprestavel> getEmprestimos(){
         return emprestimos;
     }
 
-    public ArrayList<Reserva> getReserva() {
+    public ArrayList<Emprestavel> getReserva() {
         return reserva;
     }
 
-    public void setReserva(ArrayList<Reserva> reserva) {
+    public void setReserva(ArrayList<Emprestavel> reserva) {
         this.reserva = reserva;
     }
 }
