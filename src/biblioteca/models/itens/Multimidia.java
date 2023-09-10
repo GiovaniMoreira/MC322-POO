@@ -3,6 +3,9 @@ package biblioteca.models.itens;
 import java.util.Scanner;
 public class Multimidia extends Item{
     private formatoMultimidia formato;
+    private Audio audio;
+    private Video video;
+    private Software software;
     public Multimidia(int tombo, String titulo, String autor, String editora, String genero, int anoPub, String sinopse, formatoMultimidia formato) {
         super(tombo, titulo, autor, editora, genero, anoPub, sinopse);
         this.formato = formato;
@@ -13,14 +16,14 @@ public class Multimidia extends Item{
                 int duracao = scanner.nextInt();
                 System.out.println("Insira as faixas: ");
                 String listaFaixas = scanner.next();
-                new Audio(duracao, listaFaixas);
+                this.audio = new Audio(duracao, listaFaixas);
                 break;
             case VIDEO:
                 System.out.println("Insira a duracao: ");
                 int duracaov = scanner.nextInt();
                 System.out.println("Insira o elenco: ");
                 String elenco = scanner.next();
-                new Video(duracaov, elenco);
+                this.video = new Video(duracaov, elenco);
                 break;
             case SOFTWARE:
                 System.out.println("Insira a finalidade: ");
@@ -29,7 +32,7 @@ public class Multimidia extends Item{
                 String requisitos = scanner.next();
                 System.out.println("Insira o armazenamento necessario: ");
                 int armazenamento = scanner.nextInt();
-                new Software(finalidade,requisitos,armazenamento);
+                this.software = new Software(finalidade,requisitos,armazenamento);
                 break;
         }
     }
