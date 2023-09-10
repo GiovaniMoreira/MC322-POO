@@ -19,6 +19,7 @@ public class Equipamento {
                 System.out.println("Insira as especificações do item: ");
                 String espI = scanner.next();
                 this.informatica = new Informatica(tipoI, espI);
+                break;
             case AUDIOVISUAL:
                 System.out.println("Insira o tipo de item audiovisual: ");
                 String tipoA = scanner.next();
