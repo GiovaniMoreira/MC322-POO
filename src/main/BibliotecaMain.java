@@ -250,6 +250,11 @@ public class BibliotecaMain {
     private static void realizarEmprestimo(Scanner scanner) {
         // Lógica para realizar um empréstimo
         System.out.println("Operação de Empréstimo de Itens");
+        System.out.println("Insira o ID do membro: ");
+        int idMembro = scanner.nextInt();
+        System.out.println("Insira o ID do item: ");
+        int idItem = scanner.nextInt();
+        bibliotecaController.emprestarItem(membroController.buscarMembroPorIdentificacao(idMembro),bibliotecaController.buscaItemPorId(idItem)));
     }
 
     private static void realizarRenovacao(Scanner scanner) {
