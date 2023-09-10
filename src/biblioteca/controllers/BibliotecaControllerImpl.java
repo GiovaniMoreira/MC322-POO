@@ -3,30 +3,38 @@ package biblioteca.controllers;
 import java.util.ArrayList;
 import java.util.List;
 
-import biblioteca.models.ItemMultimidia;
-import biblioteca.models.Membro;
+import biblioteca.models.itens.Emprestavel;
+import biblioteca.models.membro.Membro;
 
 public class BibliotecaControllerImpl implements BibliotecaController {
-    private List<ItemMultimidia> itens;
+    private List<Emprestavel> itens;
 
     public BibliotecaControllerImpl() {
         itens = new ArrayList<>();
     }
 
     @Override
-    public List<ItemMultimidia> consultarItensDisponiveis() {
+    public List<Emprestavel> consultarItensDisponiveis() {
         return itens;
     }
 
     @Override
-    public boolean emprestarItem(Membro membro, ItemMultimidia item) {
-        // Lógica de empréstimo
-        return true;
+    public boolean emprestarItem(Membro membro, Emprestavel item) {
+
+        return false;
     }
 
     @Override
-    public boolean devolverItem(Membro membro, ItemMultimidia item) {
-        // Lógica de devolução
-        return true;
+    public boolean devolverItem(Membro membro, Emprestavel item) {
+        return false;
+    }
+
+    @Override
+    public Emprestavel buscaItemPorId(int Id) {
+        for ( Emprestavel item : itens){
+            if (item.getTombo() == Id);
+            return item;
+        }
+        return null;
     }
 }

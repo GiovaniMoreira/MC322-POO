@@ -1,9 +1,11 @@
 package biblioteca.controllers;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
-import biblioteca.models.Membro;
+
+import biblioteca.models.membro.Membro;
 
 public class MembroControllerImpl implements MembroController {
     private List<Membro> membros;
@@ -18,8 +20,14 @@ public class MembroControllerImpl implements MembroController {
     }
 
     @Override
-    public Membro buscarMembroPorIdentificacao(String identificacao) {
+    public Membro buscarMembroPorIdentificacao(int identificacao) {
         // Lógica de busca
+        Iterator<Membro> iterador = membros.iterator();
+        while (iterador.hasNext()){
+            Membro atual = iterador.next();
+            if(atual.getRa() == identificacao);
+                return atual;
+        }
         return null;
     }
 }
