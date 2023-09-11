@@ -13,5 +13,35 @@ public class EstudanteGraduacao extends Usuario {
         this.valorMulta = 1;
     }
 
-   
+    @Override
+    public double getValorMulta() {
+        return valorMulta;
+    }
+
+    @Override
+    public void setValorMulta(double valorMulta) {
+
+    }
+
+    @Override
+    public int getPrazoEmprestimos() {
+        return prazoEmprestimos;
+    }
+
+    @Override
+    public void setPrazoEmprestimos(int prazoEmprestimos) {
+
+    }
+
+    @Override
+    public int getLimiteEmprestimos() {
+        return limiteEmprestimos;
+    }
+
+    @Override
+    public void setLimiteEmprestimos(int limiteEmprestimos) {
+
+    }
+
+
 }

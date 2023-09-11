@@ -1,5 +1,7 @@
 package biblioteca.models;
 
+import biblioteca.models.membro.Membro;
+
 import java.util.Scanner;
 
 public class Reservasala {

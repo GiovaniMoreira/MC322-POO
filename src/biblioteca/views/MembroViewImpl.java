@@ -1,9 +1,9 @@
 package biblioteca.views;
 
-import java.util.List;
-
 import biblioteca.controllers.MembroController;
-import biblioteca.models.Membro;
+import biblioteca.models.membro.Membro;
+
+import java.util.List;
 
 public class MembroViewImpl implements MembroView {
     private MembroController membroController;

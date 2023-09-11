@@ -10,5 +10,33 @@ package biblioteca.models.membro;
         super(nome, ra, nTelefone, endereco, dataRegistro);
     }
 
-   
+    @Override
+    public double getValorMulta() {
+        return valorMulta;
+    }
+
+    @Override
+    public void setValorMulta(double valorMulta) {
+
+    }
+
+    @Override
+    public int getPrazoEmprestimos() {
+        return prazoEmprestimos;
+    }
+
+    @Override
+    public void setPrazoEmprestimos(int prazoEmprestimos) {
+
+    }
+
+    @Override
+    public int getLimiteEmprestimos() {
+        return limiteEmprestimos;
+    }
+
+    @Override
+    public void setLimiteEmprestimos(int limiteEmprestimos) {
+
+    }
 }

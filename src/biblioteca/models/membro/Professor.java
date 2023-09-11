@@ -12,5 +12,35 @@ public class Professor extends Usuario {
         this.prazoEmprestimos = 30;
         this.valorMulta = 0.5;
     }
-    
+
+    @Override
+    public double getValorMulta() {
+        return valorMulta;
+    }
+
+    @Override
+    public void setValorMulta(double valorMulta) {
+
+    }
+
+    @Override
+    public int getPrazoEmprestimos() {
+        return prazoEmprestimos;
+    }
+
+    @Override
+    public void setPrazoEmprestimos(int prazoEmprestimos) {
+
+    }
+
+    @Override
+    public int getLimiteEmprestimos() {
+        return limiteEmprestimos;
+    }
+
+    @Override
+    public void setLimiteEmprestimos(int limiteEmprestimos) {
+
+    }
+
 }

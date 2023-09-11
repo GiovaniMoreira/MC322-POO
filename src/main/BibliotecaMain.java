@@ -2,6 +2,8 @@ package main;
 
 import biblioteca.controllers.*;
 import biblioteca.models.*;
+import biblioteca.models.itens.Emprestavel;
+import biblioteca.models.membro.Membro;
 import biblioteca.views.*;
 
 import java.util.List;
@@ -86,7 +88,7 @@ public class BibliotecaMain {
 
             switch (opcaoItens) {
                 case 1:
-                    List<ItemMultimidia> itens = bibliotecaController.consultarItensDisponiveis();
+                    List<Emprestavel> itens = bibliotecaController.consultarItensDisponiveis();
                     bibliotecaView.mostrarItensDisponiveis(itens);
                     break;
                 case 2:
@@ -254,7 +256,7 @@ public class BibliotecaMain {
         int idMembro = scanner.nextInt();
         System.out.println("Insira o ID do item: ");
         int idItem = scanner.nextInt();
-        bibliotecaController.emprestarItem(membroController.buscarMembroPorIdentificacao(idMembro),bibliotecaController.buscaItemPorId(idItem)));
+        bibliotecaController.emprestarItem(membroController.buscarMembroPorIdentificacao(idMembro),bibliotecaController.buscaItemPorId(idItem));
     }
 
     private static void realizarRenovacao(Scanner scanner) {
