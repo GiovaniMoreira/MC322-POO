@@ -51,6 +51,23 @@ public class Reservasala {
                 throw new IllegalStateException("Unexpected value: " + tipoSala);
         }
     }
+
+
+    private enum ReservaSala{
+        PENDENTE, CONFIRMADA, CANCELADA
+        private String status;
+
+        private EnumStatus(String status){
+            this.status = status;
+        }
+
+        public String getStatus(){
+            return status;
+        }
+    }
+
+
+
     class Sala{
     }
     class Sindividual extends Sala{
