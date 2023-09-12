@@ -102,6 +102,33 @@ public class EventosBiblioteca{
 
     }
 
+    class Exposicao{
+        public void InformacoesExposicao(){
+            private String expositores;
+            private String tema;
+            
+            public InformacoesExposicao(int dataEvento, String localEvento, int maxLotacao, int horario, String expositores, String tema) {
+                this.expositores = expositores;
+                this.tema = tema;
+            }
+        
+            public String getExpositores() {
+                return expositores;
+            }
+            public void setExpositores(String expositores) {
+                this.expositores = expositores;
+            }
+
+            public String getTema() {
+                return tema;
+            }
+            public void setTema(String tema) {
+                this.tema = tema;
+            }
+        }
+
+    }
+
 
 
 
