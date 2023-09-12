@@ -8,12 +8,14 @@ public class EventosBiblioteca{
     private int maxLotacao;
     private int horario;
     private ReservaSala reserva;
+    private String topico;
 
-    public EventosBiblioteca(int dataEvento, String localEvento, int maxLotacao, int horario) {
+    public EventosBiblioteca(int dataEvento, String localEvento, int maxLotacao, int horario, String topico) {
         this.dataEvento = dataEvento;
         this.localEvento = localEvento;
         this.maxLotacao = maxLotacao;
         this.horario = horario;
+        this.topico = topico;
     }
 
     public int getDataEvento() {
@@ -43,35 +45,65 @@ public class EventosBiblioteca{
     public void setHorario(int horario) {
         this.horario = horario;
     }
+    public String getTopico() {
+        return topico;
+    }
+    public void setTopico(String topico) {
+        this.topico = topico;
+    }
+
     
 
     
     class Palestra{
-        //criar getter e setter  palestrante, topico, data, horario e local
         public void InformacoesPalestra(){
-            //implementar coleta de informação sobre o evento
-            public EventosBiblioteca(int dataEvento, String localEvento, int maxLotacao, int horario) {
-                this.dataEvento = dataEvento;
-                this.localEvento = localEvento;
-                this.maxLotacao = maxLotacao;
-                this.horario = horario;
+            private String palestrante;
+ 
+            
+            public InformacoesPalestra(int dataEvento, String localEvento, int maxLotacao, int horario, String palestrante, String topico) {
+                this.palestrante = palestrante;
+
             }
         
-            public int getDataEvento() {
-                return dataEvento;
+            public String getPalestrante() {
+                return palestrante;
             }
-            public void setDataEvento(int dataEvento) {
-                this.dataEvento = dataEvento;
+            public void setPalestrante(String palestrante) {
+                this.palestrante = palestrante;
             }
-            private String palestrante;
 
 
-            System.out.print("Palestrante: "+ palestrante);
-
+            }
         }
 
     }
 
+    class Workshop{
+        public void InformacoesWorkshop(){
+            private String palestrante;
+            private String topico;
+            
+            public InformacoesWorkshop(int dataEvento, String localEvento, int maxLotacao, int horario, String palestrante, String topico) {
+                this.palestrante = palestrante;
+                this.topico = topico;
+            }
+        
+            public String getPalestrante() {
+                return palestrante;
+            }
+            public void setPalestrante(String palestrante) {
+                this.palestrante = palestrante;
+            }
+
+            public String getTopico() {
+                return topico;
+            }
+            public void setTopico(String topico) {
+                this.topico = topico;
+            }
+        }
+
+    }
 
 
 
