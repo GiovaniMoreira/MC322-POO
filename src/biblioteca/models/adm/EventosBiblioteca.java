@@ -70,36 +70,33 @@ public class EventosBiblioteca{
             }
             public void setPalestrante(String palestrante) {
                 this.palestrante = palestrante;
-            }
-
-
-            }
+            }            
         }
 
     }
 
     class Workshop{
         public void InformacoesWorkshop(){
-            private String palestrante;
-            private String topico;
+            private String instrutor;
+            private String material;
             
-            public InformacoesWorkshop(int dataEvento, String localEvento, int maxLotacao, int horario, String palestrante, String topico) {
-                this.palestrante = palestrante;
-                this.topico = topico;
+            public InformacoesWorkshop(int dataEvento, String localEvento, int maxLotacao, int horario, String instrutor, String material) {
+                this.instrutor = instrutor;
+                this.material = material;
             }
         
-            public String getPalestrante() {
-                return palestrante;
+            public String getInstrutor() {
+                return instrutor;
             }
-            public void setPalestrante(String palestrante) {
-                this.palestrante = palestrante;
+            public void setInstrutor(String instrutor) {
+                this.instrutor = instrutor;
             }
 
-            public String getTopico() {
-                return topico;
+            public String getMaterial() {
+                return material;
             }
-            public void setTopico(String topico) {
-                this.topico = topico;
+            public void setMaterial(String material) {
+                this.material = material;
             }
         }
 
