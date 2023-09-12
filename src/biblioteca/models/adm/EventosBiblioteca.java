@@ -1,7 +1,5 @@
 package biblioteca.models.adm;
 
-
-
 public class EventosBiblioteca{
     private int dataEvento;
     private String localEvento;
@@ -18,6 +16,7 @@ public class EventosBiblioteca{
         this.topico = topico;
     }
 
+    // Getters e setters para a classe EventosBiblioteca
     public int getDataEvento() {
         return dataEvento;
     }
@@ -52,17 +51,13 @@ public class EventosBiblioteca{
         this.topico = topico;
     }
 
-    
-
-    
+    // Classes internas (Palestra, Workshop, Exposicao)
+    // Movi as classes internas para fora dos métodos e adicionei construtores apropriados.
     class Palestra{
-        public void InformacoesPalestra(){
-            private String palestrante;
- 
-            
-            public InformacoesPalestra(int dataEvento, String localEvento, int maxLotacao, int horario, String palestrante, String topico) {
-                this.palestrante = palestrante;
+        private String palestrante;
 
+            public InformacoesPalestra(String palestrante) {
+                this.palestrante = palestrante;
             }
         
             public String getPalestrante() {
@@ -73,14 +68,13 @@ public class EventosBiblioteca{
             }            
         }
 
-    }
+    
 
     class Workshop{
-        public void InformacoesWorkshop(){
             private String instrutor;
             private String material;
             
-            public InformacoesWorkshop(int dataEvento, String localEvento, int maxLotacao, int horario, String instrutor, String material) {
+            public InformacoesWorkshop( String instrutor, String material) {
                 this.instrutor = instrutor;
                 this.material = material;
             }
@@ -100,14 +94,13 @@ public class EventosBiblioteca{
             }
         }
 
-    }
+
 
     class Exposicao{
-        public void InformacoesExposicao(){
             private String expositores;
             private String tema;
             
-            public InformacoesExposicao(int dataEvento, String localEvento, int maxLotacao, int horario, String expositores, String tema) {
+            public InformacoesExposicao(String expositores, String tema) {
                 this.expositores = expositores;
                 this.tema = tema;
             }
@@ -127,13 +120,7 @@ public class EventosBiblioteca{
             }
         }
 
-    }
-
-
-
-
-
-    //arrumar 
+    // Enumeração para ReservaSala
     private enum ReservaSala{
         PENDENTE, CONFIRMADA, CANCELADA
  
