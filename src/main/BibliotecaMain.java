@@ -256,7 +256,9 @@ public class BibliotecaMain {
         int idMembro = scanner.nextInt();
         System.out.println("Insira o ID do item: ");
         int idItem = scanner.nextInt();
-        bibliotecaController.emprestarItem(membroController.buscarMembroPorIdentificacao(idMembro),bibliotecaController.buscaItemPorId(idItem));
+        System.out.println("Insira a data de hoje: "); //Ainda vai mudar pra obter a nota do sistema
+        int data = scanner.nextInt();
+        bibliotecaController.emprestarItem(membroController.buscarMembroPorIdentificacao(idMembro),bibliotecaController.buscaItemPorId(idItem),data);
     }
 
     private static void realizarRenovacao(Scanner scanner) {
