@@ -40,7 +40,7 @@ public class Equipamento implements Emprestavel {
         this.tombo = tombo;
     }
 
-    private enum CategoriaEquipamento{
+    public enum CategoriaEquipamento{
         INFORMATICA,AUDIOVISUAL,IMPRESSAO
     }
     private CategoriaEquipamento categoria;
@@ -49,6 +49,8 @@ public class Equipamento implements Emprestavel {
     private Impressao impressao;
     public Equipamento(CategoriaEquipamento categoria, int tombo){
         this.tombo = tombo;
+        this.disponibilidade = true;
+        this.reserva = 0;
         Scanner scanner = new Scanner(System.in);
         switch(categoria){
             case INFORMATICA:

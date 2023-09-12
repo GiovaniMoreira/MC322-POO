@@ -2,7 +2,7 @@ package biblioteca.models.itens;
 
 import java.util.Scanner;
 public class Multimidia extends Item{
-    private formatoMultimidia formato;
+    public formatoMultimidia formato;
     private Audio audio;
     private Video video;
     private Software software;
@@ -36,7 +36,7 @@ public class Multimidia extends Item{
                 break;
         }
     }
-    private enum formatoMultimidia{
+    public enum formatoMultimidia{
         AUDIO,VIDEO,SOFTWARE
     }
     class Audio{

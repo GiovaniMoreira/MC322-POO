@@ -6,7 +6,7 @@ public class Livro extends Item{
     private String localizacao;
     public Livro(int tombo, String titulo, String autor, String editora, String genero, int anoPub, String sinopse, int isbn, int edicao, String conservacao, String localizacao) {
         super(tombo, titulo, autor, editora, genero, anoPub, sinopse);
-        ISBN = isbn;
+        this.ISBN = isbn;
         this.edicao = edicao;
         this.conservacao = conservacao;
         this.localizacao = localizacao;

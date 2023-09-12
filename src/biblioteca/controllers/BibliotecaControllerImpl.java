@@ -63,4 +63,9 @@ public class BibliotecaControllerImpl implements BibliotecaController {
         }
         return null;
     }
+
+
+    public void adicionarItem(int Id, Emprestavel item){
+        this.estoque.put(Id,item);
+    }
 }

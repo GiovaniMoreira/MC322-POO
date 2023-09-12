@@ -10,4 +10,6 @@ public interface BibliotecaController {
     boolean emprestarItem(Membro membro, Emprestavel item, int data);
     boolean devolverItem(Membro membro, Emprestavel item, int data);
     Emprestavel buscaItemPorId(int Id);
+
+    void adicionarItem(int Id, Emprestavel item);
 }

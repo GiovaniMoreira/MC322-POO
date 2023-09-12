@@ -37,7 +37,7 @@ public class Ebook extends Item{
     public void setReqLeitura(String reqLeitura) {
         this.reqLeitura = reqLeitura;
     }
-    private enum formatoEbook{
+    public enum formatoEbook{
         epub, pdf, mobi
     }
 }

@@ -1,6 +1,10 @@
 package main;
 
 import biblioteca.controllers.*;
+import biblioteca.models.itens.Ebook;
+import biblioteca.models.itens.Equipamento;
+import biblioteca.models.itens.Livro;
+import biblioteca.models.itens.Multimidia;
 import biblioteca.models.membro.Membro;
 import biblioteca.views.*;
 
@@ -12,12 +16,13 @@ public class BibliotecaMain {
     private static BibliotecaController bibliotecaController;
     private static MembroController membroController;
     private static RelatorioController relatorioController;
+    private static int tomboAtual;
 
     public static void main(String[] args) {
         bibliotecaController = new BibliotecaControllerImpl();
         membroController = new MembroControllerImpl();
         relatorioController = new RelatorioControllerImpl();
-
+        tomboAtual = 0;
         BibliotecaView bibliotecaView = new BibliotecaViewImpl(bibliotecaController);
         MembroView membroView = new MembroViewImpl(membroController);
         RelatorioView relatorioView = new RelatorioViewImpl(relatorioController);
@@ -271,9 +276,148 @@ public class BibliotecaMain {
     }
 
     // Métodos para adicionar, editar e remover itens e membros
-    private static void adicionarItem(Scanner scanner) {
+    private static boolean adicionarItem(Scanner scanner) {
         // Lógica para adicionar um novo item
-        System.out.println("Operação de Adição de Item");
+        while (true) {
+            System.out.println("Operação de Adição de Item");
+            System.out.println("Que tipo de item deseja cadastrar?");
+            System.out.println();
+            System.out.println("1. Livro");
+            System.out.println("2. Ebook");
+            System.out.println("3. Multimidia");
+            System.out.println("4. Equipamento");
+            System.out.println();
+            System.out.println();
+            System.out.print("Escolha uma opção: ");
+
+            int opcaoItens = scanner.nextInt();
+            scanner.nextLine();
+
+            int tombo = tomboAtual;
+            tomboAtual = tomboAtual + 1;
+
+            switch (opcaoItens) {
+                case 1:
+                    System.out.println("Insira o título do item: ");
+                    String titulo = scanner.next();
+                    System.out.println("Insira o autor do item: ");
+                    String autor = scanner.next();
+                    System.out.println("Insira a editora do item: ");
+                    String editora = scanner.next();
+                    System.out.println("Insira o genero do item: ");
+                    String genero = scanner.next();
+                    System.out.println("Insira o anoPub do item: ");
+                    int anoPub = scanner.nextInt();
+                    System.out.println("Insira a sinopse do item: ");
+                    String sinopse = scanner.next();
+                    System.out.println("Insira o ISBN do item: ");
+                    int ISBN = scanner.nextInt();
+                    System.out.println("Insira a edicao do item: ");
+                    int edicao = scanner.nextInt();
+                    System.out.println("Insira a conservacao do item: ");
+                    String conservacao = scanner.next();
+                    System.out.println("Insira a localizacao do item: ");
+                    String localizacao = scanner.next();
+                    Livro livro = new Livro(tombo, titulo, autor, editora, genero, anoPub, sinopse, ISBN, edicao, conservacao, localizacao);
+                    bibliotecaController.adicionarItem(tombo, livro);
+                    return true;
+                case 2:
+                    System.out.println("Insira o título do item: ");
+                    titulo = scanner.next();
+                    System.out.println("Insira o autor do item: ");
+                    autor = scanner.next();
+                    System.out.println("Insira a editora do item: ");
+                    editora = scanner.next();
+                    System.out.println("Insira o genero do item: ");
+                    genero = scanner.next();
+                    System.out.println("Insira o anoPub do item: ");
+                    anoPub = scanner.nextInt();
+                    System.out.println("Insira a sinopse do item: ");
+                    sinopse = scanner.next();
+                    System.out.println("Qual o formato do livro? ");
+                    System.out.println("1. epub; 2. pdf; 3. mobi");
+                    int formato = scanner.nextInt();
+                    Ebook.formatoEbook formatoE = null;
+                    switch (formato) {
+                            case 1:
+                                formatoE = Ebook.formatoEbook.epub;
+                                break;
+                            case 2:
+                                formatoE = Ebook.formatoEbook.pdf;
+                                break;
+                            case 3:
+                                formatoE = Ebook.formatoEbook.mobi;
+                                break;
+                            default:
+                                System.out.println("Opção inválida. Por favor, escolha novamente.");
+                                return false;
+                    }
+                    System.out.println("Insira o link de acesso do item: ");
+                    String link = scanner.next();
+                    System.out.println("Insira os requisitos de leitura do item: ");
+                    String reqLeitura = scanner.next();
+                    Ebook ebook = new Ebook(tombo, titulo, autor, editora, genero, anoPub, sinopse, formatoE, link, reqLeitura);
+                    bibliotecaController.adicionarItem(tombo, ebook);
+                    return true;
+                case 3:
+                    System.out.println("Insira o título do item: ");
+                    titulo = scanner.next();
+                    System.out.println("Insira o autor do item: ");
+                    autor = scanner.next();
+                    System.out.println("Insira a editora do item: ");
+                    editora = scanner.next();
+                    System.out.println("Insira o genero do item: ");
+                    genero = scanner.next();
+                    System.out.println("Insira o anoPub do item: ");
+                    anoPub = scanner.nextInt();
+                    System.out.println("Insira a sinopse do item: ");
+                    sinopse = scanner.next();
+                    System.out.println("Selecione o tipo de item multimidia: ");
+                    System.out.println("1. Audio; 2. Video; 3. Software");
+                    int formatoM = scanner.nextInt();
+                    Multimidia.formatoMultimidia formatoMulti = null;
+                    switch (formatoM){
+                        case 1:
+                            formatoMulti = Multimidia.formatoMultimidia.AUDIO;
+                            break;
+                        case 2:
+                            formatoMulti = Multimidia.formatoMultimidia.VIDEO;
+                            break;
+                        case 3:
+                            formatoMulti = Multimidia.formatoMultimidia.SOFTWARE;
+                            break;
+                        default:
+                            System.out.println("Opção inválida. Por favor, escolha novamente.");
+                            return false;
+                    }
+                    Multimidia multimidia = new Multimidia(tombo,titulo,autor,editora,genero,anoPub,sinopse,formatoMulti);
+                    bibliotecaController.adicionarItem(tombo,multimidia);
+                    return true;
+                case 4:
+                    System.out.println("Qual o tipo de equipamento? ");
+                    System.out.println("1. Informatica; 2. Audiovisual; 3. Impressao");
+                    int formatoEq = scanner.nextInt();
+                    Equipamento.CategoriaEquipamento formatoEquip;
+                    switch (formatoEq){
+                        case 1:
+                            formatoEquip = Equipamento.CategoriaEquipamento.INFORMATICA;
+                            break;
+                        case 2:
+                            formatoEquip = Equipamento.CategoriaEquipamento.AUDIOVISUAL;
+                            break;
+                        case 3:
+                            formatoEquip = Equipamento.CategoriaEquipamento.IMPRESSAO;
+                            break;
+                        default:
+                            System.out.println("Opção inválida. Por favor, escolha novamente.");
+                            return false;
+                    }
+                    Equipamento item = new Equipamento(formatoEquip, tombo) ;
+                    default:
+                    System.out.println("Opção inválida. Por favor, escolha novamente.");
+                    return false;
+            }
+        }
     }
 
     private static void editarItem(Scanner scanner) {
