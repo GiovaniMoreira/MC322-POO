@@ -5,6 +5,8 @@ import java.util.Scanner;
 public class Equipamento implements Emprestavel {
     private int tombo;
     private boolean disponibilidade;
+    private int reserva;
+
     public int getTombo() {
         return tombo;
     }
@@ -17,6 +19,21 @@ public class Equipamento implements Emprestavel {
     @Override
     public void setDisponibilidade(boolean disponibilidade) {
         this.disponibilidade = disponibilidade;
+    }
+
+    @Override
+    public int getReserva() {
+        return reserva;
+    }
+
+    @Override
+    public void setnEmprestimos(int i) {
+
+    }
+
+    @Override
+    public int getnEmprestimos() {
+        return 0;
     }
 
     public void setTombo(int tombo) {

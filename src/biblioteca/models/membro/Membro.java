@@ -1,8 +1,9 @@
 package biblioteca.models.membro;
 
+import biblioteca.models.adm.Emprestimo;
 import biblioteca.models.itens.Emprestavel;
 
-import java.util.ArrayList;
+import java.util.HashSet;
 
 // Definição da classe Membro
 public abstract class Membro {
@@ -13,12 +14,12 @@ public abstract class Membro {
     protected int CEP;// Código de Endereço Postal (CEP)
     protected String endereco;
     protected int dataRegistro;// Código de Endereço Postal (CEP)
-    protected ArrayList<Emprestavel> emprestimos; // Lista de empréstimos do usuário
+    protected HashSet<Emprestimo> emprestimos; // Lista de empréstimos do usuário
     protected int multa; // Valor da multa do usuário
     private static int limiteEmprestimos;
     private static int prazoEmprestimos;
     private static double valorMulta;
-    private ArrayList<Emprestavel> reserva;
+    private HashSet<Emprestavel> reserva;
     // Construtor da classe Membro
     public Membro(String nome, int ra, int nTelefone, String endereco, int dataRegistro ) {
         this.nome = nome;
@@ -27,8 +28,8 @@ public abstract class Membro {
         this.CEP = CEP;
         this.endereco = endereco;
         this.dataRegistro = dataRegistro;
-        this.reserva = new ArrayList<Emprestavel>(0);
-        this.emprestimos = new ArrayList<Emprestavel>(0);
+        this.reserva = new HashSet<>(0);
+        this.emprestimos = new HashSet<>(0);
     }
 
     public abstract double getValorMulta();
@@ -103,15 +104,23 @@ public abstract class Membro {
     public void setdataRegistro(int dataRegistro) {
         this.dataRegistro = dataRegistro;
     }
-    public ArrayList<Emprestavel> getEmprestimos(){
+    public HashSet<Emprestimo> getEmprestimos(){
         return emprestimos;
     }
 
-    public ArrayList<Emprestavel> getReserva() {
+    public HashSet<Emprestavel> getReserva() {
         return reserva;
     }
 
-    public void setReserva(ArrayList<Emprestavel> reserva) {
+    public void setReserva(HashSet<Emprestavel> reserva) {
         this.reserva = reserva;
+    }
+
+    public int getLimiteEmprestimo() {
+        return 0;
+    }
+
+    public int getPrazoEmprestimo() {
+        return 0;
     }
 }

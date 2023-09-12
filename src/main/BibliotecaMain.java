@@ -1,12 +1,11 @@
 package main;
 
 import biblioteca.controllers.*;
-import biblioteca.models.*;
-import biblioteca.models.itens.Emprestavel;
 import biblioteca.models.membro.Membro;
 import biblioteca.views.*;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 public class BibliotecaMain {
@@ -88,7 +87,7 @@ public class BibliotecaMain {
 
             switch (opcaoItens) {
                 case 1:
-                    List<Emprestavel> itens = bibliotecaController.consultarItensDisponiveis();
+                    Map itens = bibliotecaController.consultarItensDisponiveis();
                     bibliotecaView.mostrarItensDisponiveis(itens);
                     break;
                 case 2:

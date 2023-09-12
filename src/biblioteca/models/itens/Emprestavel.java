@@ -5,4 +5,10 @@ public interface Emprestavel {
     void setTombo(int tombo);
     boolean getDisponibilidade();
     void setDisponibilidade(boolean disponibilidade);
+
+    int getReserva();
+
+    void setnEmprestimos(int i);
+
+    int getnEmprestimos();
 }

@@ -1,7 +1,5 @@
 package biblioteca.models.itens;
 
-import biblioteca.models.membro.Membro;
-
 public abstract class Item implements Emprestavel {
     //Atributos genéricos
     protected int tombo;
@@ -13,7 +11,7 @@ public abstract class Item implements Emprestavel {
     protected String sinopse;
     private int nEmprestimos = 0;
     private int nReservas = 0;
-    private Membro reserva = null;
+    private int reserva;
     private boolean disponibilidade;
     //Construtor
     public Item(int tombo, String titulo, String autor, String editora, String genero, int anoPub, String sinopse){
@@ -96,11 +94,11 @@ public abstract class Item implements Emprestavel {
     }
     //metodos
 
-    public Membro getReserva() {
+    public int getReserva() {
         return reserva;
     }
 
-    public void setReserva(Membro reserva) {
+    public void setReserva(int reserva) {
         this.reserva = reserva;
     }
 
