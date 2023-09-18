@@ -16,9 +16,9 @@ public abstract class Membro {
     protected int dataRegistro;// Código de Endereço Postal (CEP)
     protected HashSet<Emprestimo> emprestimos; // Lista de empréstimos do usuário
     protected int multa; // Valor da multa do usuário
-    private static int limiteEmprestimos;
-    private static int prazoEmprestimos;
-    private static double valorMulta;
+    private int limiteEmprestimos;
+    private int prazoEmprestimos;
+    private double valorMulta;
     private HashSet<Emprestavel> reserva;
     // Construtor da classe Membro
     public Membro(String nome, int ra, int nTelefone, String endereco, int dataRegistro ) {
@@ -117,10 +117,10 @@ public abstract class Membro {
     }
 
     public int getLimiteEmprestimo() {
-        return 0;
+        return limiteEmprestimos;
     }
 
     public int getPrazoEmprestimo() {
-        return 0;
+        return prazoEmprestimos;
     }
 }

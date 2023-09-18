@@ -12,7 +12,7 @@ import biblioteca.models.membro.Membro;
 public class BibliotecaControllerImpl implements BibliotecaController {
     private HashMap<Integer, Emprestavel> estoque;
     private HashSet<Emprestimo> emprestimos;
-    private static idEmprestimo;
+    private static int idEmprestimo;
 
     public BibliotecaControllerImpl() {
         HashMap<Integer, Emprestavel> estoque = new HashMap<Integer, Emprestavel>();
@@ -30,12 +30,15 @@ public class BibliotecaControllerImpl implements BibliotecaController {
     @Override
     public boolean emprestarItem(Membro membro, Emprestavel item, int data) {
         if (membro.getEmprestimos().size() >= membro.getLimiteEmprestimo()) {
+            System.out.println(membro.getEmprestimos().size());
+            System.out.println(membro.getLimiteEmprestimo());
             System.out.println("Numero máximo de emprestimos ja feito");
             return false;
         }
         if (item.getDisponibilidade() == false) {
             if (item.getReserva() == membro.getRa()) {
                 Emprestimo emprestimo = new Emprestimo(membro, item, data, idEmprestimo);
+                idEmprestimo += 1;
                 membro.getEmprestimos().add(emprestimo);
                 emprestimos.add(emprestimo);
                 item.setnEmprestimos(item.getnEmprestimos() + 1);
@@ -49,6 +52,7 @@ public class BibliotecaControllerImpl implements BibliotecaController {
             Emprestimo emprestimo = new Emprestimo(membro, item, data, idEmprestimo);
             membro.getEmprestimos().add(emprestimo);
             emprestimos.add(emprestimo);
+            idEmprestimo += 1;
             item.setnEmprestimos(item.getnEmprestimos() + 1);
             item.setDisponibilidade(false);
             return true;
@@ -58,12 +62,12 @@ public class BibliotecaControllerImpl implements BibliotecaController {
     @Override
     public boolean devolverItem(Membro membro, Emprestavel item, int data, int idEmprestimo) {
         item.setDisponibilidade(true);
-        for(Emprestimo membro.getEmprestimos:emprestimo){
+        for(Emprestimo emprestimo : membro.getEmprestimos()){
             if (emprestimo.getIdEmprestimo() == idEmprestimo){
-                membro.getEmprestimos.remove(emprestimo);
+                membro.getEmprestimos().remove(emprestimo);
             }
         }
-        for(Emprestimo emprestimos:emprestimo){
+        for(Emprestimo emprestimo:emprestimos){
             if (emprestimo.getIdEmprestimo() == idEmprestimo){
                 emprestimos.remove(emprestimo);
             }

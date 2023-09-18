@@ -24,7 +24,7 @@ public class BibliotecaMain {
         bibliotecaController = new BibliotecaControllerImpl();
         membroController = new MembroControllerImpl();
         relatorioController = new RelatorioControllerImpl();
-        tomboAtual = 0;
+        tomboAtual = 1;
         BibliotecaView bibliotecaView = new BibliotecaViewImpl(bibliotecaController);
         MembroView membroView = new MembroViewImpl(membroController);
         RelatorioView relatorioView = new RelatorioViewImpl(relatorioController);
@@ -279,7 +279,9 @@ public class BibliotecaMain {
         int idItem = scanner.nextInt();
         System.out.println("Insira a data de hoje: "); //Ainda vai mudar pra obter a nota do sistema
         int data = scanner.nextInt();
-        bibliotecaController.devolverItem(membroController.buscarMembroPorIdentificacao(idMembro),bibliotecaController.buscaItemPorId(idItem),data);
+        System.out.println("Insira o ID do empréstimo: ");
+        int idEmprestimo = scanner.nextInt();
+        bibliotecaController.devolverItem(membroController.buscarMembroPorIdentificacao(idMembro),bibliotecaController.buscaItemPorId(idItem),data, idEmprestimo);
     }
 
     private static void realizarRenovacao(Scanner scanner) {

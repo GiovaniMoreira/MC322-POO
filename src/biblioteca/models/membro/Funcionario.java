@@ -2,9 +2,9 @@ package biblioteca.models.membro;
 
 // Definição da classe Funcionario que é uma subclasse de Membro
 public class Funcionario extends Membro {
-    private static int limiteEmprestimos = 4;
-    private static int prazoEmprestimos = 20;
-    private static double valorMulta = 0.75;
+    private  int limiteEmprestimos = 4;
+    private  int prazoEmprestimos = 20;
+    private  double valorMulta = 0.75;
 
     public Funcionario(String nome, int ra, int nTelefone, String endereco, int dataRegistro) {
         super(nome, ra, nTelefone, endereco, dataRegistro);
