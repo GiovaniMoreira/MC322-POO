@@ -82,9 +82,10 @@ public class BibliotecaMain {
             System.out.println("3. Editar Item");
             System.out.println("4. Remover Item");
             System.out.println("5. Empréstimo de Itens");
-            System.out.println("6. Renovação de Empréstimos");
-            System.out.println("7. Reservas de Itens");
-            System.out.println("8. Voltar");
+            System.out.println("6. Devolução de Itens");
+            System.out.println("7. Renovação de Empréstimos");
+            System.out.println("8. Reservas de Itens");
+            System.out.println("9. Voltar");
             System.out.println();
             System.out.println();
             System.out.print("Escolha uma opção: ");
@@ -110,13 +111,16 @@ public class BibliotecaMain {
                     realizarEmprestimo(scanner);
                     break;
                 case 6:
-                    realizarRenovacao(scanner);
+                    realizarDevolucao(scanner);
                     break;
                 case 7:
-                    fazerReserva(scanner);
+                    realizarRenovacao(scanner);
                     break;
                 case 8:
-                    return;
+                    fazerReserva(scanner);  
+                    break;
+                case 9:
+                    return;  
                 default:
                     System.out.println("Opção inválida. Por favor, escolha novamente.");
             }
@@ -265,6 +269,17 @@ public class BibliotecaMain {
         System.out.println("Insira a data de hoje: "); //Ainda vai mudar pra obter a nota do sistema
         int data = scanner.nextInt();
         bibliotecaController.emprestarItem(membroController.buscarMembroPorIdentificacao(idMembro),bibliotecaController.buscaItemPorId(idItem),data);
+    }
+    private static void realizarDevolucao(Scanner scanner) {
+        // Lógica para realizar um empréstimo
+        System.out.println("Operação de Devolucao de Itens");
+        System.out.println("Insira o ID do membro: ");
+        int idMembro = scanner.nextInt();
+        System.out.println("Insira o ID do item: ");
+        int idItem = scanner.nextInt();
+        System.out.println("Insira a data de hoje: "); //Ainda vai mudar pra obter a nota do sistema
+        int data = scanner.nextInt();
+        bibliotecaController.devolverItem(membroController.buscarMembroPorIdentificacao(idMembro),bibliotecaController.buscaItemPorId(idItem),data);
     }
 
     private static void realizarRenovacao(Scanner scanner) {
