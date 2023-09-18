@@ -54,16 +54,8 @@ public class Reservasala {
 
 
     private enum ReservaSala{
-        PENDENTE, CONFIRMADA, CANCELADA
+        PENDENTE, CONFIRMADA, CANCELADA;
         private String status;
-
-        private EnumStatus(String status){
-            this.status = status;
-        }
-
-        public String getStatus(){
-            return status;
-        }
     }
 
 

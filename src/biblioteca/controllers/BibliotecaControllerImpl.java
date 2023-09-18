@@ -14,8 +14,10 @@ public class BibliotecaControllerImpl implements BibliotecaController {
     private HashSet<Emprestimo> emprestimos;
 
     public BibliotecaControllerImpl() {
-        Map<Integer, Emprestavel> estoque = new HashMap<>();
-        Set<Emprestimo> emprestimos = new HashSet<>();
+        HashMap<Integer, Emprestavel> estoque = new HashMap<Integer, Emprestavel>();
+        this.estoque = estoque;
+        HashSet<Emprestimo> emprestimos = new HashSet<>();
+        this.emprestimos = emprestimos;
     }
 
     @Override

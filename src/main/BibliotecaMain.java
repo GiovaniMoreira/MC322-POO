@@ -5,8 +5,10 @@ import biblioteca.models.itens.Ebook;
 import biblioteca.models.itens.Equipamento;
 import biblioteca.models.itens.Livro;
 import biblioteca.models.itens.Multimidia;
-import biblioteca.models.membro.Membro;
+import biblioteca.models.membro.*;
+import biblioteca.models.membro.Professor;
 import biblioteca.views.*;
+import biblioteca.models.membro.Administradores;
 
 import java.util.List;
 import java.util.Map;
@@ -277,7 +279,7 @@ public class BibliotecaMain {
 
     // Métodos para adicionar, editar e remover itens e membros
     private static boolean adicionarItem(Scanner scanner) {
-        // Lógica para adicionar um novo item
+        // Lógica para adicionar um novo itemata
         while (true) {
             System.out.println("Operação de Adição de Item");
             System.out.println("Que tipo de item deseja cadastrar?");
@@ -433,6 +435,59 @@ public class BibliotecaMain {
     private static void adicionarMembro(Scanner scanner) {
         // Lógica para adicionar um novo membro
         System.out.println("Operação de Adição de Membro");
+        System.out.println("Que tipo de Usuário deseja cadastrar?");
+        System.out.println();
+        System.out.println("1. Admnistrador");
+        System.out.println("2. Gerente");
+        System.out.println("3. Atendente");
+        System.out.println("4. Professor");
+        System.out.println("5. Estudante Pós Graduação");
+        System.out.println("6. Estudante Graduação");
+        System.out.println();
+        System.out.println();
+        System.out.print("Escolha uma opção: ");
+        System.out.println();
+        int nivel = scanner.nextInt();
+        System.out.println("Instira o RA do membro");
+        int RA = scanner.nextInt();
+        if (membroController.buscarMembroPorIdentificacao(RA) != null){
+            System.out.println("RA ja em uso, insira outro número:");
+            RA = scanner.nextInt();
+        }
+        System.out.println("Insira o nome do membro");
+        String nome = scanner.next();
+        System.out.println("Insira o telefone do membro:");
+        int telegone = scanner.nextInt();
+        System.out.println("Insira o endereço do membro:");
+        String endereco = scanner.next();
+        System.out.println("Insira a data de hoje: ");
+        int data = scanner.nextInt();
+        switch (nivel){
+            case 1:
+                Administradores adm = new Administradores(nome,RA,telegone,endereco,data);
+                membroController.addMembro(adm);
+                break;
+            case 2:
+                Gerente ger = new Gerente(nome,RA,telegone,endereco,data);
+                membroController.addMembro(ger);
+                break;
+            case 3:
+                Atendente atendente = new Atendente(nome,RA,telegone,endereco,data);
+                membroController.addMembro(atendente);
+                break;
+            case 4:
+                Professor professor = new Professor(nome,RA,telegone,endereco,data);
+                membroController.addMembro(professor);
+                break;
+            case 5:
+                EstudantePosGraduacao pos = new EstudantePosGraduacao(nome,RA,telegone,endereco,data);
+                membroController.addMembro(pos);
+                break;
+            case 6:
+                EstudanteGraduacao grad = new EstudanteGraduacao(nome,RA,telegone,endereco,data);
+                membroController.addMembro(grad);
+                break;
+        }
     }
 
     private static void editarMembro(Scanner scanner) {

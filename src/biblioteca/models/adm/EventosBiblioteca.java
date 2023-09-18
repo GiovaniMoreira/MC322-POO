@@ -25,7 +25,7 @@ public class EventosBiblioteca{
     }
 
     public String getLocalEvento() {
-        return dataEvento;
+        return localEvento;
     }
     public void setLocalEvento(String localEvento) {
         this.localEvento = localEvento;
@@ -56,7 +56,7 @@ public class EventosBiblioteca{
     class Palestra{
         private String palestrante;
 
-            public InformacoesPalestra(String palestrante) {
+        public Palestra(String palestrante) {
                 this.palestrante = palestrante;
             }
         
@@ -74,7 +74,7 @@ public class EventosBiblioteca{
             private String instrutor;
             private String material;
             
-            public InformacoesWorkshop( String instrutor, String material) {
+            public Workshop( String instrutor, String material) {
                 this.instrutor = instrutor;
                 this.material = material;
             }
@@ -100,7 +100,7 @@ public class EventosBiblioteca{
             private String expositores;
             private String tema;
             
-            public InformacoesExposicao(String expositores, String tema) {
+            public Exposicao(String expositores, String tema) {
                 this.expositores = expositores;
                 this.tema = tema;
             }

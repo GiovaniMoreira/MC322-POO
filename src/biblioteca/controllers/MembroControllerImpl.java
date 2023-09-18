@@ -11,7 +11,7 @@ public class MembroControllerImpl implements MembroController {
     private List<Membro> membros;
 
     public MembroControllerImpl() {
-        membros = new ArrayList<>();
+        this.membros = new ArrayList<>();
     }
 
     @Override
@@ -29,5 +29,9 @@ public class MembroControllerImpl implements MembroController {
                 return atual;
         }
         return null;
+    }
+
+    public void addMembro(Membro membro){
+        this.membros.add(membro);
     }
 }
