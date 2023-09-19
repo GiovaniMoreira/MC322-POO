@@ -24,7 +24,7 @@ public class BibliotecaMain {
         bibliotecaController = new BibliotecaControllerImpl();
         membroController = new MembroControllerImpl();
         relatorioController = new RelatorioControllerImpl();
-        tomboAtual = 1;
+        tomboAtual = 2;
         BibliotecaView bibliotecaView = new BibliotecaViewImpl(bibliotecaController);
         MembroView membroView = new MembroViewImpl(membroController);
         RelatorioView relatorioView = new RelatorioViewImpl(relatorioController);
@@ -34,6 +34,7 @@ public class BibliotecaMain {
         Livro livro = new Livro(0,"Livro Teste", "Autor teste", "Editora teste", "Genero teste", 0, "Sinopse teste", 0, 0,"Conservacao teste", "Localizacao Teste");
         bibliotecaController.adicionarItem(0,livro);
         membroController.addMembro(testeadm);
+        membroController.addMembro(testeadm2);
 
         Scanner scanner = new Scanner(System.in);
         

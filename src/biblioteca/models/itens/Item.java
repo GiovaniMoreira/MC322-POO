@@ -87,13 +87,6 @@ public abstract class Item implements Emprestavel {
         return nEmprestimos;
     }
 
-    @Override
-    public void reserva(int idMembro) {
-        Reserva reserva = new Reserva( idMembro, this.getTombo());
-        this.reservas.add(reserva);
-        this.disponibilidade = false;
-    }
-
     public void setnEmprestimos(int nEmprestimos) {
         this.nEmprestimos = nEmprestimos;
     }
@@ -122,5 +115,11 @@ public abstract class Item implements Emprestavel {
     public boolean getDisponibilidade() {
         return disponibilidade;
     }
-
+    @Override
+    public void reserva(int idMembro) {
+        Reserva reserva = new Reserva( idMembro, this.getTombo());
+        this.reservas.add(reserva);
+        this.disponibilidade = false;
+        System.out.println("Item reservado com sucesso");
+    }
 }
