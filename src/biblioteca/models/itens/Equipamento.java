@@ -1,11 +1,14 @@
 package biblioteca.models.itens;
 
+import biblioteca.models.adm.Reserva;
+
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Equipamento implements Emprestavel {
     private int tombo;
     private boolean disponibilidade;
-    private int reserva;
+    private ArrayList<Reserva> reservas;
 
     public int getTombo() {
         return tombo;
@@ -22,13 +25,19 @@ public class Equipamento implements Emprestavel {
     }
 
     @Override
-    public int getReserva() {
-        return reserva;
+    public ArrayList<Reserva> getReserva() {
+        return reservas;
     }
 
     @Override
     public void setnEmprestimos(int i) {
 
+    }
+    @Override
+    public void reserva(int idMembro) {
+        Reserva reserva = new Reserva( idMembro, this.getTombo());
+        this.reservas.add(reserva);
+        this.disponibilidade = false;
     }
 
     @Override
@@ -50,7 +59,7 @@ public class Equipamento implements Emprestavel {
     public Equipamento(CategoriaEquipamento categoria, int tombo){
         this.tombo = tombo;
         this.disponibilidade = true;
-        this.reserva = 0;
+        this.reservas = new ArrayList<Reserva>();
         Scanner scanner = new Scanner(System.in);
         switch(categoria){
             case INFORMATICA:

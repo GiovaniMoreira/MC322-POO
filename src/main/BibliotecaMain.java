@@ -158,7 +158,7 @@ public class BibliotecaMain {
                     System.out.println("Insira ID do Membro: ");
                     int idMembro = scanner.nextInt();
                     scanner.nextLine();
-                    mostrarDetalhesMembro(membroController.buscarMembroPorIdentificacao(idMembro));
+                    membroView.mostrarDetalhesMembro(membroController.buscarMembroPorIdentificacao(idMembro));
                     break;
                 case 3:
                     adicionarMembro(scanner);
@@ -304,6 +304,11 @@ public class BibliotecaMain {
     private static void fazerReserva(Scanner scanner) {
         // Lógica para fazer uma reserva de item
         System.out.println("Operação de Reserva de Itens");
+        System.out.println("Insira o ID do membro: ");
+        int idMembro = scanner.nextInt();
+        System.out.println("Insira o ID do item: ");
+        int idItem = scanner.nextInt();
+        bibliotecaController.buscaItemPorId(idItem).reserva(idMembro);
     }
 
     // Métodos para adicionar, editar e remover itens e membros

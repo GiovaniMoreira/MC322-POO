@@ -36,16 +36,19 @@ public class BibliotecaControllerImpl implements BibliotecaController {
             return false;
         }
         if (item.getDisponibilidade() == false) {
-            if (item.getReserva() == membro.getRa()) {
+            if (item.getReserva().get(0).getIdMembro() == membro.getRa()) {
                 Emprestimo emprestimo = new Emprestimo(membro, item, data, idEmprestimo);
                 idEmprestimo += 1;
                 membro.getEmprestimos().add(emprestimo);
                 emprestimos.add(emprestimo);
                 item.setnEmprestimos(item.getnEmprestimos() + 1);
                 item.setDisponibilidade(false);
+                item.getReserva().remove(0);
                 return true;
             } else {
                 System.out.println("Livro ja emprestado/reservado");
+                item.reserva(membro.getRa());
+                System.out.println("Usuário adicionado à lista de espera");
                 return false;
             }
         } else {

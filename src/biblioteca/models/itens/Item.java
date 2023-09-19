@@ -1,5 +1,9 @@
 package biblioteca.models.itens;
 
+import biblioteca.models.adm.Reserva;
+
+import java.util.ArrayList;
+
 public abstract class Item implements Emprestavel {
     //Atributos genéricos
     protected int tombo;
@@ -11,7 +15,7 @@ public abstract class Item implements Emprestavel {
     protected String sinopse;
     private int nEmprestimos = 0;
     private int nReservas = 0;
-    private int reserva;
+    private ArrayList<Reserva> reservas;
     private boolean disponibilidade;
     //Construtor
     public Item(int tombo, String titulo, String autor, String editora, String genero, int anoPub, String sinopse){
@@ -23,6 +27,7 @@ public abstract class Item implements Emprestavel {
         this.anoPub = anoPub;
         this.sinopse = sinopse;
         this.disponibilidade = true;
+        this.reservas = new ArrayList<Reserva>();
     }
     //Getters e Setters
     public int getTombo() {
@@ -81,6 +86,13 @@ public abstract class Item implements Emprestavel {
         return nEmprestimos;
     }
 
+    @Override
+    public void reserva(int idMembro) {
+        Reserva reserva = new Reserva( idMembro, this.getTombo());
+        this.reservas.add(reserva);
+        this.disponibilidade = false;
+    }
+
     public void setnEmprestimos(int nEmprestimos) {
         this.nEmprestimos = nEmprestimos;
     }
@@ -94,12 +106,12 @@ public abstract class Item implements Emprestavel {
     }
     //metodos
 
-    public int getReserva() {
-        return reserva;
+    public ArrayList<Reserva> getReserva() {
+        return reservas;
     }
 
-    public void setReserva(int reserva) {
-        this.reserva = reserva;
+    public void setReserva(ArrayList<Reserva> reservas) {
+        this.reservas = reservas;
     }
 
     public void setDisponibilidade(boolean disponibilidade) {
@@ -109,4 +121,5 @@ public abstract class Item implements Emprestavel {
     public boolean getDisponibilidade() {
         return disponibilidade;
     }
+
 }
