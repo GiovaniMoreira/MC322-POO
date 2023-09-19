@@ -25,6 +25,10 @@ public class MembroViewImpl implements MembroView {
 
     @Override
     public void mostrarDetalhesMembro(Membro membro) {
+        System.out.println("--------------");
+        System.out.println(membro);
+        System.out.println("--------------\n");
+
         // Implementação da exibição dos detalhes de um membro
     }
 }

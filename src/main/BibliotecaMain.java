@@ -137,10 +137,11 @@ public class BibliotecaMain {
             System.out.println("---- Menu Gerenciamento de Membros ----");
             System.out.println();
             System.out.println("1. Listar Membros");
-            System.out.println("2. Adicionar Membro");
-            System.out.println("3. Editar Membro");
-            System.out.println("4. Remover Membro");
-            System.out.println("5. Voltar");
+            System.out.println("2. Detalhar Membro Específico");
+            System.out.println("3. Adicionar Membro");
+            System.out.println("4. Editar Membro");
+            System.out.println("5. Remover Membro");
+            System.out.println("6. Voltar");
             System.out.println();
             System.out.println();
             System.out.print("Escolha uma opção: ");
@@ -154,15 +155,21 @@ public class BibliotecaMain {
                     membroView.mostrarListaMembros(membros);
                     break;
                 case 2:
-                    adicionarMembro(scanner);
+                    System.out.println("Insira ID do Membro: ");
+                    int idMembro = scanner.nextInt();
+                    scanner.nextLine();
+                    mostrarDetalhesMembro(membroController.buscarMembroPorIdentificacao(idMembro));
                     break;
                 case 3:
-                    editarMembro(scanner);
+                    adicionarMembro(scanner);
                     break;
                 case 4:
-                    removerMembro(scanner);
+                    editarMembro(scanner);
                     break;
                 case 5:
+                    removerMembro(scanner);
+                    break;
+                case 6:
                     return;
                 default:
                     System.out.println("Opção inválida. Por favor, escolha novamente.");
