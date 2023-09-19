@@ -30,6 +30,7 @@ public class BibliotecaMain {
         RelatorioView relatorioView = new RelatorioViewImpl(relatorioController);
         //Usuário e item de teste para facilitar testagem
         Administradores testeadm = new Administradores("Novaes",1,123,"casa",'1');
+        Administradores testeadm2 = new Administradores("Giovani",2,123,"casa",'1');
         Livro livro = new Livro(0,"Livro Teste", "Autor teste", "Editora teste", "Genero teste", 0, "Sinopse teste", 0, 0,"Conservacao teste", "Localizacao Teste");
         bibliotecaController.adicionarItem(0,livro);
         membroController.addMembro(testeadm);

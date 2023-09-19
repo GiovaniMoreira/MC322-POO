@@ -43,7 +43,6 @@ public class BibliotecaControllerImpl implements BibliotecaController {
                 emprestimos.add(emprestimo);
                 item.setnEmprestimos(item.getnEmprestimos() + 1);
                 item.setDisponibilidade(false);
-                item.getReserva().remove(0);
                 return true;
             } else {
                 System.out.println("Livro ja emprestado/reservado");
@@ -75,6 +74,7 @@ public class BibliotecaControllerImpl implements BibliotecaController {
                 emprestimos.remove(emprestimo);
             }
         }
+        item.getReserva().remove(0);
         return false;
     }
 

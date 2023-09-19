@@ -59,7 +59,8 @@ public class Equipamento implements Emprestavel {
     public Equipamento(CategoriaEquipamento categoria, int tombo){
         this.tombo = tombo;
         this.disponibilidade = true;
-        this.reservas = new ArrayList<Reserva>();
+        ArrayList<Reserva> reservas = new ArrayList<Reserva>(1);
+        this.reservas = reservas;
         Scanner scanner = new Scanner(System.in);
         switch(categoria){
             case INFORMATICA:

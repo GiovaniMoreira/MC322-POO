@@ -27,7 +27,8 @@ public abstract class Item implements Emprestavel {
         this.anoPub = anoPub;
         this.sinopse = sinopse;
         this.disponibilidade = true;
-        this.reservas = new ArrayList<Reserva>();
+        ArrayList<Reserva> reservas = new ArrayList<Reserva>(1);
+        this.reservas = reservas;
     }
     //Getters e Setters
     public int getTombo() {
