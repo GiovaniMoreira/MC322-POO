@@ -3,6 +3,7 @@ package biblioteca.views;
 import java.util.Map;
 
 import biblioteca.controllers.BibliotecaController;
+import biblioteca.models.itens.Emprestavel;
 
 public class BibliotecaViewImpl implements BibliotecaView {
     private BibliotecaController bibliotecaController;
@@ -14,6 +15,11 @@ public class BibliotecaViewImpl implements BibliotecaView {
     @Override
     public void mostrarItensDisponiveis(Map itens) {
         // Implementação da exibição de itens disponíveis
+        for (Object item: itens.values()) {
+            System.out.println("------------------");
+            System.out.println(item);
+            System.out.println("-------------------");
+        }
     }
 
     @Override

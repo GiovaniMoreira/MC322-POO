@@ -60,21 +60,21 @@ public class Livro extends Item{
 
     @Override
     public String toString(){
-        String texto = "Título: " + titulo + "\n" +
-                "Tombo: " + tombo + "\n" +
-                "Autor: " + autor + "\n" +
-                "Editora: " + editora + "\n" +
-                "Genero: " + genero + "\n" +
-                "Ano de publicação: " + anoPub + "\n" +
-                "Sinopse: " + sinopse + "\n" +
-                "Número de vezes que foi emprestado: " + nEmprestimos + "\n" +
-                "Número de vezes que foi reservado: " + nReservas + "\n" +
-                "Número de pessoas na fila de reserva: " + reservas.size() + "\n" +
-                "Disponibilidade: " + disponibilidade + "\n" +
-                "ISBN: " + ISBN + "\n" +
-                "Edicao: " + edicao + "\n" +
-                "Estado de conservacao: " + conservacao + "\n" +
-                "Localizacao na biblioteca: " + localizacao + "\n";
+        String texto = "Título: " + this.titulo + "\n" +
+                "Tombo: " + this.tombo + "\n" +
+                "Autor: " + this.autor + "\n" +
+                "Editora: " + this.editora + "\n" +
+                "Genero: " + this.genero + "\n" +
+                "Ano de publicação: " + this.anoPub + "\n" +
+                "Sinopse: " + this.sinopse + "\n" +
+                "Número de vezes que foi emprestado: " + this.nEmprestimos + "\n" +
+                "Número de vezes que foi reservado: " + this.nReservas + "\n" +
+                "Número de pessoas na fila de reserva: " + this.reservas.size() + "\n" +
+                "Disponibilidade: " + this.disponibilidade + "\n" +
+                "ISBN: " + this.ISBN + "\n" +
+                "Edicao: " + this.edicao + "\n" +
+                "Estado de conservacao: " + this.conservacao + "\n" +
+                "Localizacao na biblioteca: " + this.localizacao + "\n";
         return texto;
     }
 }

@@ -30,17 +30,17 @@ public class BibliotecaControllerImpl implements BibliotecaController {
 
     @Override
     public boolean emprestarItem(Membro membro, Emprestavel item, int data) {
+        Emprestavel buffer = item;
         if (membro.getEmprestimos().size() >= membro.getLimiteEmprestimos()) {
-            System.out.println(membro.getEmprestimos().size());
-            System.out.println(membro.getLimiteEmprestimos());
             System.out.println("Numero máximo de emprestimos ja feito");
             return false;
         }
         if (item.getDisponibilidade() == false) {
-            if (item.getReserva().isEmpty()) { //Livro emprestado mas não reservado
+            if (buffer.getReserva().isEmpty()) { //Livro emprestado mas não reservado
                 System.out.println("Item ja emprestado");
-                item.reserva(membro.getRa());
+                buffer.reserva(membro.getRa());
                 System.out.println("Usuário adicionado à lista de espera");
+                estoque.put(buffer.getTombo(),buffer);
                 return false;
             } else if (item.getReserva().get(0).getIdMembro() == membro.getRa()) { //Livro não emprestado reservado pela pessoa que está tentando emprestar
                 Emprestimo emprestimo = new Emprestimo(membro, item, data, idEmprestimo);
@@ -52,11 +52,13 @@ public class BibliotecaControllerImpl implements BibliotecaController {
                 item.getReserva().remove(0);
                 System.out.println("Item emprestado com sucesso");
                 System.out.println("Id do empréstimo:" +emprestimo.getIdEmprestimo());
+                estoque.put(item.getTombo(),item);
                 return true;
             } else { //Livro emprestrado ou não, mas reservado por alguem que não é a pessoa que está tentando emprestar no momento
                 System.out.println("Item ja reservado");
                 item.reserva(membro.getRa());
                 System.out.println("Usuário adicionado à lista de espera");
+                estoque.put(item.getTombo(),item);
                 return false;
             }
         } else { //Livro não emprestado e não reservado
@@ -64,10 +66,13 @@ public class BibliotecaControllerImpl implements BibliotecaController {
             membro.getEmprestimos().add(emprestimo);
             emprestimos.add(emprestimo);
             idEmprestimo += 1;
-            item.setnEmprestimos(item.getnEmprestimos() + 1);
-            item.setDisponibilidade(false);
+            int nEmprestimos =  buffer.getnEmprestimos();
+            buffer.setnEmprestimos(nEmprestimos + 1);
+            buffer.setDisponibilidade(false);
             System.out.println("Item emprestado com sucesso");
             System.out.println("Id do empréstimo:" +emprestimo.getIdEmprestimo());
+            buffer.setTombo(1);
+            estoque.replace(buffer.getTombo(),buffer);
             return true;
         }
     }

@@ -121,6 +121,7 @@ public abstract class Item implements Emprestavel {
     public void reserva(int idMembro) {
         Reserva reserva = new Reserva( idMembro, this.getTombo());
         this.reservas.add(reserva);
+        this.nReservas += 1;
         this.disponibilidade = false;
         System.out.println("Item reservado com sucesso");
     }

@@ -282,7 +282,9 @@ public class BibliotecaMain {
         int idItem = scanner.nextInt();
         System.out.println("Insira a data de hoje: "); //Ainda vai mudar pra obter a data do sistema
         int data = scanner.nextInt();
+        System.out.println(bibliotecaController.buscaItemPorId(idItem));
         bibliotecaController.emprestarItem(membroController.buscarMembroPorIdentificacao(idMembro),bibliotecaController.buscaItemPorId(idItem),data);
+        System.out.println(bibliotecaController.buscaItemPorId(idItem));
     }
     private static void realizarDevolucao(Scanner scanner) {
         // Lógica para realizar um empréstimo
