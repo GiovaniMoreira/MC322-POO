@@ -26,4 +26,9 @@ public abstract class Usuario extends Membro {
         this.emprestimos = emprestimos;
 
     }
+    @Override
+    public String toString(){
+        String texto = "Nome: " + this.nome + "\n";
+        return texto;
+    }
 }
