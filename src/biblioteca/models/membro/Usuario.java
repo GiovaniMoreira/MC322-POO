@@ -28,7 +28,11 @@ public abstract class Usuario extends Membro {
     }
     @Override
     public String toString(){
-        String texto = "Nome: " + this.nome + "\n";
+        String texto =  "Nome: " + this.nome + "\n" +
+                        "RA: " + this.ra + "\n" +
+                        "Número de Telefone: " + this.nTelefone + "\n" +
+                        "Endereço: " + this.endereco + "\n" +
+                        "Data de Registro: " + this.dataRegistro + "\n";
         return texto;
     }
 }
