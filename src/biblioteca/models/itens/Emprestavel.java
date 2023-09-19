@@ -15,6 +15,8 @@ public interface Emprestavel {
     void setnEmprestimos(int i);
 
     int getnEmprestimos();
+    void setnReservas(int i);
+    int getnReservas();
 
     void reserva(int id);
 }

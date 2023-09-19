@@ -44,11 +44,11 @@ public abstract class Funcionario extends Membro {
     }
 
     public String toString(){
-        String texto =  "Nome: " + this.nome + "\n" +
-                        "RA: " + this.ra + "\n" +
-                        "Número de Telefone: " + this.nTelefone + "\n" +
-                        "Endereço: " + this.endereco + "\n" +
-                        "Data de Registro: " + this.dataRegistro + "\n";
+        String texto =  "Nome: " + nome + "\n" +
+                        "RA: " + ra + "\n" +
+                        "Número de Telefone: " + nTelefone + "\n" +
+                        "Endereço: " + endereco + "\n" +
+                        "Data de Registro: " + dataRegistro + "\n";
         return texto;
     }
 }

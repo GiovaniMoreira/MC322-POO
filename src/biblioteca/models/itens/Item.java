@@ -13,8 +13,8 @@ public abstract class Item implements Emprestavel {
     protected String genero;
     protected int anoPub;
     protected String sinopse;
-    private int nEmprestimos = 0;
-    private int nReservas = 0;
+    private int nEmprestimos ;
+    private int nReservas;
     private ArrayList<Reserva> reservas;
     private boolean disponibilidade;
     //Construtor
@@ -29,6 +29,8 @@ public abstract class Item implements Emprestavel {
         this.disponibilidade = true;
         ArrayList<Reserva> reservas = new ArrayList<Reserva>(1);
         this.reservas = reservas;
+        this.nEmprestimos = 0;
+        this.nReservas = 0;
     }
     //Getters e Setters
     public int getTombo() {
@@ -121,5 +123,20 @@ public abstract class Item implements Emprestavel {
         this.reservas.add(reserva);
         this.disponibilidade = false;
         System.out.println("Item reservado com sucesso");
+    }
+    @Override
+    public String toString(){
+        String texto = "Título: " + titulo + "\n" +
+                "Tombo: " + tombo + "\n" +
+                "Autor: " + autor + "\n" +
+                "Editora: " + editora + "\n" +
+                "Genero: " + genero + "\n" +
+                "Ano de publicação: " + anoPub + "\n" +
+                "Sinopse: " + sinopse + "\n" +
+                "Número de vezes que foi emprestado: " + nEmprestimos + "\n" +
+                "Número de vezes que foi reservado: " + nReservas + "\n" +
+                "Número de pessoas na fila de reserva: " + reservas.size() + "\n" +
+                "Disponibilidade: " + disponibilidade + "\n";
+        return texto;
     }
 }

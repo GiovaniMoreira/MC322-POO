@@ -9,6 +9,8 @@ public class Equipamento implements Emprestavel {
     private int tombo;
     private boolean disponibilidade;
     private ArrayList<Reserva> reservas;
+    private int nEmprestimos;
+    private int nReservas;
 
     public int getTombo() {
         return tombo;
@@ -31,7 +33,7 @@ public class Equipamento implements Emprestavel {
 
     @Override
     public void setnEmprestimos(int i) {
-
+        nEmprestimos = i;
     }
     @Override
     public void reserva(int idMembro) {
@@ -42,7 +44,17 @@ public class Equipamento implements Emprestavel {
 
     @Override
     public int getnEmprestimos() {
-        return 0;
+        return nEmprestimos;
+    }
+
+    @Override
+    public void setnReservas(int i) {
+        nReservas = i;
+    }
+
+    @Override
+    public int getnReservas() {
+        return nReservas;
     }
 
     public void setTombo(int tombo) {
@@ -172,5 +184,30 @@ public class Equipamento implements Emprestavel {
         public void setModelo(String modelo) {
             this.modelo = modelo;
         }
+    }
+    @Override
+    public String toString(){
+        String texto = "Tombo: " + tombo + "\n" +
+                "Número de vezes que foi emprestado: " + nEmprestimos + "\n" +
+                "Número de vezes que foi reservado: " + nReservas + "\n" +
+                "Número de pessoas na fila de reserva: " + reservas.size() + "\n" +
+                "Disponibilidade: " + disponibilidade + "\n" +
+                "Formato: " + categoria.toString() + "\n";
+        switch (categoria) {
+            case INFORMATICA:
+                texto += "Tipo de item de informática: " + informatica.tipo + "\n" +
+                        "Especificações do item: " + informatica.especificacoes + "\n";
+                break;
+            case AUDIOVISUAL:
+                texto += "Tipo de item de informática: " + audiovisual.tipo + "\n" +
+                        "Especificações do item: " + audiovisual.especificaoes + "\n";
+                break;
+            case IMPRESSAO:
+                texto += "Modelo do Item: " + impressao.modelo + "\n" +
+                        "Resolução máxima: " + impressao.resolucao + "\n" +
+                        "Capacidade máxima: " + impressao.capacidade + "\n";
+                break;
+        }
+        return texto;
     }
 }
