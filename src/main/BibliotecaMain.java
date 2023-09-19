@@ -28,6 +28,11 @@ public class BibliotecaMain {
         BibliotecaView bibliotecaView = new BibliotecaViewImpl(bibliotecaController);
         MembroView membroView = new MembroViewImpl(membroController);
         RelatorioView relatorioView = new RelatorioViewImpl(relatorioController);
+        //Usuário e item de teste para facilitar testagem
+        Administradores testeadm = new Administradores("Novaes",1,123,"casa",'1');
+        Livro livro = new Livro(0,"Livro Teste", "Autor teste", "Editora teste", "Genero teste", 0, "Sinopse teste", 0, 0,"Conservacao teste", "Localizacao Teste");
+        bibliotecaController.adicionarItem(0,livro);
+        membroController.addMembro(testeadm);
 
         Scanner scanner = new Scanner(System.in);
         
@@ -266,7 +271,7 @@ public class BibliotecaMain {
         int idMembro = scanner.nextInt();
         System.out.println("Insira o ID do item: ");
         int idItem = scanner.nextInt();
-        System.out.println("Insira a data de hoje: "); //Ainda vai mudar pra obter a nota do sistema
+        System.out.println("Insira a data de hoje: "); //Ainda vai mudar pra obter a data do sistema
         int data = scanner.nextInt();
         bibliotecaController.emprestarItem(membroController.buscarMembroPorIdentificacao(idMembro),bibliotecaController.buscaItemPorId(idItem),data);
     }

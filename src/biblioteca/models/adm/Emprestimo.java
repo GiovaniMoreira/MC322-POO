@@ -14,7 +14,7 @@ public class Emprestimo {
         this.idMembro = membro.getRa();
         this.idItem = emprestavel.getTombo();
         this.dataEmprestimo = data;
-        this.dataDevolucao = data + membro.getPrazoEmprestimo();
+        this.dataDevolucao = data + membro.getPrazoEmprestimos();
         this.idEmprestimo = idEmprestimo;
     }
 

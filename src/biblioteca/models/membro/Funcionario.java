@@ -1,7 +1,7 @@
 package biblioteca.models.membro;
 
 // Definição da classe Funcionario que é uma subclasse de Membro
-public class Funcionario extends Membro {
+public abstract class Funcionario extends Membro {
     private  int limiteEmprestimos = 4;
     private  int prazoEmprestimos = 20;
     private  double valorMulta = 0.75;
@@ -41,5 +41,11 @@ public class Funcionario extends Membro {
     @Override
     public void setLimiteEmprestimos(int limiteEmprestimos) {
 
+    }
+
+    @Override
+    public String toString(){
+        String texto = "Nome: " + this.nome + "\n";
+        return texto;
     }
 }

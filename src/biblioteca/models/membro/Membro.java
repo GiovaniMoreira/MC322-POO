@@ -116,11 +116,4 @@ public abstract class Membro {
         this.reserva = reserva;
     }
 
-    public int getLimiteEmprestimo() {
-        return limiteEmprestimos;
-    }
-
-    public int getPrazoEmprestimo() {
-        return prazoEmprestimos;
-    }
 }

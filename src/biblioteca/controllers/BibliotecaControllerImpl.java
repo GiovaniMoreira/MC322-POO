@@ -29,9 +29,9 @@ public class BibliotecaControllerImpl implements BibliotecaController {
 
     @Override
     public boolean emprestarItem(Membro membro, Emprestavel item, int data) {
-        if (membro.getEmprestimos().size() >= membro.getLimiteEmprestimo()) {
+        if (membro.getEmprestimos().size() >= membro.getLimiteEmprestimos()) {
             System.out.println(membro.getEmprestimos().size());
-            System.out.println(membro.getLimiteEmprestimo());
+            System.out.println(membro.getLimiteEmprestimos());
             System.out.println("Numero máximo de emprestimos ja feito");
             return false;
         }
