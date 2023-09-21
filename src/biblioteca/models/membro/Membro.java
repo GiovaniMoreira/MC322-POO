@@ -1,7 +1,7 @@
 package biblioteca.models.membro;
 
 import biblioteca.models.adm.Emprestimo;
-import biblioteca.models.itens.Emprestavel;
+import biblioteca.models.itens.ItemMultimidia;
 
 import java.util.HashSet;
 
@@ -19,7 +19,7 @@ public abstract class Membro {
     private int limiteEmprestimos;
     private int prazoEmprestimos;
     private double valorMulta;
-    private HashSet<Emprestavel> reserva;
+    private HashSet<ItemMultimidia> reserva;
     // Construtor da classe Membro
     public Membro(String nome, int ra, int nTelefone, String endereco, int dataRegistro ) {
         this.nome = nome;
@@ -108,11 +108,11 @@ public abstract class Membro {
         return emprestimos;
     }
 
-    public HashSet<Emprestavel> getReserva() {
+    public HashSet<ItemMultimidia> getReserva() {
         return reserva;
     }
 
-    public void setReserva(HashSet<Emprestavel> reserva) {
+    public void setReserva(HashSet<ItemMultimidia> reserva) {
         this.reserva = reserva;
     }
 

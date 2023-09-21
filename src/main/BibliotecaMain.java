@@ -107,7 +107,7 @@ public class BibliotecaMain {
                     System.out.println("Insira o id do item: ");
                     int idItem = scanner.nextInt();
                     scanner.nextLine();
-                    Emprestavel item = bibliotecaController.buscaItemPorId(idItem);
+                    ItemMultimidia item = bibliotecaController.buscaItemPorId(idItem);
                     bibliotecaView.mostrarItemEspecifico(item);
                     break;
                 case 3:
@@ -418,23 +418,37 @@ public class BibliotecaMain {
                     System.out.println("Selecione o tipo de item multimidia: ");
                     System.out.println("1. Audio; 2. Video; 3. Software");
                     int formatoM = scanner.nextInt();
-                    Multimidia.formatoMultimidia formatoMulti = null;
+                    scanner.nextLine();
                     switch (formatoM){
                         case 1:
-                            formatoMulti = Multimidia.formatoMultimidia.AUDIO;
+                            System.out.println("Insira a duracao: ");
+                            int duracao = scanner.nextInt();
+                            System.out.println("Insira as faixas: ");
+                            String listaFaixas = scanner.next();
+                            CD cd = new CD(tombo, titulo, autor, editora, genero, anoPub, sinopse,duracao, listaFaixas);
+                            bibliotecaController.adicionarItem(tombo, cd);
                             break;
                         case 2:
-                            formatoMulti = Multimidia.formatoMultimidia.VIDEO;
+                            System.out.println("Insira a duracao: ");
+                            int duracaov = scanner.nextInt();
+                            System.out.println("Insira o elenco: ");
+                            String elenco = scanner.next();
+                            DVD dvd = new DVD(tombo, titulo, autor, editora, genero, anoPub, sinopse,duracaov, elenco);
+                            bibliotecaController.adicionarItem(tombo, dvd);
                             break;
                         case 3:
-                            formatoMulti = Multimidia.formatoMultimidia.SOFTWARE;
+                            System.out.println("Insira a finalidade: ");
+                            String finalidade = scanner.next();
+                            System.out.println("Insira os requisitos necessários: ");
+                            String requisitos = scanner.next();
+                            System.out.println("Insira o armazenamento necessario: ");
+                            String armazenamento = scanner.next();
+                            Software software = new Software(tombo, titulo, autor, editora, genero, anoPub, sinopse,finalidade,requisitos,armazenamento);
                             break;
                         default:
                             System.out.println("Opção inválida. Por favor, escolha novamente.");
                             return false;
                     }
-                    Multimidia multimidia = new Multimidia(tombo,titulo,autor,editora,genero,anoPub,sinopse,formatoMulti);
-                    bibliotecaController.adicionarItem(tombo,multimidia);
                     return true;
                 case 4:
                     System.out.println("Qual o tipo de equipamento? ");

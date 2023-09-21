@@ -1,10 +1,6 @@
 package biblioteca.models.itens;
 
-import biblioteca.models.adm.Reserva;
-
-import java.util.ArrayList;
-
-public class Ebook extends Item{
+public class Ebook extends ItemMultimidiaImpl {
     private formatoEbook formato;
     private String link;
     private String reqLeitura;

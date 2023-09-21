@@ -5,7 +5,7 @@ import biblioteca.models.adm.Reserva;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Equipamento implements Emprestavel {
+public class Equipamento implements ItemMultimidia {
     private int tombo;
     private boolean disponibilidade;
     private ArrayList<Reserva> reservas;

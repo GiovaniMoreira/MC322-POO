@@ -3,20 +3,18 @@ package biblioteca.controllers;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
 
 import biblioteca.models.adm.Emprestimo;
-import biblioteca.models.adm.Reserva;
-import biblioteca.models.itens.Emprestavel;
+import biblioteca.models.itens.ItemMultimidia;
 import biblioteca.models.membro.Membro;
 
 public class BibliotecaControllerImpl implements BibliotecaController {
-    private HashMap<Integer, Emprestavel> estoque;
+    private HashMap<Integer, ItemMultimidia> estoque;
     private HashSet<Emprestimo> emprestimos;
     private static int idEmprestimo;
 
     public BibliotecaControllerImpl() {
-        HashMap<Integer, Emprestavel> estoque = new HashMap<Integer, Emprestavel>();
+        HashMap<Integer, ItemMultimidia> estoque = new HashMap<Integer, ItemMultimidia>();
         this.estoque = estoque;
         HashSet<Emprestimo> emprestimos = new HashSet<>();
         this.emprestimos = emprestimos;
@@ -29,8 +27,8 @@ public class BibliotecaControllerImpl implements BibliotecaController {
     }
 
     @Override
-    public boolean emprestarItem(Membro membro, Emprestavel item, int data) {
-        Emprestavel buffer = item;
+    public boolean emprestarItem(Membro membro, ItemMultimidia item, int data) {
+        ItemMultimidia buffer = item;
         if (membro.getEmprestimos().size() >= membro.getLimiteEmprestimos()) {
             System.out.println("Numero máximo de emprestimos ja feito");
             return false;
@@ -77,7 +75,7 @@ public class BibliotecaControllerImpl implements BibliotecaController {
     }
 
     @Override
-    public boolean devolverItem(Membro membro, Emprestavel item, int data, int idEmprestimo) {
+    public boolean devolverItem(Membro membro, ItemMultimidia item, int data, int idEmprestimo) {
         if (item.getReserva().isEmpty()) {
             item.setDisponibilidade(true);
         }
@@ -96,7 +94,7 @@ public class BibliotecaControllerImpl implements BibliotecaController {
     }
 
     @Override
-    public Emprestavel buscaItemPorId(int Id) {
+    public ItemMultimidia buscaItemPorId(int Id) {
         if (estoque.containsKey(Id)){
             return estoque.get(Id);
         }
@@ -104,7 +102,7 @@ public class BibliotecaControllerImpl implements BibliotecaController {
     }
 
 
-    public void adicionarItem(int Id, Emprestavel item){
+    public void adicionarItem(int Id, ItemMultimidia item){
         this.estoque.put(Id,item);
     }
 }

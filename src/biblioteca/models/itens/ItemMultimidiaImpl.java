@@ -4,7 +4,7 @@ import biblioteca.models.adm.Reserva;
 
 import java.util.ArrayList;
 
-public abstract class Item implements Emprestavel {
+public abstract class ItemMultimidiaImpl implements ItemMultimidia {
     //Atributos genéricos
     protected int tombo;
     protected String titulo;
@@ -18,7 +18,7 @@ public abstract class Item implements Emprestavel {
     protected ArrayList<Reserva> reservas;
     protected boolean disponibilidade;
     //Construtor
-    public Item(int tombo, String titulo, String autor, String editora, String genero, int anoPub, String sinopse){
+    public ItemMultimidiaImpl(int tombo, String titulo, String autor, String editora, String genero, int anoPub, String sinopse){
         this.tombo = tombo;
         this.titulo = titulo;
         this.autor = autor;

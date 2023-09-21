@@ -4,7 +4,7 @@ import biblioteca.models.adm.Reserva;
 
 import java.util.ArrayList;
 
-public class Livro extends Item{
+public class Livro extends ItemMultimidiaImpl {
     private int ISBN;
     private int edicao;
     private String conservacao;

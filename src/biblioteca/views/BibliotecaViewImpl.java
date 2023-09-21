@@ -3,8 +3,7 @@ package biblioteca.views;
 import java.util.Map;
 
 import biblioteca.controllers.BibliotecaController;
-import biblioteca.models.itens.Emprestavel;
-import biblioteca.models.itens.Item;
+import biblioteca.models.itens.ItemMultimidia;
 
 public class BibliotecaViewImpl implements BibliotecaView {
     private BibliotecaController bibliotecaController;
@@ -24,7 +23,7 @@ public class BibliotecaViewImpl implements BibliotecaView {
     }
 
     @Override
-    public void mostrarItemEspecifico(Emprestavel item) {
+    public void mostrarItemEspecifico(ItemMultimidia item) {
         System.out.println(item);
     }
 

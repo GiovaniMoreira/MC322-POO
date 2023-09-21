@@ -1,6 +1,6 @@
 package biblioteca.models.adm;
 
-import biblioteca.models.itens.Emprestavel;
+import biblioteca.models.itens.ItemMultimidia;
 import biblioteca.models.membro.Membro;
 
 public class Emprestimo {
@@ -10,9 +10,9 @@ public class Emprestimo {
     private int dataDevolucao;
     private int idEmprestimo;
     
-    public Emprestimo(Membro membro, Emprestavel emprestavel, int data, int idEmprestimo ){
+    public Emprestimo(Membro membro, ItemMultimidia itemMultimidia, int data, int idEmprestimo ){
         this.idMembro = membro.getRa();
-        this.idItem = emprestavel.getTombo();
+        this.idItem = itemMultimidia.getTombo();
         this.dataEmprestimo = data;
         this.dataDevolucao = data + membro.getPrazoEmprestimos();
         this.idEmprestimo = idEmprestimo;
