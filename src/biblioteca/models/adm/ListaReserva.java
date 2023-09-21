@@ -1,10 +1,13 @@
 package biblioteca.models.adm;
 
-public class ListaReserva<T> {
-    private List<T extends Reserva> reservas;
+import java.util.ArrayList;
+import java.util.List;
+
+public class ListaReserva<T extends Reserva> {
+    private List<T> reservas;
 
     public ListaReserva() {
-        List<T extends Reserva> reservas = new List<>();
+        List<T> reservas = new ArrayList<>();
         this.reservas = reservas;
     }
 
