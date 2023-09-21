@@ -66,12 +66,11 @@ public class BibliotecaControllerImpl implements BibliotecaController {
             membro.getEmprestimos().add(emprestimo);
             emprestimos.add(emprestimo);
             idEmprestimo += 1;
-            int nEmprestimos =  buffer.getnEmprestimos();
-            buffer.setnEmprestimos(nEmprestimos + 1);
+            int nEmprestimos =  buffer.getnEmprestimos() + 1;
+            buffer.setnEmprestimos(nEmprestimos);
             buffer.setDisponibilidade(false);
             System.out.println("Item emprestado com sucesso");
             System.out.println("Id do empréstimo:" +emprestimo.getIdEmprestimo());
-            buffer.setTombo(1);
             estoque.replace(buffer.getTombo(),buffer);
             return true;
         }

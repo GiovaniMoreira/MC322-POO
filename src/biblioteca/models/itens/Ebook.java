@@ -8,11 +8,6 @@ public class Ebook extends Item{
     private formatoEbook formato;
     private String link;
     private String reqLeitura;
-    private int nEmprestimos;
-    private int nReservas;
-    private boolean disponibilidade;
-    private ArrayList<Reserva> reservas;
-
 
     //Construtor
     public Ebook(int tombo, String titulo, String autor, String editora, String genero, int anoPub, String sinopse, formatoEbook formato, String link, String reqLeitura) {
@@ -20,11 +15,6 @@ public class Ebook extends Item{
         this.formato = formato;
         this.link = link;
         this.reqLeitura=reqLeitura;
-        this.disponibilidade = true;
-        ArrayList<Reserva> reservas = new ArrayList<Reserva>(1);
-        this.reservas = reservas;
-        this.nEmprestimos = 0;
-        this.nReservas = 0;
     }
 
     //Getters e setters

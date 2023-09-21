@@ -9,21 +9,13 @@ public class Livro extends Item{
     private int edicao;
     private String conservacao;
     private String localizacao;
-    private int nEmprestimos;
-    private int nReservas;
-    private boolean disponibilidade;
-    private ArrayList<Reserva> reservas;
     public Livro(int tombo, String titulo, String autor, String editora, String genero, int anoPub, String sinopse, int isbn, int edicao, String conservacao, String localizacao) {
         super(tombo, titulo, autor, editora, genero, anoPub, sinopse);
         this.ISBN = isbn;
         this.edicao = edicao;
         this.conservacao = conservacao;
         this.localizacao = localizacao;
-        this.disponibilidade = true;
         ArrayList<Reserva> reservas = new ArrayList<Reserva>(1);
-        this.reservas = reservas;
-        this.nEmprestimos = 0;
-        this.nReservas = 0;
     }
 
     public String getLocalizacao() {

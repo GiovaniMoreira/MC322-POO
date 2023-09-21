@@ -1,10 +1,7 @@
 package main;
 
 import biblioteca.controllers.*;
-import biblioteca.models.itens.Ebook;
-import biblioteca.models.itens.Equipamento;
-import biblioteca.models.itens.Livro;
-import biblioteca.models.itens.Multimidia;
+import biblioteca.models.itens.*;
 import biblioteca.models.membro.*;
 import biblioteca.models.membro.Professor;
 import biblioteca.views.*;
@@ -85,14 +82,15 @@ public class BibliotecaMain {
             System.out.println("---- Menu Gerenciamento de Itens ----");
             System.out.println();
             System.out.println("1. Listar Itens Disponíveis");
-            System.out.println("2. Adicionar Item");
-            System.out.println("3. Editar Item");
-            System.out.println("4. Remover Item");
-            System.out.println("5. Empréstimo de Itens");
-            System.out.println("6. Devolução de Itens");
-            System.out.println("7. Renovação de Empréstimos");
-            System.out.println("8. Reservas de Itens");
-            System.out.println("9. Voltar");
+            System.out.println("2. Consultar item específico");
+            System.out.println("3. Adicionar Item");
+            System.out.println("4. Editar Item");
+            System.out.println("5. Remover Item");
+            System.out.println("6. Empréstimo de Itens");
+            System.out.println("7. Devolução de Itens");
+            System.out.println("8. Renovação de Empréstimos");
+            System.out.println("9. Reservas de Itens");
+            System.out.println("10. Voltar");
             System.out.println();
             System.out.println();
             System.out.print("Escolha uma opção: ");
@@ -106,27 +104,34 @@ public class BibliotecaMain {
                     bibliotecaView.mostrarItensDisponiveis(itens);
                     break;
                 case 2:
-                    adicionarItem(scanner);
+                    System.out.println("Insira o id do item: ");
+                    int idItem = scanner.nextInt();
+                    scanner.nextLine();
+                    Emprestavel item = bibliotecaController.buscaItemPorId(idItem);
+                    bibliotecaView.mostrarItemEspecifico(item);
                     break;
                 case 3:
-                    editarItem(scanner);
+                    adicionarItem(scanner);
                     break;
                 case 4:
-                    removerItem(scanner);
+                    editarItem(scanner);
                     break;
                 case 5:
-                    realizarEmprestimo(scanner);
+                    removerItem(scanner);
                     break;
                 case 6:
-                    realizarDevolucao(scanner);
+                    realizarEmprestimo(scanner);
                     break;
                 case 7:
-                    realizarRenovacao(scanner);
+                    realizarDevolucao(scanner);
                     break;
                 case 8:
-                    fazerReserva(scanner);  
+                    realizarRenovacao(scanner);
                     break;
                 case 9:
+                    fazerReserva(scanner);  
+                    break;
+                case 10:
                     return;  
                 default:
                     System.out.println("Opção inválida. Por favor, escolha novamente.");
@@ -282,9 +287,7 @@ public class BibliotecaMain {
         int idItem = scanner.nextInt();
         System.out.println("Insira a data de hoje: "); //Ainda vai mudar pra obter a data do sistema
         int data = scanner.nextInt();
-        System.out.println(bibliotecaController.buscaItemPorId(idItem));
         bibliotecaController.emprestarItem(membroController.buscarMembroPorIdentificacao(idMembro),bibliotecaController.buscaItemPorId(idItem),data);
-        System.out.println(bibliotecaController.buscaItemPorId(idItem));
     }
     private static void realizarDevolucao(Scanner scanner) {
         // Lógica para realizar um empréstimo

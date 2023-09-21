@@ -9,18 +9,9 @@ public class Multimidia extends Item{
     private Audio audio;
     private Video video;
     private Software software;
-    private int nEmprestimos;
-    private int nReservas;
-    private boolean disponibilidade;
-    private ArrayList<Reserva> reservas;
     public Multimidia(int tombo, String titulo, String autor, String editora, String genero, int anoPub, String sinopse, formatoMultimidia formato) {
         super(tombo, titulo, autor, editora, genero, anoPub, sinopse);
         this.formato = formato;
-        this.disponibilidade = true;
-        ArrayList<Reserva> reservas = new ArrayList<Reserva>(1);
-        this.reservas = reservas;
-        this.nEmprestimos = 0;
-        this.nReservas = 0;
         Scanner scanner = new Scanner(System.in);
         switch(formato){
             case AUDIO:

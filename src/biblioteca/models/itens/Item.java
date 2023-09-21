@@ -13,10 +13,10 @@ public abstract class Item implements Emprestavel {
     protected String genero;
     protected int anoPub;
     protected String sinopse;
-    private int nEmprestimos ;
-    private int nReservas;
-    private ArrayList<Reserva> reservas;
-    private boolean disponibilidade;
+    protected int nEmprestimos ;
+    protected int nReservas;
+    protected ArrayList<Reserva> reservas;
+    protected boolean disponibilidade;
     //Construtor
     public Item(int tombo, String titulo, String autor, String editora, String genero, int anoPub, String sinopse){
         this.tombo = tombo;
