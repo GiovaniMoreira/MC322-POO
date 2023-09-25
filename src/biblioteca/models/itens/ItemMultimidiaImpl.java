@@ -117,14 +117,7 @@ public abstract class ItemMultimidiaImpl implements ItemMultimidia {
     public boolean getDisponibilidade() {
         return disponibilidade;
     }
-    @Override
-    public void reserva(int idMembro) {
-        Reserva reserva = new Reserva( idMembro, this.getTombo());
-        this.reservas.add(reserva);
-        this.nReservas += 1;
-        this.disponibilidade = false;
-        System.out.println("Item reservado com sucesso");
-    }
+
     @Override
     public String toString(){
         String texto = "Título: " + titulo + "\n" +

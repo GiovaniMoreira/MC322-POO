@@ -3,6 +3,7 @@ package biblioteca.views;
 import java.util.Map;
 
 import biblioteca.controllers.BibliotecaController;
+import biblioteca.models.itens.ItemBiblioteca;
 import biblioteca.models.itens.ItemMultimidia;
 
 public class BibliotecaViewImpl implements BibliotecaView {
@@ -15,16 +16,16 @@ public class BibliotecaViewImpl implements BibliotecaView {
     @Override
     public void mostrarItensDisponiveis(Map itens) {
         // Implementação da exibição de itens disponíveis
-        for (Object item: itens.values()) {
+        for ( Object atual : itens.keySet()) {
             System.out.println("-----------------------------------------------");
-            System.out.println(item);
+            System.out.println(bibliotecaController.buscaItemPorId((Integer) atual).getItem());
             System.out.println("-----------------------------------------------");
         }
     }
 
     @Override
-    public void mostrarItemEspecifico(ItemMultimidia item) {
-        System.out.println(item);
+    public void mostrarItemEspecifico(ItemBiblioteca item) {
+        System.out.println(item.getItem());
     }
 
     @Override

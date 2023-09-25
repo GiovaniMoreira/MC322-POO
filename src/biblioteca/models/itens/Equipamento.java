@@ -35,13 +35,6 @@ public class Equipamento implements ItemMultimidia {
     public void setnEmprestimos(int i) {
         nEmprestimos = i;
     }
-    @Override
-    public void reserva(int idMembro) {
-        Reserva reserva = new Reserva( idMembro, this.getTombo());
-        this.reservas.add(reserva);
-        nReservas += 1;
-        this.disponibilidade = false;
-    }
 
     @Override
     public int getnEmprestimos() {

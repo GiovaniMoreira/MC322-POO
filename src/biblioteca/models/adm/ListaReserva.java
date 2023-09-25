@@ -26,4 +26,6 @@ public class ListaReserva<T extends Reserva> {
     public void removerReserva(int I){
         reservas.remove(I);
     }
+
+    public int size(){ return reservas.size();}
 }

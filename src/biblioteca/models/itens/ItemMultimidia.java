@@ -6,8 +6,11 @@ import java.util.ArrayList;
 
 public interface ItemMultimidia {
     int getTombo();
+
     void setTombo(int tombo);
+
     boolean getDisponibilidade();
+
     void setDisponibilidade(boolean disponibilidade);
 
     ArrayList<Reserva> getReserva();
@@ -15,8 +18,8 @@ public interface ItemMultimidia {
     void setnEmprestimos(int i);
 
     int getnEmprestimos();
-    void setnReservas(int i);
-    int getnReservas();
 
-    void reserva(int id);
+    void setnReservas(int i);
+
+    int getnReservas();
 }

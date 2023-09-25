@@ -1,9 +1,9 @@
 package biblioteca.models.membro;
 
 import biblioteca.models.adm.Emprestimo;
-import biblioteca.models.itens.ItemMultimidia;
-
-import java.util.HashSet;
+import biblioteca.models.adm.ListaEmprestimo;
+import biblioteca.models.adm.ListaReserva;
+import biblioteca.models.adm.Reserva;
 
 // Definição da classe Membro
 public abstract class Membro {
@@ -14,12 +14,12 @@ public abstract class Membro {
     protected int CEP;// Código de Endereço Postal (CEP)
     protected String endereco;
     protected int dataRegistro;// Código de Endereço Postal (CEP)
-    protected HashSet<Emprestimo> emprestimos; // Lista de empréstimos do usuário
+    protected ListaEmprestimo<Emprestimo> emprestimos; // Lista de empréstimos do usuário
     protected int multa; // Valor da multa do usuário
     private int limiteEmprestimos;
     private int prazoEmprestimos;
     private double valorMulta;
-    private HashSet<ItemMultimidia> reserva;
+    private ListaReserva<Reserva> reserva;
     // Construtor da classe Membro
     public Membro(String nome, int ra, int nTelefone, String endereco, int dataRegistro ) {
         this.nome = nome;
@@ -28,8 +28,8 @@ public abstract class Membro {
         this.CEP = CEP;
         this.endereco = endereco;
         this.dataRegistro = dataRegistro;
-        this.reserva = new HashSet<>(0);
-        this.emprestimos = new HashSet<>(0);
+        this.reserva = new ListaReserva();
+        this.emprestimos = new ListaEmprestimo();
     }
 
     public abstract double getValorMulta();
@@ -104,15 +104,15 @@ public abstract class Membro {
     public void setdataRegistro(int dataRegistro) {
         this.dataRegistro = dataRegistro;
     }
-    public HashSet<Emprestimo> getEmprestimos(){
+    public ListaEmprestimo<Emprestimo> getEmprestimos(){
         return emprestimos;
     }
 
-    public HashSet<ItemMultimidia> getReserva() {
+    public ListaReserva<Reserva> getReserva() {
         return reserva;
     }
 
-    public void setReserva(HashSet<ItemMultimidia> reserva) {
+    public void setReserva(ListaReserva<Reserva> reserva) {
         this.reserva = reserva;
     }
 

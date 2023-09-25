@@ -21,15 +21,19 @@ public class BibliotecaMain {
         bibliotecaController = new BibliotecaControllerImpl();
         membroController = new MembroControllerImpl();
         relatorioController = new RelatorioControllerImpl();
-        tomboAtual = 2;
+
+        tomboAtual = 1;
         BibliotecaView bibliotecaView = new BibliotecaViewImpl(bibliotecaController);
         MembroView membroView = new MembroViewImpl(membroController);
         RelatorioView relatorioView = new RelatorioViewImpl(relatorioController);
+
         //Usuário e item de teste para facilitar testagem
         Administradores testeadm = new Administradores("Novaes",1,123,"casa",'1');
         Administradores testeadm2 = new Administradores("Giovani",2,123,"casa",'1');
         Livro livro = new Livro(0,"Livro Teste", "Autor teste", "Editora teste", "Genero teste", 0, "Sinopse teste", 0, 0,"Conservacao teste", "Localizacao Teste");
-        bibliotecaController.adicionarItem(0,livro);
+        ItemBiblioteca<Livro> livroteste = new ItemBiblioteca<>(livro);
+
+        bibliotecaController.adicionarItem(0,livroteste);
         membroController.addMembro(testeadm);
         membroController.addMembro(testeadm2);
 
@@ -107,8 +111,7 @@ public class BibliotecaMain {
                     System.out.println("Insira o id do item: ");
                     int idItem = scanner.nextInt();
                     scanner.nextLine();
-                    ItemMultimidia item = bibliotecaController.buscaItemPorId(idItem);
-                    bibliotecaView.mostrarItemEspecifico(item);
+                    bibliotecaView.mostrarItemEspecifico(bibliotecaController.buscaItemPorId(idItem));
                     break;
                 case 3:
                     adicionarItem(scanner);
@@ -287,7 +290,7 @@ public class BibliotecaMain {
         int idItem = scanner.nextInt();
         System.out.println("Insira a data de hoje: "); //Ainda vai mudar pra obter a data do sistema
         int data = scanner.nextInt();
-        bibliotecaController.emprestarItem(membroController.buscarMembroPorIdentificacao(idMembro),bibliotecaController.buscaItemPorId(idItem),data);
+        bibliotecaController.buscaItemPorId(idItem).emprestar(membroController.buscarMembroPorIdentificacao(idMembro), data, bibliotecaController);
     }
     private static void realizarDevolucao(Scanner scanner) {
         // Lógica para realizar um empréstimo
@@ -300,7 +303,7 @@ public class BibliotecaMain {
         int data = scanner.nextInt();
         System.out.println("Insira o ID do empréstimo: ");
         int idEmprestimo = scanner.nextInt();
-        bibliotecaController.devolverItem(membroController.buscarMembroPorIdentificacao(idMembro),bibliotecaController.buscaItemPorId(idItem),data, idEmprestimo);
+        bibliotecaController.buscaItemPorId(idItem).devolver(membroController.buscarMembroPorIdentificacao(idMembro), data,idEmprestimo, bibliotecaController);
     }
 
     private static void realizarRenovacao(Scanner scanner) {
@@ -315,7 +318,9 @@ public class BibliotecaMain {
         int idMembro = scanner.nextInt();
         System.out.println("Insira o ID do item: ");
         int idItem = scanner.nextInt();
-        bibliotecaController.buscaItemPorId(idItem).reserva(idMembro);
+        System.out.println("Insira a data de hoje: "); //Ainda vai mudar pra obter a nota do sistema
+        int data = scanner.nextInt();
+        bibliotecaController.buscaItemPorId(idItem).reservar(idMembro,data, bibliotecaController);
     }
 
     // Métodos para adicionar, editar e remover itens e membros
@@ -362,7 +367,8 @@ public class BibliotecaMain {
                     System.out.println("Insira a localizacao do item: ");
                     String localizacao = scanner.next();
                     Livro livro = new Livro(tombo, titulo, autor, editora, genero, anoPub, sinopse, ISBN, edicao, conservacao, localizacao);
-                    bibliotecaController.adicionarItem(tombo, livro);
+                    ItemBiblioteca addL =  new ItemBiblioteca<Livro>(livro);
+                    bibliotecaController.adicionarItem(tombo, addL);
                     return true;
                 case 2:
                     System.out.println("Insira o título do item: ");
@@ -400,7 +406,8 @@ public class BibliotecaMain {
                     System.out.println("Insira os requisitos de leitura do item: ");
                     String reqLeitura = scanner.next();
                     Ebook ebook = new Ebook(tombo, titulo, autor, editora, genero, anoPub, sinopse, formatoE, link, reqLeitura);
-                    bibliotecaController.adicionarItem(tombo, ebook);
+                    ItemBiblioteca addE =  new ItemBiblioteca<Ebook>(ebook);
+                    bibliotecaController.adicionarItem(tombo, addE);
                     return true;
                 case 3:
                     System.out.println("Insira o título do item: ");
@@ -425,15 +432,16 @@ public class BibliotecaMain {
                             int duracao = scanner.nextInt();
                             System.out.println("Insira as faixas: ");
                             String listaFaixas = scanner.next();
-                            CD cd = new CD(tombo, titulo, autor, editora, genero, anoPub, sinopse,duracao, listaFaixas);
+                            ItemBiblioteca cd =  new ItemBiblioteca<CD>(new CD(tombo, titulo, autor, editora, genero, anoPub, sinopse,duracao, listaFaixas));
                             bibliotecaController.adicionarItem(tombo, cd);
+
                             break;
                         case 2:
                             System.out.println("Insira a duracao: ");
                             int duracaov = scanner.nextInt();
                             System.out.println("Insira o elenco: ");
                             String elenco = scanner.next();
-                            DVD dvd = new DVD(tombo, titulo, autor, editora, genero, anoPub, sinopse,duracaov, elenco);
+                            ItemBiblioteca dvd =  new ItemBiblioteca<DVD>( new DVD(tombo, titulo, autor, editora, genero, anoPub, sinopse,duracaov, elenco));
                             bibliotecaController.adicionarItem(tombo, dvd);
                             break;
                         case 3:
@@ -443,7 +451,9 @@ public class BibliotecaMain {
                             String requisitos = scanner.next();
                             System.out.println("Insira o armazenamento necessario: ");
                             String armazenamento = scanner.next();
-                            Software software = new Software(tombo, titulo, autor, editora, genero, anoPub, sinopse,finalidade,requisitos,armazenamento);
+                            new Software(tombo, titulo, autor, editora, genero, anoPub, sinopse,finalidade,requisitos,armazenamento);
+                            ItemBiblioteca software =  new ItemBiblioteca<Software>(new Software(tombo, titulo, autor, editora, genero, anoPub, sinopse,finalidade,requisitos,armazenamento));
+                            bibliotecaController.adicionarItem(tombo, software);
                             break;
                         default:
                             System.out.println("Opção inválida. Por favor, escolha novamente.");
@@ -469,7 +479,8 @@ public class BibliotecaMain {
                             System.out.println("Opção inválida. Por favor, escolha novamente.");
                             return false;
                     }
-                    Equipamento item = new Equipamento(formatoEquip, tombo) ;
+                    ItemBiblioteca item = new ItemBiblioteca<>(new Equipamento(formatoEquip, tombo)) ;
+                    bibliotecaController.adicionarItem(tombo,item);
                     default:
                     System.out.println("Opção inválida. Por favor, escolha novamente.");
                     return false;

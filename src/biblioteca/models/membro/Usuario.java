@@ -3,6 +3,7 @@ package biblioteca.models.membro;
 // Importações de classes externas
 
 import biblioteca.models.adm.Emprestimo;
+import biblioteca.models.adm.ListaEmprestimo;
 
 import java.util.HashSet;
 
@@ -10,22 +11,17 @@ import java.util.HashSet;
 public abstract class Usuario extends Membro {
     public Usuario(String nome, int ra, int nTelefone, String endereco, int dataRegistro) {
         super(nome, ra, nTelefone, endereco, dataRegistro);
-        this.emprestimos = new java.util.HashSet<>();
+        this.emprestimos = new ListaEmprestimo<>();
     }
     // Construtor da classe Usuario
 
     // Métodos de acesso aos atributos da classe Usuario
 
     // Obtém a lista de empréstimos do usuário
-    public HashSet<Emprestimo> getEmprestimos() {
+    public ListaEmprestimo<Emprestimo> getEmprestimos() {
         return emprestimos;
     }
 
-    // Define a lista de empréstimos do usuário
-    public void setEmprestimos(HashSet<Emprestimo> emprestimos) {
-        this.emprestimos = emprestimos;
-
-    }
     @Override
     public String toString(){
         String texto =  "Nome: " + this.nome + "\n" +
