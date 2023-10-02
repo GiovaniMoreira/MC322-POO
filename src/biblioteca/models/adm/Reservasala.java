@@ -15,40 +15,66 @@ public class Reservasala {
     private Sala sala;
     private Membro membro;
 
+    class SalaJaReservadaException extends Exception {
+        public SalaJaReservadaException(String message) {
+            super(message);
+        }
+    }
+
+    class CapacidadeExcedidaException extends Exception {
+        public CapacidadeExcedidaException(String message) {
+            super(message);
+        }
+    }
+    
+
     //Construtor
     public Reservasala(int nSala, tipoSala tipoSala, int dataReserva, int horaInicio, Membro membro){
         this.dataReserva = dataReserva;
         this.horaInicio = horaInicio;
         this.horaFim = horaInicio + 3;
         this.membro = membro;
-        Scanner scanner = new Scanner(System.in);
-        switch(tipoSala){
-            case individual:
-                System.out.println("Pc disponível na sala? Insira 'true' ou 'false' ");
-                boolean pcDisp = scanner.nextBoolean();
-                this.sala = new Sindividual(nSala, pcDisp);
-                break;
-            case grupo:
-                System.out.println("Insira a capacidade da sala: ");
-                int cap = scanner.nextInt();
-                System.out.println("Insira os equipamentos disponíveis na sala: ");
-                String equip = scanner.next();
-                this.sala = new Sgrupo(nSala, cap,equip);
-                break;
-            case silenciosa:
-                System.out.println("Insira o número de assentos disponíveis na sala: ");
-                int ass = scanner.nextInt();
-                System.out.println("A sala tem cabines individuais? Insira 'true' ou 'false'");
-                boolean cabine = scanner.nextBoolean();
-                this.sala = new Ssilenciosa(nSala, ass,cabine);
-                break;
-            case multimidia:
-                System.out.println("Insira os equipamentos disponiveis na sala");
-                String equipS = scanner.next();
-                this.sala = new Smultimidia(nSala, equipS);
-                break;
-            default:
-                throw new IllegalStateException("Unexpected value: " + tipoSala);
+
+        try{   
+            if (salaEstaReservada(dataReserva, horaInicio)){
+                throw new SalaJaReservadaException("Esta sala já foi reservada");
+
+            } else if (salaExcedeCapacidade){
+                throw new CapacidadeExcedidaException("A capacidade máxima da sala foi excedida");
+
+            }
+
+            Scanner scanner = new Scanner(System.in);
+            switch(tipoSala){
+                case individual:
+                    System.out.println("Pc disponível na sala? Insira 'true' ou 'false' ");
+                    boolean pcDisp = scanner.nextBoolean();
+                    this.sala = new Sindividual(nSala, pcDisp);
+                    break;
+                case grupo:
+                    System.out.println("Insira a capacidade da sala: ");
+                    int cap = scanner.nextInt();
+                    System.out.println("Insira os equipamentos disponíveis na sala: ");
+                    String equip = scanner.next();
+                    this.sala = new Sgrupo(nSala, cap,equip);
+                    break;
+                case silenciosa:
+                    System.out.println("Insira o número de assentos disponíveis na sala: ");
+                    int ass = scanner.nextInt();
+                    System.out.println("A sala tem cabines individuais? Insira 'true' ou 'false'");
+                    boolean cabine = scanner.nextBoolean();
+                    this.sala = new Ssilenciosa(nSala, ass,cabine);
+                    break;
+                case multimidia:
+                    System.out.println("Insira os equipamentos disponiveis na sala");
+                    String equipS = scanner.next();
+                    this.sala = new Smultimidia(nSala, equipS);
+                    break;
+                default:
+                    throw new IllegalStateException("Unexpected value: " + tipoSala);
+            }
+        } catch (SalaJaReservadaException | CapacidadeExcedidaException e){
+            System.err.println("Erro: " + e.getMessage());
         }
     }
 
