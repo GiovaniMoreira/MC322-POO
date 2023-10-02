@@ -341,11 +341,11 @@ public class BibliotecaMain {
             int opcaoItens = scanner.nextInt();
             scanner.nextLine();
 
-            int tombo = tomboAtual;
-            tomboAtual = tomboAtual + 1;
-
+ 
             switch (opcaoItens) {
                 case 1:
+                    System.out.println("Insira o numero do tombo: ");
+                    String tombo = scanner.nextInt();
                     System.out.println("Insira o título do item: ");
                     String titulo = scanner.next();
                     System.out.println("Insira o autor do item: ");
@@ -371,6 +371,8 @@ public class BibliotecaMain {
                     bibliotecaController.adicionarItem(tombo, addL);
                     return true;
                 case 2:
+                    System.out.println("Insira o numero do tombo: ");
+                    String tombo = scanner.nextInt();
                     System.out.println("Insira o título do item: ");
                     titulo = scanner.next();
                     System.out.println("Insira o autor do item: ");
@@ -410,6 +412,8 @@ public class BibliotecaMain {
                     bibliotecaController.adicionarItem(tombo, addE);
                     return true;
                 case 3:
+                    System.out.println("Insira o numero do tombo: ");
+                    String tombo = scanner.nextInt();
                     System.out.println("Insira o título do item: ");
                     titulo = scanner.next();
                     System.out.println("Insira o autor do item: ");
@@ -461,6 +465,8 @@ public class BibliotecaMain {
                     }
                     return true;
                 case 4:
+                    System.out.println("Insira o numero do tombo: ");
+                    String tombo = scanner.nextInt();
                     System.out.println("Qual o tipo de equipamento? ");
                     System.out.println("1. Informatica; 2. Audiovisual; 3. Impressao");
                     int formatoEq = scanner.nextInt();
