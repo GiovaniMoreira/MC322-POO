@@ -17,6 +17,10 @@ public class BibliotecaControllerImpl implements BibliotecaController {
     private ListaReserva<Reserva> reservas;
     private static int idEmprestimo;
 
+    private int gerarChaveHash(int Id){
+        return Id % 1000;
+    }
+
     public BibliotecaControllerImpl() {
         HashMap<Integer, ItemBiblioteca> estoque = new HashMap<Integer, ItemBiblioteca>();
         this.estoque = estoque;
@@ -35,8 +39,9 @@ public class BibliotecaControllerImpl implements BibliotecaController {
 
     @Override
     public ItemBiblioteca buscaItemPorId(int Id) {
-        if (estoque.containsKey(Id)){
-            return estoque.get(Id);
+        int chave = gerarChaveHash(Id);
+        if (estoque.containsKey(chave)){
+            return estoque.get(chave);
         }
         return null;
     }
@@ -55,4 +60,29 @@ public class BibliotecaControllerImpl implements BibliotecaController {
     public ListaReserva<Reserva> consultarReserva() {
         return reservas;
     }
+    private boolean verificarTiposDeDados(int Id, ItemBiblioteca item) {
+        if (item == null) {
+            return false; 
+        }
+
+        if (Id <= 0) {
+            return false; 
+        }
+
+        if (!(item instanceof ItemBiblioteca)) {
+            return false; 
+        }
+
+        return true; 
+    }
+
+    public void adicionarItem(int Id, ItemBiblioteca item) {
+        if (verificarTiposDeDados(Id, item)) {
+            int chave = gerarChaveHash(Id);
+            this.estoque.put(chave, item);
+        } else {
+            System.err.println("Erro: Dados inseridos não correspondem aos tipos esperados.");
+        }
+    }
+
 }
