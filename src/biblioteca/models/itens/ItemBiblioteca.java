@@ -49,8 +49,12 @@ public class ItemBiblioteca<T extends ItemMultimidia> {
             super(message);
         }
     }
-    
 
+    class ItemDanificadoException extends Exception {
+        public ItemDanificadoException(String message) {
+            super(message);
+        }
+    }
 
     public static int getnItensReservados() {
         return itensReservados.size();
@@ -136,6 +140,9 @@ public class ItemBiblioteca<T extends ItemMultimidia> {
                     break;
                 }
             }
+            if (itemEstaDanificado)(){
+                throw new ItemDanificadoException("Este item está danificado e precisa de manutenção")
+            }
 
             If (!itemEmprestadoParaMembro){
                 throw new ItemNaoEmprestadoException("Este item não foi emprestado para este membro")
@@ -161,7 +168,7 @@ public class ItemBiblioteca<T extends ItemMultimidia> {
             }
             System.out.println("Livro devolvido com sucesso");
         
-        } catch (ItemNaoEmprestadoException e){
+        } catch (ItemNaoEmprestadoException | ItemDanificadoException e){
             System.err.println("Erro: " + e.getMessage());
         }
     }
