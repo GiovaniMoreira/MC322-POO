@@ -1,6 +1,7 @@
 package main;
 
 import biblioteca.controllers.*;
+import biblioteca.models.adm.CReflection;
 import biblioteca.models.itens.*;
 import biblioteca.models.membro.*;
 import biblioteca.models.membro.Professor;
@@ -11,16 +12,20 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
+import static java.lang.Class.forName;
+
 public class BibliotecaMain {
     private static BibliotecaController bibliotecaController;
     private static MembroController membroController;
     private static RelatorioController relatorioController;
     private static int tomboAtual;
+    private static CReflection reflexao;
 
     public static void main(String[] args) {
         bibliotecaController = new BibliotecaControllerImpl();
         membroController = new MembroControllerImpl();
         relatorioController = new RelatorioControllerImpl();
+        reflexao = new CReflection();
 
         tomboAtual = 1;
         BibliotecaView bibliotecaView = new BibliotecaViewImpl(bibliotecaController);
@@ -28,17 +33,17 @@ public class BibliotecaMain {
         RelatorioView relatorioView = new RelatorioViewImpl(relatorioController);
 
         //Usuário e item de teste para facilitar testagem
-        Administradores testeadm = new Administradores("Novaes",1,123,"casa",'1');
-        Administradores testeadm2 = new Administradores("Giovani",2,123,"casa",'1');
-        Livro livro = new Livro(0,"Livro Teste", "Autor teste", "Editora teste", "Genero teste", 0, "Sinopse teste", 0, 0,"Conservacao teste", "Localizacao Teste");
+        Administradores testeadm = new Administradores("Novaes", 1, 123, "casa", '1');
+        Administradores testeadm2 = new Administradores("Giovani", 2, 123, "casa", '1');
+        Livro livro = new Livro(0, "Livro Teste", "Autor teste", "Editora teste", "Genero teste", 0, "Sinopse teste", 0, 0, "Conservacao teste", "Localizacao Teste");
         ItemBiblioteca<Livro> livroteste = new ItemBiblioteca<>(livro);
 
-        bibliotecaController.adicionarItem(0,livroteste);
+        bibliotecaController.adicionarItem(0, livroteste);
         membroController.addMembro(testeadm);
         membroController.addMembro(testeadm2);
 
         Scanner scanner = new Scanner(System.in);
-        
+
         while (true) {
             System.out.println("---- Menu Biblioteca ----");
             System.out.println();
@@ -94,7 +99,8 @@ public class BibliotecaMain {
             System.out.println("7. Devolução de Itens");
             System.out.println("8. Renovação de Empréstimos");
             System.out.println("9. Reservas de Itens");
-            System.out.println("10. Voltar");
+            System.out.println("10. Inspecionar classes");
+            System.out.println("11. Voltar");
             System.out.println();
             System.out.println();
             System.out.print("Escolha uma opção: ");
@@ -132,10 +138,69 @@ public class BibliotecaMain {
                     realizarRenovacao(scanner);
                     break;
                 case 9:
-                    fazerReserva(scanner);  
+                    fazerReserva(scanner);
                     break;
                 case 10:
-                    return;  
+                    System.out.println("Quer inspecionar atributos ou métodos:");
+                    System.out.println("1. Métodos; 2. Atributos");
+                    int opcaoTipo = scanner.nextInt();
+                    scanner.nextLine();
+                    System.out.println("Escolha o Tipo de Item a ser Inspecionado:");
+                    System.out.println();
+                    System.out.println("1. CD");
+                    System.out.println("2. DVD");
+                    System.out.println("3. Ebook");
+                    System.out.println("4. Livro");
+                    System.out.println("5. Software");
+                    System.out.println("6. Voltar");
+                    System.out.println();
+                    System.out.println();
+                    System.out.print("Escolha uma opção: ");
+
+                    int opcaoInsp = scanner.nextInt();
+                    scanner.nextLine();
+                    switch (opcaoInsp) {
+                        case 1:
+                            try {
+                                reflexao.inspecionar(opcaoTipo,forName("biblioteca.models.itens.CD"));
+                            } catch (ClassNotFoundException e) {
+                                throw new RuntimeException(e);
+                            }
+                            break;
+                        case 2:
+                            try {
+                                reflexao.inspecionar(opcaoTipo,forName("biblioteca.models.itens.DVD"));
+                            } catch (ClassNotFoundException e) {
+                                throw new RuntimeException(e);
+                            }
+                            break;
+                        case 3:
+                            try {
+                                reflexao.inspecionar(opcaoTipo,forName("biblioteca.models.itens.Ebook"));
+                            } catch (ClassNotFoundException e) {
+                                throw new RuntimeException(e);
+                            }
+                            break;
+                        case 4:
+                            try {
+                                reflexao.inspecionar(opcaoTipo,forName("biblioteca.models.itens.Livro"));
+                            } catch (ClassNotFoundException e) {
+                                throw new RuntimeException(e);
+                            }
+                            break;
+                        case 5:
+                            try {
+                                reflexao.inspecionar(opcaoTipo,forName("biblioteca.models.itens.Software"));
+                            } catch (ClassNotFoundException e) {
+                                throw new RuntimeException(e);
+                            }
+                            break;
+                        case 6:
+                            return;
+                    }
+                    break;
+                case 11:
+                    return;
                 default:
                     System.out.println("Opção inválida. Por favor, escolha novamente.");
             }
@@ -151,7 +216,8 @@ public class BibliotecaMain {
             System.out.println("3. Adicionar Membro");
             System.out.println("4. Editar Membro");
             System.out.println("5. Remover Membro");
-            System.out.println("6. Voltar");
+            System.out.println("6.Inspecionar classes") ;
+            System.out.println("7. Voltar");
             System.out.println();
             System.out.println();
             System.out.print("Escolha uma opção: ");
@@ -180,6 +246,59 @@ public class BibliotecaMain {
                     removerMembro(scanner);
                     break;
                 case 6:
+                    System.out.println("Quer inspecionar atributos ou métodos:");
+                    System.out.println("1. Métodos; 2. Atributos");
+                    int opcaoTipo = scanner.nextInt();
+                    scanner.nextLine();
+                    System.out.println("Escolha o Tipo de Item a ser Inspecionado:");
+                    System.out.println();
+                    System.out.println("1. Estudante Pós Graduação");
+                    System.out.println("2. Estudante Graduação");
+                    System.out.println("3. Professor");
+                    System.out.println("4. Atendente");
+                    System.out.println("5. Gerente");
+                    System.out.println("6. Admnistrador");
+                    System.out.println("7. Voltar");
+                    System.out.println();
+                    System.out.println();
+                    System.out.print("Escolha uma opção: ");
+
+                    int opcaoMemb = scanner.nextInt();
+                    scanner.nextLine();
+                    switch (opcaoMemb) {
+                        case 1:
+                            try {
+                                reflexao.inspecionar(opcaoTipo,forName("biblioteca.models.membro.EstudanteGraduacao"));
+                            } catch (ClassNotFoundException e) {
+                                throw new RuntimeException(e);
+                            }
+                            break;
+                        case 2:
+                            try {
+                                reflexao.inspecionar(opcaoTipo,forName("biblioteca.models.membro.EstudantePosGraduacao"));
+                            } catch (ClassNotFoundException e) {
+                                throw new RuntimeException(e);
+                            }
+                            break;
+                        case 3:
+                            try {
+                                reflexao.inspecionar(opcaoTipo,forName("biblioteca.models.membro.Professor"));
+                            } catch (ClassNotFoundException e) {
+                                throw new RuntimeException(e);
+                            }
+                            break;
+                        case 4, 6, 5:
+                            try {
+                                reflexao.inspecionar(opcaoTipo,forName("biblioteca.models.membro.Funcionario"));
+                            } catch (ClassNotFoundException e) {
+                                throw new RuntimeException(e);
+                            }
+                            break;
+                        case 7:
+                            return;
+                    }
+                    break;
+                case 7:
                     return;
                 default:
                     System.out.println("Opção inválida. Por favor, escolha novamente.");
@@ -292,6 +411,7 @@ public class BibliotecaMain {
         int data = scanner.nextInt();
         bibliotecaController.buscaItemPorId(idItem).emprestar(membroController.buscarMembroPorIdentificacao(idMembro), data, bibliotecaController);
     }
+
     private static void realizarDevolucao(Scanner scanner) {
         // Lógica para realizar um empréstimo
         System.out.println("Operação de Devolucao de Itens");
@@ -303,7 +423,7 @@ public class BibliotecaMain {
         int data = scanner.nextInt();
         System.out.println("Insira o ID do empréstimo: ");
         int idEmprestimo = scanner.nextInt();
-        bibliotecaController.buscaItemPorId(idItem).devolver(membroController.buscarMembroPorIdentificacao(idMembro), data,idEmprestimo, bibliotecaController);
+        bibliotecaController.buscaItemPorId(idItem).devolver(membroController.buscarMembroPorIdentificacao(idMembro), data, idEmprestimo, bibliotecaController);
     }
 
     private static void realizarRenovacao(Scanner scanner) {
@@ -320,7 +440,7 @@ public class BibliotecaMain {
         int idItem = scanner.nextInt();
         System.out.println("Insira a data de hoje: "); //Ainda vai mudar pra obter a nota do sistema
         int data = scanner.nextInt();
-        bibliotecaController.buscaItemPorId(idItem).reservar(idMembro,data, bibliotecaController);
+        bibliotecaController.buscaItemPorId(idItem).reservar(idMembro, data, bibliotecaController);
     }
 
     // Métodos para adicionar, editar e remover itens e membros
@@ -367,7 +487,7 @@ public class BibliotecaMain {
                     System.out.println("Insira a localizacao do item: ");
                     String localizacao = scanner.next();
                     Livro livro = new Livro(tombo, titulo, autor, editora, genero, anoPub, sinopse, ISBN, edicao, conservacao, localizacao);
-                    ItemBiblioteca addL =  new ItemBiblioteca<Livro>(livro);
+                    ItemBiblioteca addL = new ItemBiblioteca<Livro>(livro);
                     bibliotecaController.adicionarItem(tombo, addL);
                     return true;
                 case 2:
@@ -390,25 +510,25 @@ public class BibliotecaMain {
                     int formato = scanner.nextInt();
                     Ebook.formatoEbook formatoE = null;
                     switch (formato) {
-                            case 1:
-                                formatoE = Ebook.formatoEbook.epub;
-                                break;
-                            case 2:
-                                formatoE = Ebook.formatoEbook.pdf;
-                                break;
-                            case 3:
-                                formatoE = Ebook.formatoEbook.mobi;
-                                break;
-                            default:
-                                System.out.println("Opção inválida. Por favor, escolha novamente.");
-                                return false;
+                        case 1:
+                            formatoE = Ebook.formatoEbook.epub;
+                            break;
+                        case 2:
+                            formatoE = Ebook.formatoEbook.pdf;
+                            break;
+                        case 3:
+                            formatoE = Ebook.formatoEbook.mobi;
+                            break;
+                        default:
+                            System.out.println("Opção inválida. Por favor, escolha novamente.");
+                            return false;
                     }
                     System.out.println("Insira o link de acesso do item: ");
                     String link = scanner.next();
                     System.out.println("Insira os requisitos de leitura do item: ");
                     String reqLeitura = scanner.next();
                     Ebook ebook = new Ebook(tombo, titulo, autor, editora, genero, anoPub, sinopse, formatoE, link, reqLeitura);
-                    ItemBiblioteca addE =  new ItemBiblioteca<Ebook>(ebook);
+                    ItemBiblioteca addE = new ItemBiblioteca<Ebook>(ebook);
                     bibliotecaController.adicionarItem(tombo, addE);
                     return true;
                 case 3:
@@ -430,13 +550,13 @@ public class BibliotecaMain {
                     System.out.println("1. Audio; 2. Video; 3. Software");
                     int formatoM = scanner.nextInt();
                     scanner.nextLine();
-                    switch (formatoM){
+                    switch (formatoM) {
                         case 1:
                             System.out.println("Insira a duracao: ");
                             int duracao = scanner.nextInt();
                             System.out.println("Insira as faixas: ");
                             String listaFaixas = scanner.next();
-                            ItemBiblioteca cd =  new ItemBiblioteca<CD>(new CD(tombo, titulo, autor, editora, genero, anoPub, sinopse,duracao, listaFaixas));
+                            ItemBiblioteca cd = new ItemBiblioteca<CD>(new CD(tombo, titulo, autor, editora, genero, anoPub, sinopse, duracao, listaFaixas));
                             bibliotecaController.adicionarItem(tombo, cd);
 
                             break;
@@ -445,7 +565,7 @@ public class BibliotecaMain {
                             int duracaov = scanner.nextInt();
                             System.out.println("Insira o elenco: ");
                             String elenco = scanner.next();
-                            ItemBiblioteca dvd =  new ItemBiblioteca<DVD>( new DVD(tombo, titulo, autor, editora, genero, anoPub, sinopse,duracaov, elenco));
+                            ItemBiblioteca dvd = new ItemBiblioteca<DVD>(new DVD(tombo, titulo, autor, editora, genero, anoPub, sinopse, duracaov, elenco));
                             bibliotecaController.adicionarItem(tombo, dvd);
                             break;
                         case 3:
@@ -455,8 +575,8 @@ public class BibliotecaMain {
                             String requisitos = scanner.next();
                             System.out.println("Insira o armazenamento necessario: ");
                             String armazenamento = scanner.next();
-                            new Software(tombo, titulo, autor, editora, genero, anoPub, sinopse,finalidade,requisitos,armazenamento);
-                            ItemBiblioteca software =  new ItemBiblioteca<Software>(new Software(tombo, titulo, autor, editora, genero, anoPub, sinopse,finalidade,requisitos,armazenamento));
+                            new Software(tombo, titulo, autor, editora, genero, anoPub, sinopse, finalidade, requisitos, armazenamento);
+                            ItemBiblioteca software = new ItemBiblioteca<Software>(new Software(tombo, titulo, autor, editora, genero, anoPub, sinopse, finalidade, requisitos, armazenamento));
                             bibliotecaController.adicionarItem(tombo, software);
                             break;
                         default:
@@ -471,7 +591,7 @@ public class BibliotecaMain {
                     System.out.println("1. Informatica; 2. Audiovisual; 3. Impressao");
                     int formatoEq = scanner.nextInt();
                     Equipamento.CategoriaEquipamento formatoEquip;
-                    switch (formatoEq){
+                    switch (formatoEq) {
                         case 1:
                             formatoEquip = Equipamento.CategoriaEquipamento.INFORMATICA;
                             break;
@@ -485,9 +605,9 @@ public class BibliotecaMain {
                             System.out.println("Opção inválida. Por favor, escolha novamente.");
                             return false;
                     }
-                    ItemBiblioteca item = new ItemBiblioteca<>(new Equipamento(formatoEquip, tombo)) ;
-                    bibliotecaController.adicionarItem(tombo,item);
-                    default:
+                    ItemBiblioteca item = new ItemBiblioteca<>(new Equipamento(formatoEquip, tombo));
+                    bibliotecaController.adicionarItem(tombo, item);
+                default:
                     System.out.println("Opção inválida. Por favor, escolha novamente.");
                     return false;
             }
@@ -522,7 +642,7 @@ public class BibliotecaMain {
         int nivel = scanner.nextInt();
         System.out.println("Instira o RA do membro");
         int RA = scanner.nextInt();
-        if (membroController.buscarMembroPorIdentificacao(RA) != null){
+        if (membroController.buscarMembroPorIdentificacao(RA) != null) {
             System.out.println("RA ja em uso, insira outro número:");
             RA = scanner.nextInt();
         }
@@ -534,29 +654,29 @@ public class BibliotecaMain {
         String endereco = scanner.next();
         System.out.println("Insira a data de hoje: ");
         int data = scanner.nextInt();
-        switch (nivel){
+        switch (nivel) {
             case 1:
-                Administradores adm = new Administradores(nome,RA,telegone,endereco,data);
+                Administradores adm = new Administradores(nome, RA, telegone, endereco, data);
                 membroController.addMembro(adm);
                 break;
             case 2:
-                Gerente ger = new Gerente(nome,RA,telegone,endereco,data);
+                Gerente ger = new Gerente(nome, RA, telegone, endereco, data);
                 membroController.addMembro(ger);
                 break;
             case 3:
-                Atendente atendente = new Atendente(nome,RA,telegone,endereco,data);
+                Atendente atendente = new Atendente(nome, RA, telegone, endereco, data);
                 membroController.addMembro(atendente);
                 break;
             case 4:
-                Professor professor = new Professor(nome,RA,telegone,endereco,data);
+                Professor professor = new Professor(nome, RA, telegone, endereco, data);
                 membroController.addMembro(professor);
                 break;
             case 5:
-                EstudantePosGraduacao pos = new EstudantePosGraduacao(nome,RA,telegone,endereco,data);
+                EstudantePosGraduacao pos = new EstudantePosGraduacao(nome, RA, telegone, endereco, data);
                 membroController.addMembro(pos);
                 break;
             case 6:
-                EstudanteGraduacao grad = new EstudanteGraduacao(nome,RA,telegone,endereco,data);
+                EstudanteGraduacao grad = new EstudanteGraduacao(nome, RA, telegone, endereco, data);
                 membroController.addMembro(grad);
                 break;
         }
@@ -602,4 +722,5 @@ public class BibliotecaMain {
         // Lógica para gerar o Relatório de Itens Mais Populares
         System.out.println("Gerando Relatório de Itens Mais Populares");
     }
+
 }
