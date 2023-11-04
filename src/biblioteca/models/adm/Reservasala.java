@@ -5,6 +5,8 @@ import biblioteca.models.membro.Membro;
 import java.util.Scanner;
 
 public class Reservasala {
+    private int capacidade;
+
     public enum tipoSala{
         individual,grupo,silenciosa,multimidia
     }
@@ -14,14 +16,15 @@ public class Reservasala {
     private int horaFim;
     private Sala sala;
     private Membro membro;
+    private  boolean disponibiidade;
 
-    class SalaJaReservadaException extends Exception {
+    public class SalaJaReservadaException extends Exception {
         public SalaJaReservadaException(String message) {
             super(message);
         }
     }
 
-    class CapacidadeExcedidaException extends Exception {
+    public class CapacidadeExcedidaException extends Exception {
         public CapacidadeExcedidaException(String message) {
             super(message);
         }
@@ -29,17 +32,18 @@ public class Reservasala {
     
 
     //Construtor
-    public Reservasala(int nSala, tipoSala tipoSala, int dataReserva, int horaInicio, Membro membro){
+    public Reservasala(int nSala, tipoSala tipoSala, int dataReserva, int horaInicio, Membro membro, int usuarios, int capacidade){
         this.dataReserva = dataReserva;
         this.horaInicio = horaInicio;
         this.horaFim = horaInicio + 3;
         this.membro = membro;
+        this.capacidade = capacidade;
 
-        try{   
+        try{
             if (salaEstaReservada(dataReserva, horaInicio)){
                 throw new SalaJaReservadaException("Esta sala já foi reservada");
 
-            } else if (salaExcedeCapacidade){
+            } else if (usuarios > this.capacidade){
                 throw new CapacidadeExcedidaException("A capacidade máxima da sala foi excedida");
 
             }
@@ -76,6 +80,11 @@ public class Reservasala {
         } catch (SalaJaReservadaException | CapacidadeExcedidaException e){
             System.err.println("Erro: " + e.getMessage());
         }
+    }
+
+    private boolean salaEstaReservada(int dataReserva, int horaInicio) {
+        if (disponibiidade) {return true;}
+        else{ return false;}
     }
 
 

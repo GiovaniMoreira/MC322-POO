@@ -21,7 +21,7 @@ public class BibliotecaMain {
     private static int tomboAtual;
     private static CReflection reflexao;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ItemBiblioteca.ItemNaoEmprestadoException, ItemBiblioteca.ItemJaReservadoException, ItemBiblioteca.ItemJaEmprestadoException, ItemBiblioteca.LimiteEmprestimosExcedidoException {
         bibliotecaController = new BibliotecaControllerImpl();
         membroController = new MembroControllerImpl();
         relatorioController = new RelatorioControllerImpl();
@@ -86,7 +86,7 @@ public class BibliotecaMain {
         }
     }
 
-    private static void menuGerenciamentoItens(Scanner scanner, BibliotecaView bibliotecaView) {
+    private static void menuGerenciamentoItens(Scanner scanner, BibliotecaView bibliotecaView) throws ItemBiblioteca.ItemJaReservadoException, ItemBiblioteca.ItemJaEmprestadoException, ItemBiblioteca.LimiteEmprestimosExcedidoException, ItemBiblioteca.ItemNaoEmprestadoException {
         while (true) {
             System.out.println("---- Menu Gerenciamento de Itens ----");
             System.out.println();
@@ -152,6 +152,8 @@ public class BibliotecaMain {
                     System.out.println("3. Ebook");
                     System.out.println("4. Livro");
                     System.out.println("5. Software");
+                    System.out.println("6. Lista de Reservas");
+                    System.out.println("5. Lista de Emprestimos");
                     System.out.println("6. Voltar");
                     System.out.println();
                     System.out.println();
@@ -196,6 +198,21 @@ public class BibliotecaMain {
                             }
                             break;
                         case 6:
+                            try {
+                                reflexao.inspecionar(opcaoTipo,forName("biblioteca.models.adm.ListaReserva"));
+                            } catch (ClassNotFoundException e) {
+                                throw new RuntimeException(e);
+                            }
+                            break;
+                            case 7:
+                                try {
+                                    reflexao.inspecionar(opcaoTipo,forName("biblioteca.models.adm.ListaEmprestimo"));
+                                } catch (ClassNotFoundException e) {
+                                    throw new RuntimeException(e);
+                                }
+                                break;
+                        case 8:
+
                             return;
                     }
                     break;
@@ -216,7 +233,7 @@ public class BibliotecaMain {
             System.out.println("3. Adicionar Membro");
             System.out.println("4. Editar Membro");
             System.out.println("5. Remover Membro");
-            System.out.println("6.Inspecionar classes") ;
+            System.out.println("6. Inspecionar classes") ;
             System.out.println("7. Voltar");
             System.out.println();
             System.out.println();
@@ -400,7 +417,7 @@ public class BibliotecaMain {
     }
 
     // Métodos para realizar empréstimo, renovação e reserva
-    private static void realizarEmprestimo(Scanner scanner) {
+    private static void realizarEmprestimo(Scanner scanner) throws ItemBiblioteca.ItemJaReservadoException, ItemBiblioteca.ItemJaEmprestadoException, ItemBiblioteca.LimiteEmprestimosExcedidoException {
         // Lógica para realizar um empréstimo
         System.out.println("Operação de Empréstimo de Itens");
         System.out.println("Insira o ID do membro: ");
@@ -412,7 +429,7 @@ public class BibliotecaMain {
         bibliotecaController.buscaItemPorId(idItem).emprestar(membroController.buscarMembroPorIdentificacao(idMembro), data, bibliotecaController);
     }
 
-    private static void realizarDevolucao(Scanner scanner) {
+    private static void realizarDevolucao(Scanner scanner) throws ItemBiblioteca.ItemNaoEmprestadoException {
         // Lógica para realizar um empréstimo
         System.out.println("Operação de Devolucao de Itens");
         System.out.println("Insira o ID do membro: ");
@@ -465,7 +482,7 @@ public class BibliotecaMain {
             switch (opcaoItens) {
                 case 1:
                     System.out.println("Insira o numero do tombo: ");
-                    String tombo = scanner.nextInt();
+                    int tombo = scanner.nextInt();
                     System.out.println("Insira o título do item: ");
                     String titulo = scanner.next();
                     System.out.println("Insira o autor do item: ");
@@ -492,7 +509,7 @@ public class BibliotecaMain {
                     return true;
                 case 2:
                     System.out.println("Insira o numero do tombo: ");
-                    String tombo = scanner.nextInt();
+                    tombo = scanner.nextInt();
                     System.out.println("Insira o título do item: ");
                     titulo = scanner.next();
                     System.out.println("Insira o autor do item: ");
@@ -533,7 +550,7 @@ public class BibliotecaMain {
                     return true;
                 case 3:
                     System.out.println("Insira o numero do tombo: ");
-                    String tombo = scanner.nextInt();
+                    tombo = scanner.nextInt();
                     System.out.println("Insira o título do item: ");
                     titulo = scanner.next();
                     System.out.println("Insira o autor do item: ");
@@ -586,7 +603,7 @@ public class BibliotecaMain {
                     return true;
                 case 4:
                     System.out.println("Insira o numero do tombo: ");
-                    String tombo = scanner.nextInt();
+                    tombo = scanner.nextInt();
                     System.out.println("Qual o tipo de equipamento? ");
                     System.out.println("1. Informatica; 2. Audiovisual; 3. Impressao");
                     int formatoEq = scanner.nextInt();

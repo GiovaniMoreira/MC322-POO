@@ -47,9 +47,11 @@ public class BibliotecaControllerImpl implements BibliotecaController {
     }
 
 
+    /*
     public void adicionarItem(int Id, ItemBiblioteca item){
         this.estoque.put(Id,item);
     }
+    */
 
     @Override
     public ListaEmprestimo<Emprestimo> consultarEmprestimos() {
