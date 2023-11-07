@@ -153,8 +153,8 @@ public class BibliotecaMain {
                     System.out.println("4. Livro");
                     System.out.println("5. Software");
                     System.out.println("6. Lista de Reservas");
-                    System.out.println("5. Lista de Emprestimos");
-                    System.out.println("6. Voltar");
+                    System.out.println("7. Lista de Emprestimos");
+                    System.out.println("8. Voltar");
                     System.out.println();
                     System.out.println();
                     System.out.print("Escolha uma opção: ");
@@ -212,7 +212,6 @@ public class BibliotecaMain {
                                 }
                                 break;
                         case 8:
-
                             return;
                     }
                     break;

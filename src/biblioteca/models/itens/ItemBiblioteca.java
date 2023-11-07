@@ -25,35 +25,35 @@ public class ItemBiblioteca<T extends ItemMultimidia> {
     }
 
         // Exceção para quando o limite de empréstimos de um membro for excedido
-     public class LimiteEmprestimosExcedidoException extends Exception {
+     public static class LimiteEmprestimosExcedidoException extends Exception {
         public LimiteEmprestimosExcedidoException(String message)
             {super (message);
         }
     }
 
     // Exceção para quando um item já estiver emprestado
-    public class ItemJaEmprestadoException extends Exception {
+    public static class ItemJaEmprestadoException extends Exception {
         public ItemJaEmprestadoException(String message) {
-            String s = "JA EMPRESTADO";
+            super (message);
         }
     }
 
     // Exceção para quando um item já estiver reservado
-    public class ItemJaReservadoException extends Exception {
-        public ItemJaReservadoException(String ja) {
-        String s = " JA reservado";
-        }
+    public static class ItemJaReservadoException extends Exception {
+        public ItemJaReservadoException(String message) {
+            super (message);
+            }
     }
 
-    public class ItemNaoEmprestadoException extends Exception {
+    public static class ItemNaoEmprestadoException extends Exception {
         public ItemNaoEmprestadoException(String message) {
-            String s ="NAO EMPRESTADO";
+            super(message);
         }
     }
 
-    public class ItemDanificadoException extends Exception {
+    public static class ItemDanificadoException extends Exception {
         public ItemDanificadoException(String message) {
-            String s =  "Item danificiado";
+            super (message);
         }
     }
 
@@ -73,7 +73,7 @@ public class ItemBiblioteca<T extends ItemMultimidia> {
     }
     public void setItem(T item){this.item = item;}
     public T getItem(){return item;}
-    public boolean emprestar(Membro membro, int data, BibliotecaController controller) throws LimiteEmprestimosExcedidoException, ItemJaEmprestadoException, ItemJaReservadoException {
+    public void emprestar(Membro membro, int data, BibliotecaController controller) throws LimiteEmprestimosExcedidoException, ItemJaEmprestadoException, ItemJaReservadoException {
         if (membro.getEmprestimos().size() >= membro.getLimiteEmprestimos()) {
             throw new LimiteEmprestimosExcedidoException("Numero máximo de emprestimos ja feito");
         }
@@ -94,7 +94,6 @@ public class ItemBiblioteca<T extends ItemMultimidia> {
                 System.out.println("Item emprestado com sucesso");
                 System.out.println("Id do empréstimo:" +emprestimo.getIdEmprestimo());
                 controller.consultarItensDisponiveis().put(item.getTombo(),item);
-                return true;
             } else { //Livro emprestrado ou não, mas reservado por alguem que não é a pessoa que está tentando emprestar no momento => Entra na lista de espera
                 reservar(membro.getRa(), data, controller);
                 System.out.println("Usuário adicionado à lista de espera");
@@ -113,7 +112,6 @@ public class ItemBiblioteca<T extends ItemMultimidia> {
             System.out.println("Item emprestado com sucesso");
             System.out.println("Id do empréstimo:" + emprestimo.getIdEmprestimo());
             controller.consultarItensDisponiveis().put(item.getTombo(),item);
-            return true;
         }
     }
     public void reservar(int idMembro, int data, BibliotecaController controller){
