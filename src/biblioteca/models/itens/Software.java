@@ -1,6 +1,15 @@
 package biblioteca.models.itens;
 
-public class Software extends ItemMultimidiaImpl{
+public interface SoftwareInterface {
+    String getFinalidade();
+    void setFinalidade(String finalidade);
+    String getRequisitos();
+    void setRequisitos(String requisitos);
+    String getArmazenamento();
+    void setArmazenamento(String armazenamento);
+}
+
+public class Software extends ItemMultimidiaImpl implements SoftwareInterface {
     private String finalidade;
     private String requisitos;
     private String armazenamento;
@@ -36,3 +45,4 @@ public class Software extends ItemMultimidiaImpl{
         this.armazenamento = armazenamento;
     }
 }
+

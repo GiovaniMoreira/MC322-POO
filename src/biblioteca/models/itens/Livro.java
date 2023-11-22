@@ -4,13 +4,33 @@ import biblioteca.models.adm.Reserva;
 
 import java.util.ArrayList;
 
-public class Livro extends ItemMultimidiaImpl {
+// Interface para métodos específicos de livros
+public interface LivroInterface {
+    String getFormato();
+    void setFormato(String formato);
+    String getLink();
+    void setLink(String link);
+    String getReqLeitura();
+    void setReqLeitura(String reqLeitura);
+}
+
+public class Livro extends ItemMultimidiaImpl implements LivroInterface {
+    private formatoLivro formato;
+    private String link;
+    private String reqLeitura;
     private int ISBN;
     private int edicao;
     private String conservacao;
     private String localizacao;
-    public Livro(int tombo, String titulo, String autor, String editora, String genero, int anoPub, String sinopse, int isbn, int edicao, String conservacao, String localizacao) {
+    private List<Reserva> reservas;
+
+    //Construtor
+    public Livro(int tombo, String titulo, String autor, String editora, String genero, int anoPub, String sinopse,
+    formatoLivro formato, String link, String reqLeitura, int ISBN, int edicao, String conservacao, String localizacao) {
         super(tombo, titulo, autor, editora, genero, anoPub, sinopse);
+        this.formato = formato;
+        this.link = link;
+        this.reqLeitura = reqLeitura;
         this.ISBN = isbn;
         this.edicao = edicao;
         this.conservacao = conservacao;
@@ -70,3 +90,4 @@ public class Livro extends ItemMultimidiaImpl {
         return texto;
     }
 }
+
