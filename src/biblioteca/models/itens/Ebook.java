@@ -1,6 +1,16 @@
 package biblioteca.models.itens;
 
-public class Ebook extends ItemMultimidiaImpl {
+// Interface para métodos específicos de Ebooks
+public interface EbookInterface {
+    String getFormato();
+    void setFormato(String formato);
+    String getLink();
+    void setLink(String link);
+    String getReqLeitura();
+    void setReqLeitura(String reqLeitura);
+}
+
+public class Ebook extends ItemMultimidiaImpl implements EbookInterface {
     private formatoEbook formato;
     private String link;
     private String reqLeitura;
@@ -40,6 +50,7 @@ public class Ebook extends ItemMultimidiaImpl {
     public enum formatoEbook{
         epub, pdf, mobi
     }
+
     @Override
     public String toString(){
         String texto = "Título: " + titulo + "\n" +

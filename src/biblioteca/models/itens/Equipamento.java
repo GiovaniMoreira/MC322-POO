@@ -5,13 +5,85 @@ import biblioteca.models.adm.Reserva;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Equipamento implements ItemMultimidia {
+
+public interface ItemMultimidia {
+    int getTombo();
+    boolean getDisponibilidade();
+    void setDisponibilidade(boolean disponibilidade);
+    ArrayList<Reserva> getReservas();
+    void setNEmprestimos(int nEmprestimos);
+    int getNEmprestimos();
+    void setNReservas(int nReservas);
+    int getNReservas();
+}
+
+
+public interface Reservavel {
+    ArrayList<Reserva> getReservas();
+    void setDisponibilidade(boolean disponibilidade);
+}
+
+
+public interface Categorizavel {
+    String getCategoria();
+}
+
+
+public class Equipamento implements ItemMultimidia, Reservavel, Categorizavel {
     private int tombo;
     private boolean disponibilidade;
     private ArrayList<Reserva> reservas;
     private int nEmprestimos;
     private int nReservas;
+    private CategoriaEquipamento categoria;
+    private Informatica informatica;
+    private AudioVisual audioVisual;
+    private Impressao impressao;
 
+    public Equipamento(CategoriaEquipamento categoria, int tombo) {
+        this.tombo = tombo;
+        this.disponibilidade = true;
+        this.reservas = new ArrayList<>();
+        this.nEmprestimos = 0;
+        this.nReservas = 0;
+        this.categoria = categoria;
+        inicializarCategoria(categoria);
+    }
+
+    private void inicializarCategoria(CategoriaEquipamento categoria) {
+        switch (categoria) {
+            case INFORMATICA:
+                System.out.println("Insira o tipo de item de informatica: ");
+                String tipoI = scanner.next();
+                System.out.println("Insira as especificações do item: ");
+                String espI = scanner.next();
+                this.informatica = new Informatica(tipoI, espI);
+                informatica = new Informatica();
+                break;
+            case AUDIOVISUAL:
+                System.out.println("Insira o tipo de item audiovisual: ");
+                String tipoA = scanner.next();
+                System.out.println("Insira as especificações do item: ");
+                String espA = scanner.next();
+                this.audiovisual = new AudioVisual(tipoA,espA);
+                audioVisual = new AudioVisual();
+                break;
+            case IMPRESSAO:
+                System.out.println("Insira o modelo do item de impressao: ");
+                String tipoImp = scanner.next();
+                System.out.println("Insira a resolução máxima do item: ");
+                int resImp = scanner.nextInt();
+                System.out.println("Insira a capacidade máxima do item: ");
+                int capImp = scanner.nextInt();
+                this.impressao = new Impressao(tipoImp,resImp,capImp);
+                impressao = new Impressao();
+                break;
+            default:
+            throw new IllegalStateException("Unexpected value: " + categoria);
+        }
+    }
+
+    @Override
     public int getTombo() {
         return tombo;
     }
@@ -27,80 +99,40 @@ public class Equipamento implements ItemMultimidia {
     }
 
     @Override
-    public ArrayList<Reserva> getReserva() {
+    public ArrayList<Reserva> getReservas() {
         return reservas;
     }
 
     @Override
-    public void setnEmprestimos(int i) {
-        nEmprestimos = i;
+    public void setNEmprestimos(int nEmprestimos) {
+        this.nEmprestimos = nEmprestimos;
     }
 
     @Override
-    public int getnEmprestimos() {
+    public int getNEmprestimos() {
         return nEmprestimos;
     }
 
     @Override
-    public void setnReservas(int i) {
-        nReservas = i;
+    public void setNReservas(int nReservas) {
+        this.nReservas = nReservas;
     }
 
     @Override
-    public int getnReservas() {
+    public int getNReservas() {
         return nReservas;
     }
 
-    public void setTombo(int tombo) {
-        this.tombo = tombo;
+    @Override
+    public String getCategoria() {
+        return categoria.toString();
     }
 
-    public enum CategoriaEquipamento{
-        INFORMATICA,AUDIOVISUAL,IMPRESSAO
-    }
-    private CategoriaEquipamento categoria;
-    private Informatica informatica;
-    private AudioVisual audiovisual;
-    private Impressao impressao;
-    public Equipamento(CategoriaEquipamento categoria, int tombo){
-        this.tombo = tombo;
-        this.disponibilidade = true;
-        ArrayList<Reserva> reservas = new ArrayList<Reserva>(1);
-        this.reservas = reservas;
-        Scanner scanner = new Scanner(System.in);
-        switch(categoria){
-            case INFORMATICA:
-                System.out.println("Insira o tipo de item de informatica: ");
-                String tipoI = scanner.next();
-                System.out.println("Insira as especificações do item: ");
-                String espI = scanner.next();
-                this.informatica = new Informatica(tipoI, espI);
-                break;
-            case AUDIOVISUAL:
-                System.out.println("Insira o tipo de item audiovisual: ");
-                String tipoA = scanner.next();
-                System.out.println("Insira as especificações do item: ");
-                String espA = scanner.next();
-                this.audiovisual = new AudioVisual(tipoA,espA);
-                break;
-            case IMPRESSAO:
-                System.out.println("Insira o modelo do item de impressao: ");
-                String tipoImp = scanner.next();
-                System.out.println("Insira a resolução máxima do item: ");
-                int resImp = scanner.nextInt();
-                System.out.println("Insira a capacidade máxima do item: ");
-                int capImp = scanner.nextInt();
-                this.impressao = new Impressao(tipoImp,resImp,capImp);
-                break;
-            default:
-                throw new IllegalStateException("Unexpected value: " + categoria);
-        }
-    }
-    class Informatica{
+    class Informatica {
         private String tipo;
         private String especificacoes;
 
-        Informatica(String tipo, String especificacoes) {
+        Informatica() {
             this.tipo = tipo;
             this.especificacoes = especificacoes;
         }
@@ -121,11 +153,13 @@ public class Equipamento implements ItemMultimidia {
             this.tipo = tipo;
         }
     }
-    class AudioVisual{
-        private String tipo;
-        private String especificaoes;
+    }
 
-        AudioVisual(String tipo, String especificaoes) {
+    class AudioVisual {
+        private String tipo;
+        private String especificacoes;
+
+        AudioVisual() {
             this.tipo = tipo;
             this.especificaoes = especificaoes;
         }
@@ -146,18 +180,20 @@ public class Equipamento implements ItemMultimidia {
             this.especificaoes = especificaoes;
         }
     }
-    class Impressao{
+
+    class Impressao {
         private String modelo;
         private int resolucao;
         private int capacidade;
 
-        public int getCapacidade() {
-            return capacidade;
-        }
-        public Impressao(String modelo, int resolucao, int capacidade){
+        Impressao(String modelo, int resolucao, int capacidade) {
             this.modelo = modelo;
             this.resolucao = resolucao;
             this.capacidade = capacidade;
+        }
+
+        public int getCapacidade() {
+            return capacidade;
         }
         public void setCapacidade(int capacidade) {
             this.capacidade = capacidade;
@@ -204,4 +240,7 @@ public class Equipamento implements ItemMultimidia {
         }
         return texto;
     }
-}
+
+
+
+
