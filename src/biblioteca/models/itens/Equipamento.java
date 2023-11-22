@@ -6,18 +6,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 
-public interface ItemMultimidia {
-    int getTombo();
-    boolean getDisponibilidade();
-    void setDisponibilidade(boolean disponibilidade);
-    ArrayList<Reserva> getReservas();
-    void setNEmprestimos(int nEmprestimos);
-    int getNEmprestimos();
-    void setNReservas(int nReservas);
-    int getNReservas();
-}
-
-
 public interface Reservavel {
     ArrayList<Reserva> getReservas();
     void setDisponibilidade(boolean disponibilidade);
